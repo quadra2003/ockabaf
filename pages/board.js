@@ -35,24 +35,6 @@ export default function Board() {
           </p>
         </div>
 
-        {/* Board Stats */}
-        <div className="bg-white border border-gray-200 rounded-lg p-6 mb-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">{boardMembers.length}</div>
-              <div className="text-gray-600">Board Members</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">100%</div>
-              <div className="text-gray-600">Legal Professionals</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-              <div className="text-gray-600">Years Combined Experience</div>
-            </div>
-          </div>
-        </div>
-
         {/* Board Members Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
           {boardMembers.map((member, index) => (
