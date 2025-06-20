@@ -50,11 +50,11 @@ export default function Fellows() {
           {fellows.map((fellow, index) => (
             <div key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               {/* Fellow Photo */}
-              <div className="aspect-w-3 aspect-h-4">
+              <div className="aspect-square">
                 <img
                   src={`/images/${fellow.photo}`}
                   alt={fellow.name}
-                  className="w-full h-80 object-cover"
+                  className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCIgdmlld0JveD0iMCAwIDMyMCAzMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMjAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjE2MCIgY3k9IjEyMCIgcj0iNDAiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTgwIDI0MEM4MCAyMDAgMTEyIDE2MCAxNjAgMTYwUzI0MCAyMDAgMjQwIDI0MEg4MFoiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+Cg=='
                   }}
