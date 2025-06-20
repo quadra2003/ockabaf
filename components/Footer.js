@@ -57,7 +57,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/fellows" className="text-gray-300 hover:text-white transition-colors">
-                  Fellows
+                  Minyard Morris Fellows
                 </Link>
               </li>
               <li>
