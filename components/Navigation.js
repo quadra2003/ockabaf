@@ -44,6 +44,14 @@ export default function Navigation() {
               Programs
             </Link>
             <Link 
+              href="/fellows"
+              className={`text-gray-600 hover:text-primary-600 transition-colors ${
+                isActive('/fellows') ? 'text-primary-600 font-semibold' : ''
+              }`}
+            >
+              Fellows
+            </Link>
+            <Link 
               href="/board"
               className={`text-gray-600 hover:text-primary-600 transition-colors ${
                 isActive('/board') ? 'text-primary-600 font-semibold' : ''
@@ -80,6 +88,7 @@ export default function Navigation() {
             <Link href="/" className="block px-3 py-2 text-gray-600">Home</Link>
             <Link href="/about" className="block px-3 py-2 text-gray-600">About</Link>
             <Link href="/programs" className="block px-3 py-2 text-gray-600">Programs</Link>
+            <Link href="/fellows" className="block px-3 py-2 text-gray-600">Fellows</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
             <Link href="/donate" className="block px-3 py-2 text-primary-600 font-semibold">Donate</Link>
           </div>
