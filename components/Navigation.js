@@ -49,7 +49,7 @@ export default function Navigation() {
                 isActive('/fellows') ? 'text-primary-600 font-semibold' : ''
               }`}
             >
-              Fellows
+              Minyard Morris Fellows
             </Link>
             <Link 
               href="/board"
@@ -88,7 +88,7 @@ export default function Navigation() {
             <Link href="/" className="block px-3 py-2 text-gray-600">Home</Link>
             <Link href="/about" className="block px-3 py-2 text-gray-600">About</Link>
             <Link href="/programs" className="block px-3 py-2 text-gray-600">Programs</Link>
-            <Link href="/fellows" className="block px-3 py-2 text-gray-600">Fellows</Link>
+            <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
             <Link href="/donate" className="block px-3 py-2 text-primary-600 font-semibold">Donate</Link>
           </div>
