@@ -70,6 +70,45 @@ export default function Home() {
         </div>
       </section>
 
+  {/* Fellows Spotlight Section */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Meet Our Fellows</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Discover the outstanding students in our Minyard Morris Fellowship program who are making a difference through pro bono legal work
+            </p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-accent-50 to-primary-50 border border-gray-200 rounded-lg p-8 text-center">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">2</div>
+                <div className="text-gray-600">Current Fellows</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">100+</div>
+                <div className="text-gray-600">Pro Bono Hours</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">25+</div>
+                <div className="text-gray-600">Community Members Served</div>
+              </div>
+            </div>
+            
+            <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
+              Our Minyard Morris Fellows are exceptional undergraduate students who combine academic excellence with a commitment to public service, gaining valuable legal experience while making a real difference in their communities.
+            </p>
+            
+            <Link
+              href="/fellows"
+              className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+            >
+              Meet Our Fellows
+            </Link>
+          </div>
+        </div>
+      </section>
       {/* CTA Section */}
       <section className="bg-primary-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
