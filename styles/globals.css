@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --primary-50: #f0f4ff;
-    --primary-100: #e6f3ff;
-    --primary-200: #ccd9ff;
-    --primary-300: #99c3ff;
-    --primary-400: #66a3ff;
-    --primary-500: #3383ff;
-    --primary-600: #0047A0;
-    --primary-700: #003d8b;
-    --primary-800: #003476;
-    --primary-900: #002c61;
-  }
-}
-
 html {
   scroll-behavior: smooth;
 }
