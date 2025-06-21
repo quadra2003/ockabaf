@@ -7,61 +7,96 @@ export default function Navigation() {
   const router = useRouter()
 
   const isActive = (path) => router.pathname === path
+  const primaryBlue = '#0047A0'
+  const primaryBlueHover = '#003d8b'
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="text-xl font-bold text-primary-600">
-              OCKABA Foundation
+            <Link href="/" className="flex items-center">
+              <img 
+                src="/images/ockaba-foundation-logo.png" 
+                alt="OCKABA Foundation"
+                className="h-10 w-auto"
+              />
             </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               href="/"
-              className={`text-gray-600 hover:text-primary-600 transition-colors ${
-                isActive('/') ? 'text-primary-600 font-semibold' : ''
+              className={`text-gray-600 transition-colors ${
+                isActive('/') ? 'font-semibold' : ''
               }`}
+              style={{ 
+                color: isActive('/') ? primaryBlue : '#6b7280',
+                ':hover': { color: primaryBlue }
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/') ? primaryBlue : '#6b7280'}
             >
               Home
             </Link>
             <Link 
               href="/about"
-              className={`text-gray-600 hover:text-primary-600 transition-colors ${
-                isActive('/about') ? 'text-primary-600 font-semibold' : ''
+              className={`text-gray-600 transition-colors ${
+                isActive('/about') ? 'font-semibold' : ''
               }`}
+              style={{ 
+                color: isActive('/about') ? primaryBlue : '#6b7280'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/about') ? primaryBlue : '#6b7280'}
             >
               About
             </Link>
             <Link 
               href="/programs"
-              className={`text-gray-600 hover:text-primary-600 transition-colors ${
-                isActive('/programs') ? 'text-primary-600 font-semibold' : ''
+              className={`text-gray-600 transition-colors ${
+                isActive('/programs') ? 'font-semibold' : ''
               }`}
+              style={{ 
+                color: isActive('/programs') ? primaryBlue : '#6b7280'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/programs') ? primaryBlue : '#6b7280'}
             >
               Programs
             </Link>
             <Link 
               href="/fellows"
-              className={`text-gray-600 hover:text-primary-600 transition-colors ${
-                isActive('/fellows') ? 'text-primary-600 font-semibold' : ''
+              className={`text-gray-600 transition-colors ${
+                isActive('/fellows') ? 'font-semibold' : ''
               }`}
+              style={{ 
+                color: isActive('/fellows') ? primaryBlue : '#6b7280'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/fellows') ? primaryBlue : '#6b7280'}
             >
               Minyard Morris Fellows
             </Link>
             <Link 
               href="/board"
-              className={`text-gray-600 hover:text-primary-600 transition-colors ${
-                isActive('/board') ? 'text-primary-600 font-semibold' : ''
+              className={`text-gray-600 transition-colors ${
+                isActive('/board') ? 'font-semibold' : ''
               }`}
+              style={{ 
+                color: isActive('/board') ? primaryBlue : '#6b7280'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/board') ? primaryBlue : '#6b7280'}
             >
               Board
             </Link>
             <Link 
               href="/donate"
-              className="bg-primary-600 text-white px-4 py-2 rounded-md hover:bg-primary-700 transition-colors"
+              className="text-white px-4 py-2 rounded-md transition-colors"
+              style={{ backgroundColor: primaryBlue }}
+              onMouseOver={(e) => e.target.style.backgroundColor = primaryBlueHover}
+              onMouseOut={(e) => e.target.style.backgroundColor = primaryBlue}
             >
               Donate
             </Link>
@@ -90,7 +125,13 @@ export default function Navigation() {
             <Link href="/programs" className="block px-3 py-2 text-gray-600">Programs</Link>
             <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
-            <Link href="/donate" className="block px-3 py-2 text-primary-600 font-semibold">Donate</Link>
+            <Link 
+              href="/donate" 
+              className="block px-3 py-2 font-semibold"
+              style={{ color: primaryBlue }}
+            >
+              Donate
+            </Link>
           </div>
         </div>
       )}
