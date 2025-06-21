@@ -8,17 +8,17 @@ export default function Fellows() {
       photo: "Ashley.jpg",
       linkedin: "https://www.linkedin.com/in/ashley-kim-ak/",
       bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she has gained valuable experience in pro bono legal work while developing her skills in legal research and client advocacy. Ashley is committed to using her legal education to serve underrepresented communities and promote access to justice.",
-      year: "2025",
-      university: "Cornell University",
+      year: "2026",
+      university: "Cornell '26",
       major: "History of Art & Cultural Property Studies"
     },
     {
       name: "Catherine Park",
       photo: "Catherine.jpg",
       linkedin: "https://www.linkedin.com/in/catpa/",
-      bio: "Catherine is an Economics and English double major at UC Berkeley with a passion for law and social justice. As a Minyard Morris Fellow, she has contributed to important pro bono initiatives while preparing for her future legal career. Catherine's interdisciplinary background in economics and literature provides her with a unique perspective on legal issues affecting communities.",
-      year: "2025",
-      university: "UC Berkeley",
+      bio: "Catherine is a double major in Economics and English at UC Berkeley with a passion for law and social justice. As a Minyard Morris Fellow, she has contributed to important pro bono initiatives while preparing for her future legal career. Catherine's interdisciplinary background in economics and literature provides her with a unique perspective on legal issues affecting communities.",
+      year: "2024",
+      university: "UC Berkeley '24",
       major: "Economics & English"
     }
   ]
