@@ -9,8 +9,8 @@ export default function Fellows() {
       linkedin: "https://www.linkedin.com/in/ashley-kim-ak/",
       bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she has gained valuable experience in pro bono legal work while developing her skills in legal research and client advocacy. Ashley is committed to using her legal education to serve underrepresented communities and promote access to justice.",
       year: "2025",
-      university: "University of California",
-      major: "Pre-Law"
+      university: "Cornell University",
+      major: "History of Art & Cultural Property Studies"
     },
     {
       name: "Catherine Park",
@@ -86,9 +86,6 @@ export default function Fellows() {
                     
                     {/* Academic Info */}
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-primary-100 text-primary-800 px-2 py-1 rounded-full text-xs font-medium">
-                        Class of {fellow.year}
-                      </span>
                       <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded-full text-xs font-medium">
                         {fellow.university}
                       </span>
