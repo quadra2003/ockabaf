@@ -53,7 +53,7 @@ export default function Fellows() {
                 <div className="flex gap-6 mb-4">
                   {/* Fellow Photo - Small and Left */}
                   <div className="flex-shrink-0">
-                    <div className="w-24 h-24 rounded-lg overflow-hidden">
+                    <div className="w-32 h-32 rounded-lg overflow-hidden">
                       <img
                         src={`/images/${fellow.photo}`}
                         alt={fellow.name}
