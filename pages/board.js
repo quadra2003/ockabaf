@@ -2,25 +2,25 @@ import Layout from '../components/Layout'
 
 export default function Board() {
   const boardMembers = [
-    { name: "Mimi Ahn", photo: "Mimi.jpg", website: "https://kahanafeld.com/team-member/mimi-ahn-esq/", linkedin: "https://www.linkedin.com/in/mimi-ahn-81480389/" },
-    { name: "Gahram Kang Chao", photo: "Gahram.jpg", website: "https://avodahlawgroup.com/about-us/gahram-kang-chao/", linkedin: "https://www.linkedin.com/in/gahram-kang-chao-1040001/" },
-    { name: "Janet Park Dennerline", photo: "Janet.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdennerline/" },
-    { name: "Young Ham", photo: "Young.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdyoungham/" },
-    { name: "Cecilia Hong", photo: "Cecilia.jpg", website: "https://kahanafeld.com/team-member/cecilia-hong-esq/", linkedin: "https://www.linkedin.com/in/cecilia-hong-bb614830/" },
-    { name: "Susan Kang", photo: "Susan.jpg", website: "https://susankanggroup.com/", linkedin: "https://www.linkedin.com/in/susan-heesoo-%ED%9D%AC%EC%88%98-kang-%EA%B0%95-89829950/" },
-    { name: "Jung Ah Kim", photo: "JungAh.jpg", website: "", linkedin: "https://www.linkedin.com/in/jung-ah-kim-03044b218/" },
-    { name: "Christopher Kim", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" },
-    { name: "Ellen Kim", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" },
-    { name: "Joshua Lee", photo: "Joshua.jpg", website: "https://lawandevidence.com/", linkedin: "https://www.linkedin.com/in/joshuaylee/" },
-    { name: "Suoo Lee", photo: "Suoo.jpg", website: "https://sllawpc.com/suoo-lee/", linkedin: "https://www.linkedin.com/in/suoo-lee-9a1636139/" },
-    { name: "Chang Lim", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
-    { name: "Eric Lim", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
-    { name: "Evelyn Moon", photo: "Evelyn.jpg", website: "https://evelynmoon.com/about/", linkedin: "https://www.linkedin.com/in/attorneyevelyn/" },
-    { name: "Ho-El Park", photo: "HoEl.jpg", website: "https://www.hparklaw.com/attorney-profile", linkedin: "https://www.linkedin.com/in/ho-el-park-a038b13/" },
-    { name: "Alexander Payne", photo: "Alex.jpg", website: "https://www.minyardmorris.com/attorney/alexander-payne/", linkedin: "https://www.linkedin.com/in/alexander-payne-cfls-26b76050/" },
-    { name: "Deborah Song", photo: "Deborah.jpg", website: "https://www.minyardmorris.com/attorney/deborah-j-song/", linkedin: "https://www.linkedin.com/in/deborah-jieun-song-esq-b245521aa/" },
-    { name: "Ja H. Suh", photo: "Ja.jpg", website: "https://suhlaw.com/about-1", linkedin: "https://www.linkedin.com/in/ja-h-suh-3235282/" },
-    { name: "Samuel Yu", photo: "Samuel.jpg", website: "https://kahanafeld.com/team-member/samuel-yu-esq/", linkedin: "https://www.linkedin.com/in/samuel-yu-6277721b/" }
+    { name: "Mimi Ahn", affiliation: "Kahana Feld", photo: "Mimi.jpg", website: "https://kahanafeld.com/team-member/mimi-ahn-esq/", linkedin: "https://www.linkedin.com/in/mimi-ahn-81480389/" },
+    { name: "Gahram Kang Chao", affiliation: "Avodah Law Group", photo: "Gahram.jpg", website: "https://avodahlawgroup.com/about-us/gahram-kang-chao/", linkedin: "https://www.linkedin.com/in/gahram-kang-chao-1040001/" },
+    { name: "Janet Park Dennerline", affiliation: "KTGY Group", photo: "Janet.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdennerline/" },
+    { name: "Young Ham", affiliation: "Qcells USA", photo: "Young.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdyoungham/" },
+    { name: "Cecilia Hong", affiliation: "Kahana Feld", photo: "Cecilia.jpg", website: "https://kahanafeld.com/team-member/cecilia-hong-esq/", linkedin: "https://www.linkedin.com/in/cecilia-hong-bb614830/" },
+    { name: "Susan Kang", affiliation: "Susan Kang Group", photo: "Susan.jpg", website: "https://susankanggroup.com/", linkedin: "https://www.linkedin.com/in/susan-heesoo-%ED%9D%AC%EC%88%98-kang-%EA%B0%95-89829950/" },
+    { name: "Jung Ah Kim", affiliation: "Verve Law Group", photo: "JungAh.jpg", website: "", linkedin: "https://www.linkedin.com/in/jung-ah-kim-03044b218/" },
+    { name: "Christopher Kim", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" },
+    { name: "Ellen Kim", affiliation: "Umberg Zipser", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" },
+    { name: "Joshua Lee", affiliation: "Law Office of Joshua Y. Lee", photo: "Joshua.jpg", website: "https://lawandevidence.com/", linkedin: "https://www.linkedin.com/in/joshuaylee/" },
+    { name: "Suoo Lee", affiliation: "SL Law", photo: "Suoo.jpg", website: "https://sllawpc.com/suoo-lee/", linkedin: "https://www.linkedin.com/in/suoo-lee-9a1636139/" },
+    { name: "Chang Lim", affiliation: "Knobbe Martens", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
+    { name: "Eric Lim", affiliation: "American Healthcare REIT", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
+    { name: "Evelyn Moon", affiliation: "Evelyn Moon Law", photo: "Evelyn.jpg", website: "https://evelynmoon.com/about/", linkedin: "https://www.linkedin.com/in/attorneyevelyn/" },
+    { name: "Ho-El Park", affiliation: "Law Office of Ho-El Park", photo: "HoEl.jpg", website: "https://www.hparklaw.com/attorney-profile", linkedin: "https://www.linkedin.com/in/ho-el-park-a038b13/" },
+    { name: "Alexander Payne", affiliation: "Minyard Morris", photo: "Alex.jpg", website: "https://www.minyardmorris.com/attorney/alexander-payne/", linkedin: "https://www.linkedin.com/in/alexander-payne-cfls-26b76050/" },
+    { name: "Deborah Song", affiliation: "Minyard Morris", photo: "Deborah.jpg", website: "https://www.minyardmorris.com/attorney/deborah-j-song/", linkedin: "https://www.linkedin.com/in/deborah-jieun-song-esq-b245521aa/" },
+    { name: "Ja H. Suh", affiliation: "Law Offices of Suh & Suh", photo: "Ja.jpg", website: "https://suhlaw.com/about-1", linkedin: "https://www.linkedin.com/in/ja-h-suh-3235282/" },
+    { name: "Samuel Yu", affiliation: "Kahana Feld", photo: "Samuel.jpg", website: "https://kahanafeld.com/team-member/samuel-yu-esq/", linkedin: "https://www.linkedin.com/in/samuel-yu-6277721b/" }
   ]
 
   return (
@@ -53,9 +53,12 @@ export default function Board() {
               
               {/* Member Info */}
               <div className="p-4">
-                <h3 className="text-base font-semibold text-gray-900 mb-3 leading-tight">
+                <h3 className="text-base font-semibold text-gray-900 mb-1 leading-tight">
                   {member.name}
                 </h3>
+                <p className="text-sm text-gray-600 mb-3 leading-tight">
+                  {member.affiliation}
+                </p>
                 
                 {/* Social Links */}
                 {(member.website || member.linkedin) && (
@@ -65,10 +68,11 @@ export default function Board() {
                         href={member.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-primary-100 rounded-full transition-colors"
+                        className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-blue-100 rounded-full transition-colors"
                         title="Website"
+                        style={{ '--hover-bg': '#e6f3ff' }}
                       >
-                        <svg className="w-4 h-4 text-gray-600 hover:text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20" style={{ color: '#0047A0' }}>
                           <path fillRule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clipRule="evenodd" />
                         </svg>
                       </a>
@@ -82,7 +86,7 @@ export default function Board() {
                         className="inline-flex items-center justify-center w-8 h-8 bg-gray-100 hover:bg-blue-100 rounded-full transition-colors"
                         title="LinkedIn"
                       >
-                        <svg className="w-4 h-4 text-gray-600 hover:text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clipRule="evenodd" />
                         </svg>
                       </a>
@@ -96,8 +100,8 @@ export default function Board() {
 
         {/* Contact Section */}
         <div className="mt-16 text-center">
-          <div className="bg-primary-50 border border-primary-200 rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-primary-700 mb-4">
+          <div className="border border-gray-200 rounded-lg p-8" style={{ backgroundColor: '#f0f4ff', borderColor: '#ccd9ff' }}>
+            <h2 className="text-2xl font-bold mb-4" style={{ color: '#0047A0' }}>
               Connect with Our Board
             </h2>
             <p className="text-gray-600 mb-6">
@@ -105,7 +109,10 @@ export default function Board() {
             </p>
             <a
               href="mailto:info@ockabaf.org?subject=Board Inquiry"
-              className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+              className="text-white px-8 py-3 rounded-md font-semibold transition-colors inline-block"
+              style={{ backgroundColor: '#0047A0' }}
+              onMouseOver={(e) => e.target.style.backgroundColor = '#003d8b'}
+              onMouseOut={(e) => e.target.style.backgroundColor = '#0047A0'}
             >
               Contact Our Board
             </a>
