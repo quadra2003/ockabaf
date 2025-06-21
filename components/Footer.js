@@ -23,7 +23,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://linkedin.com/company/ockaba-foundation"
+                href="https://www.linkedin.com/company/ockabaf/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 hover:text-white transition-colors"
