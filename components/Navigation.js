@@ -27,69 +27,78 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               href="/"
-              className={`text-gray-600 transition-colors ${
+              className={`text-gray-600 transition-colors relative ${
                 isActive('/') ? 'font-semibold' : ''
               }`}
               style={{ 
                 color: isActive('/') ? primaryBlue : '#6b7280',
-                ':hover': { color: primaryBlue }
+                fontWeight: isActive('/') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/') ? primaryBlue : '#6b7280'}
             >
-              Home
+              <span className="invisible font-semibold absolute">Home</span>
+              <span className="relative">Home</span>
             </Link>
             <Link 
               href="/about"
-              className={`text-gray-600 transition-colors ${
+              className={`text-gray-600 transition-colors relative ${
                 isActive('/about') ? 'font-semibold' : ''
               }`}
               style={{ 
-                color: isActive('/about') ? primaryBlue : '#6b7280'
+                color: isActive('/about') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/about') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/about') ? primaryBlue : '#6b7280'}
             >
-              About
+              <span className="invisible font-semibold absolute">About</span>
+              <span className="relative">About</span>
             </Link>
             <Link 
               href="/programs"
-              className={`text-gray-600 transition-colors ${
+              className={`text-gray-600 transition-colors relative ${
                 isActive('/programs') ? 'font-semibold' : ''
               }`}
               style={{ 
-                color: isActive('/programs') ? primaryBlue : '#6b7280'
+                color: isActive('/programs') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/programs') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/programs') ? primaryBlue : '#6b7280'}
             >
-              Programs
+              <span className="invisible font-semibold absolute">Programs</span>
+              <span className="relative">Programs</span>
             </Link>
             <Link 
               href="/fellows"
-              className={`text-gray-600 transition-colors ${
+              className={`text-gray-600 transition-colors relative ${
                 isActive('/fellows') ? 'font-semibold' : ''
               }`}
               style={{ 
-                color: isActive('/fellows') ? primaryBlue : '#6b7280'
+                color: isActive('/fellows') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/fellows') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/fellows') ? primaryBlue : '#6b7280'}
             >
-              Minyard Morris Fellows
+              <span className="invisible font-semibold absolute">Minyard Morris Fellows</span>
+              <span className="relative">Minyard Morris Fellows</span>
             </Link>
             <Link 
               href="/board"
-              className={`text-gray-600 transition-colors ${
+              className={`text-gray-600 transition-colors relative ${
                 isActive('/board') ? 'font-semibold' : ''
               }`}
               style={{ 
-                color: isActive('/board') ? primaryBlue : '#6b7280'
+                color: isActive('/board') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/board') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/board') ? primaryBlue : '#6b7280'}
             >
-              Board
+              <span className="invisible font-semibold absolute">Board</span>
+              <span className="relative">Board</span>
             </Link>
             <Link 
               href="/donate"
