@@ -9,12 +9,11 @@ export default function Layout({ children, title = 'OCKABA Foundation' }) {
         <title>{title}</title>
         <meta name="description" content="Empowering Korean-American legal professionals through mentorship, education, and opportunity." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#0047A0" />
+        <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-96x96.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
         <meta name="theme-color" content="#0047A0" />
       </Head>
       <div className="min-h-screen bg-white">
