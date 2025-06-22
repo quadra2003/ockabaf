@@ -7,7 +7,7 @@ export default function Fellows() {
       name: "Ashley Kim",
       photo: "Ashley.jpg",
       linkedin: "https://www.linkedin.com/in/ashley-kim-ak/",
-      bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she has gained valuable experience in pro bono legal work while developing her skills in legal research and client advocacy. Ashley is committed to using her legal education to serve underrepresented communities and promote access to justice.",
+      bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she has gained valuable experience in pro bono legal work while developing her skills in legal research and client advocacy. Ashley is committed to using her legal education, combined with her strong liberal arts background, to advance ethical practices and promote justice in the communities and spaces she serves.",
       year: "2026",
       university: "Cornell '26",
       major: "History of Art & Cultural Property Studies"
