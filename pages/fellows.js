@@ -28,7 +28,7 @@ export default function Fellows() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
             Minyard Morris Fellows
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
