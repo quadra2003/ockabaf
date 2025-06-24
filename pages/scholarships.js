@@ -5,36 +5,42 @@ export default function Scholarships() {
   const recipients = [
     {
       name: "Yonghyung (Thomas) Chung",
+      photo: "Thomas.jpg",
       linkedin: "https://www.linkedin.com/in/yonghyung-thomas-chung-b41591257/",
       school: "UCI Law '25",
       year: "2025"
     },
     {
       name: "Annie Hong",
+      photo: "Annie.jpg",
       linkedin: "https://www.linkedin.com/in/annie--hong/",
       school: "UCI Law '26",
       year: "2026"
     },
     {
       name: "Raiden Huang",
+      photo: "Raiden.jpg",
       linkedin: "https://www.linkedin.com/in/raiden-huang-30b77a1a2/",
       school: "Chapman Law '25",
       year: "2025"
     },
     {
       name: "Amina Khosbayar",
+      photo: "Amina.jpg",
       linkedin: "https://www.linkedin.com/in/amina-khosbayar/",
       school: "Chapman Law '26",
       year: "2026"
     },
     {
       name: "Seoungjun (SJ) Lee",
+      photo: "SJ.jpg",
       linkedin: "https://www.linkedin.com/in/seoungjun-sj-lee-0b22b9153/",
       school: "UCI Law '25",
       year: "2025"
     },
     {
       name: "Yi-Jeong (Allison) Yoo",
+      photo: "Allison.jpg",
       linkedin: "https://www.linkedin.com/in/yi-jeong-allison-yoo-a05374125/",
       school: "UCI Law '25",
       year: "2025"
@@ -69,11 +75,16 @@ export default function Scholarships() {
               <div className="p-6">
                 {/* Recipient Header */}
                 <div className="text-center mb-4">
-                  {/* Profile placeholder */}
-                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <svg className="w-12 h-12 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                    </svg>
+                  {/* Profile photo */}
+                  <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-100">
+                    <img
+                      src={`/images/${recipient.photo}`}
+                      alt={recipient.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTYiIGhlaWdodD0iOTYiIHZpZXdCb3g9IjAgMCA5NiA5NiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijk2IiBoZWlnaHQ9Ijk2IiBmaWxsPSIjRjNGNEY2Ii8+CjxjaXJjbGUgY3g9IjQ4IiBjeT0iMzYiIHI9IjEyIiBmaWxsPSIjOUNBM0FGIi8+CjxwYXRoIGQ9Ik0yNCA3MkMyNCA2MCAzNCA0OCA0OCA0OFM3MiA2MCA3MiA3MkgyNFoiIGZpbGw9IiM5Q0EzQUYiLz4KPC9zdmc+Cg=='
+                      }}
+                    />
                   </div>
                   
                   <div className="flex items-center justify-center gap-2 mb-2">
