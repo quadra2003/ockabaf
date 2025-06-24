@@ -7,7 +7,7 @@ export default function Fellows() {
       name: "Ashley Kim",
       photo: "Ashley.jpg",
       linkedin: "https://www.linkedin.com/in/ashley-kim-ak/",
-      bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she has gained valuable experience in pro bono legal work while developing her skills in legal research and client advocacy. Ashley is committed to using her legal education, combined with her strong liberal arts background, to advance ethical practices and promote justice in the communities and spaces she serves.",
+      bio: "Ashley is a dedicated undergraduate student pursuing a career in law. Through the Minyard Morris Fellowship, she assists with foundation operations while gaining valuable experience in legal advocacy and nonprofit management. Ashley is committed to using her legal education, combined with her strong liberal arts background, to advance ethical practices and promote justice in the communities and spaces she serves.",
       year: "2026",
       university: "Cornell '26",
       major: "History of Art & Cultural Property Studies"
@@ -16,7 +16,7 @@ export default function Fellows() {
       name: "Catherine Park",
       photo: "Catherine.jpg",
       linkedin: "https://www.linkedin.com/in/catpa/",
-      bio: "Catherine is a double major in Economics and English at UC Berkeley with a passion for law and social justice. As a Minyard Morris Fellow, she has contributed to important pro bono initiatives while preparing for her future legal career. Catherine's interdisciplinary background in economics and literature provides her with a unique perspective on legal issues affecting communities.",
+      bio: "Catherine is a double major in Economics and English at UC Berkeley with a passion for law and social justice. As a Minyard Morris Fellow, she contributes to foundation operations and pro bono initiatives while preparing for her future legal career. Catherine's interdisciplinary background in economics and literature provides her with a unique perspective on legal issues affecting communities.",
       year: "2024",
       university: "UC Berkeley '24",
       major: "Economics & English"
@@ -24,23 +24,22 @@ export default function Fellows() {
   ]
 
   return (
-    <Layout title="Minyard Morris Fellows - OCKABA Foundation">
+    <Layout title="Fellows - OCKABA Foundation">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Minyard Morris Fellows
+            Current Fellows
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Meet our outstanding fellowship recipients who are making a difference through pro bono legal work while preparing for their future careers in law.
+            Meet our outstanding fellowship recipients who assist with foundation operations while gaining valuable experience in legal advocacy and community service.
           </p>
           <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 max-w-4xl mx-auto">
             <h2 className="text-2xl font-bold text-primary-700 mb-4">About the Fellowship</h2>
             <p className="text-gray-700 leading-relaxed">
-              The Minyard Morris Fellowship is our flagship program recognizing exceptional undergraduate students 
-              who demonstrate outstanding commitment to public service and legal excellence. Fellows receive financial 
-              support, mentorship from experienced attorneys, and hands-on experience with meaningful pro bono legal work 
-              that makes a real difference in their communities.
+              Our current fellowship recipients are exceptional pre-law individuals who contribute to foundation operations 
+              and gain hands-on experience in legal advocacy while helping serve community members in need. The fellowship 
+              provides valuable exposure to nonprofit management and pro bono legal work, building skills for future legal careers.
             </p>
           </div>
         </div>
@@ -103,26 +102,26 @@ export default function Fellows() {
           ))}
         </div>
 
-        {/* Application Information */}
+        {/* Learn More Section */}
         <div className="bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-lg p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Interested in Becoming a Fellow?</h2>
+          <h2 className="text-3xl font-bold mb-4">Learn About Our Programs</h2>
           <p className="text-xl mb-6 opacity-90">
-            Applications for the Minyard Morris Fellowship are typically accepted twice per year. 
-            Join our community of future legal leaders making a difference today.
+            Discover more about our pro bono legal services, scholarship opportunities, 
+            and how we're making a difference in our community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/programs"
               className="bg-white text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"
             >
-              Learn About Our Programs
+              Our Programs
             </Link>
-            <a
-              href="mailto:info@ockabaf.org?subject=Fellowship Application Inquiry"
+            <Link
+              href="/scholarship-recipients-2024"
               className="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-primary-600 transition-colors"
             >
-              Apply Now
-            </a>
+              2024 Scholarship Recipients
+            </Link>
           </div>
         </div>
 
@@ -131,16 +130,16 @@ export default function Fellows() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Fellowship Impact</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-4xl font-bold text-primary-600 mb-2">100+</div>
-              <div className="text-gray-600">Hours of Pro Bono Service</div>
+              <div className="text-4xl font-bold text-primary-600 mb-2">200+</div>
+              <div className="text-gray-600">Hours of Foundation Support</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-4xl font-bold text-primary-600 mb-2">25+</div>
-              <div className="text-gray-600">Community Members Served</div>
+              <div className="text-4xl font-bold text-primary-600 mb-2">50+</div>
+              <div className="text-gray-600">Cases Assisted</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-4xl font-bold text-primary-600 mb-2">100%</div>
-              <div className="text-gray-600">Law School Acceptance Rate</div>
+              <div className="text-4xl font-bold text-primary-600 mb-2">2</div>
+              <div className="text-gray-600">Current Fellows</div>
             </div>
           </div>
         </div>
