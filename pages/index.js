@@ -116,12 +116,20 @@ export default function Home() {
               Our fellowship recipients are dedicated pre-law individuals who assist with foundation operations and gain hands-on experience in legal advocacy while helping serve community members in need.
             </p>
             
-            <Link
-              href="/fellows"
-              className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
-            >
-              Meet Our Fellows
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/fellows"
+                className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+              >
+                Meet Our Fellows
+              </Link>
+              <Link
+                href="/scholarships"
+                className="border-2 border-primary-600 text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-primary-50 transition-colors inline-block"
+              >
+                View Scholarship Recipients
+              </Link>
+            </div>
           </div>
         </div>
       </section>
