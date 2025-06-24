@@ -17,10 +17,10 @@ export default function About() {
           <div className="bg-white border border-gray-200 rounded-lg p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
             <p className="text-gray-600 mb-4">
-              The OCKABA Foundation is a 501(c)(3) charitable organization dedicated to serving our community through two essential programs: providing free legal assistance to those who cannot afford representation, and supporting the next generation of legal professionals through educational scholarships.
+              The OCKABA Foundation is a 501(c)(3) charitable organization dedicated to serving our community through our pro bono legal services program, providing free legal assistance to those who cannot afford representation. We also support the next generation of legal professionals through educational scholarships for law students and engage pre-law individuals through our fellowship program.
             </p>
             <p className="text-gray-600">
-              We believe that access to justice should not depend on one's ability to pay, and that investing in promising law students creates a ripple effect of positive impact throughout our community for years to come.
+              We believe that access to justice should not depend on one's ability to pay, and that investing in promising law students while engaging dedicated pre-law individuals creates a ripple effect of positive impact throughout our community for years to come.
             </p>
           </div>
 
@@ -33,7 +33,7 @@ export default function About() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-primary-600 mb-2">Educational Investment</h3>
-                <p className="text-gray-600">We invest in exceptional law students who demonstrate both academic excellence and commitment to serving others.</p>
+                <p className="text-gray-600">We invest in exceptional law students through scholarships and engage pre-law individuals through hands-on fellowship opportunities.</p>
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-primary-600 mb-2">Community Service</h3>
@@ -54,8 +54,8 @@ export default function About() {
                 <div className="text-gray-600">Community Members Served</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">2,000+</div>
-                <div className="text-gray-600">Pro Bono Hours Provided</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">2</div>
+                <div className="text-gray-600">Current Fellowship Recipients</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-600 mb-2">$50K+</div>
