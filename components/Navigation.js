@@ -82,8 +82,23 @@ export default function Navigation() {
               onMouseOver={(e) => e.target.style.color = primaryBlue}
               onMouseOut={(e) => e.target.style.color = isActive('/fellows') ? primaryBlue : '#6b7280'}
             >
-              <span className="invisible font-semibold absolute">Minyard Morris Fellows</span>
-              <span className="relative">Minyard Morris Fellows</span>
+              <span className="invisible font-semibold absolute">Fellows</span>
+              <span className="relative">Fellows</span>
+            </Link>
+            <Link 
+              href="/scholarships"
+              className={`text-gray-600 transition-colors relative ${
+                isActive('/scholarships') ? 'font-semibold' : ''
+              }`}
+              style={{ 
+                color: isActive('/scholarships') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/scholarships') ? '600' : '400'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/scholarships') ? primaryBlue : '#6b7280'}
+            >
+              <span className="invisible font-semibold absolute">Scholarships</span>
+              <span className="relative">Scholarships</span>
             </Link>
             <Link 
               href="/board"
@@ -132,7 +147,8 @@ export default function Navigation() {
             <Link href="/" className="block px-3 py-2 text-gray-600">Home</Link>
             <Link href="/about" className="block px-3 py-2 text-gray-600">About</Link>
             <Link href="/programs" className="block px-3 py-2 text-gray-600">Programs</Link>
-            <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
+            <Link href="/fellows" className="block px-3 py-2 text-gray-600">Fellows</Link>
+            <Link href="/scholarships" className="block px-3 py-2 text-gray-600">Scholarships</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
             <Link 
               href="/donate" 
