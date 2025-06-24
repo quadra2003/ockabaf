@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-xl font-bold mb-4">OCKABA Foundation</h3>
             <p className="text-gray-300 mb-4 max-w-md">
-              Empowering Korean-American legal professionals through education, mentorship, and community support.
+              A 501(c)(3) nonprofit providing free legal services to those in need, scholarships to exceptional law students, and fellowship opportunities for pre-law individuals.
             </p>
             <div className="flex space-x-4">
               <a
@@ -57,7 +57,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/fellows" className="text-gray-300 hover:text-white transition-colors">
-                  Minyard Morris Fellows
+                  Fellows
+                </Link>
+              </li>
+              <li>
+                <Link href="/scholarships" className="text-gray-300 hover:text-white transition-colors">
+                  Scholarships
                 </Link>
               </li>
               <li>
@@ -78,26 +83,34 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Our Programs</h4>
             <ul className="space-y-2">
               <li>
+                <Link href="/programs" className="text-gray-300 hover:text-white transition-colors">
+                  Pro Bono Legal Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/fellows" className="text-gray-300 hover:text-white transition-colors">
-                  Minyard Morris Fellowship
+                  Fellowship Program
                 </Link>
               </li>
               <li>
-                <Link href="/programs" className="text-gray-300 hover:text-white transition-colors">
-                  Pre-Law Mentorship
-                </Link>
-              </li>
-              <li>
-                <Link href="/programs" className="text-gray-300 hover:text-white transition-colors">
-                  Educational Scholarships
+                <Link href="/scholarships" className="text-gray-300 hover:text-white transition-colors">
+                  Law Student Scholarships
                 </Link>
               </li>
               <li>
                 <a
-                  href="mailto:info@ockabaf.org?subject=Program Application"
+                  href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
-                  Apply Now
+                  Request Legal Help
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@ockabaf.org?subject=Scholarship Application"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  Apply for Scholarship
                 </a>
               </li>
             </ul>
