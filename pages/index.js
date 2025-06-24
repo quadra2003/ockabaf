@@ -81,14 +81,6 @@ export default function Home() {
               <p className="text-gray-600 text-center mb-4">
                 Pre-law individuals gain hands-on experience assisting with foundation operations and pro bono legal work, building valuable skills while serving the community.
               </p>
-              <div className="text-center">
-                <Link
-                  href="mailto:info@ockabaf.org?subject=Fellowship Application"
-                  className="text-primary-600 hover:text-primary-700 font-semibold"
-                >
-                  Apply for Fellowship →
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -100,7 +92,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Current Fellows</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Meet our Minyard Morris Fellowship recipients - pre-law individuals who assist with foundation operations and gain valuable legal experience
+              Meet our current fellowship recipients - pre-law individuals who assist with foundation operations and gain valuable legal experience
             </p>
           </div>
           
