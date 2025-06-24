@@ -9,7 +9,7 @@ export default function Programs() {
             Our Programs
           </h1>
           <p className="text-lg text-gray-600">
-            Two focused programs serving our community's most critical needs
+            Three focused programs serving our community and developing future legal professionals
           </p>
         </div>
 
@@ -50,40 +50,74 @@ export default function Programs() {
             </div>
           </div>
 
-          {/* Minyard Morris Fellowship - Law Student Scholarships */}
+          {/* Minyard Morris Fellowship - Pre-Law Program */}
           <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
             <div className="border-l-4 border-accent-500 pl-6">
               <h2 className="text-2xl font-bold text-accent-600 mb-2">
                 Minyard Morris Fellowship
               </h2>
               <p className="text-lg text-primary-600 font-semibold mb-4">
-                Law Student Scholarship Program
+                Pre-Law Individual Development Program
               </p>
               <p className="text-gray-600 mb-4">
-                Our scholarship program supports exceptional law students who demonstrate both academic excellence and a commitment to public service. Fellows receive financial support to focus on their studies while gaining valuable experience providing pro bono legal services to community members in need.
+                Our fellowship program provides pre-law individuals with hands-on experience assisting with foundation operations and pro bono legal work. Fellows gain valuable skills and exposure to legal practice while contributing to our mission of serving community members in need.
               </p>
               <div className="bg-green-50 p-4 rounded-md mb-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Benefits:</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Responsibilities:</h3>
                 <ul className="text-gray-600 space-y-1">
-                  <li>• Merit-based scholarship funding for law school expenses</li>
-                  <li>• Supervised pro bono legal experience</li>
-                  <li>• Direct service to community members in need</li>
-                  <li>• Professional references and recommendations</li>
-                  <li>• Training in client services and legal advocacy</li>
-                  <li>• Building a foundation for ethical legal practice</li>
+                  <li>• Assist with foundation operations and administration</li>
+                  <li>• Support pro bono legal services under supervision</li>
+                  <li>• Help with client intake and case management</li>
+                  <li>• Participate in community outreach programs</li>
+                  <li>• Conduct legal research and document preparation</li>
+                  <li>• Gain exposure to various areas of legal practice</li>
                 </ul>
               </div>
               <div className="bg-yellow-50 p-4 rounded-md">
-                <h3 className="font-semibold text-gray-900 mb-2">Eligibility Requirements:</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Requirements:</h3>
                 <ul className="text-gray-600 space-y-1">
-                  <li>• Current law school enrollment with strong academic standing</li>
-                  <li>• Demonstrated commitment to public service and community advocacy</li>
-                  <li>• Financial need consideration</li>
-                  <li>• Commitment to providing pro bono legal services</li>
-                  <li>• Written application including essays and references</li>
-                  <li>• Interview process with selection committee</li>
+                  <li>• Pre-law undergraduate or recent graduate status</li>
+                  <li>• Strong academic performance and commitment to public service</li>
+                  <li>• Interest in pursuing a legal career</li>
+                  <li>• Excellent communication and organizational skills</li>
+                  <li>• Commitment to foundation values and mission</li>
+                  <li>• Availability for regular volunteer hours</li>
                 </ul>
               </div>
+            </div>
+          </div>
+
+          {/* Law Student Scholarships */}
+          <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Law Student Scholarships
+            </h2>
+            <p className="text-lg text-gray-600 font-semibold mb-4">
+              Merit-Based Financial Support for Exceptional Students
+            </p>
+            <p className="text-gray-600 mb-4">
+              We provide merit-based scholarships to outstanding law students who demonstrate academic excellence and a commitment to ethical legal practice. These scholarships help reduce financial barriers and enable students to focus on their studies and professional development.
+            </p>
+            <div className="bg-blue-50 p-4 rounded-md mb-4">
+              <h3 className="font-semibold text-gray-900 mb-2">Scholarship Benefits:</h3>
+              <ul className="text-gray-600 space-y-1">
+                <li>• Financial assistance for law school tuition and expenses</li>
+                <li>• Recognition as a scholarship recipient</li>
+                <li>• Networking opportunities within the legal community</li>
+                <li>• Support for academic and professional development</li>
+                <li>• Connection to foundation mission and values</li>
+              </ul>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-md">
+              <h3 className="font-semibold text-gray-900 mb-2">Scholarship Criteria:</h3>
+              <ul className="text-gray-600 space-y-1">
+                <li>• Current enrollment in an accredited law school</li>
+                <li>• Outstanding academic performance and class ranking</li>
+                <li>• Demonstrated commitment to community service and ethics</li>
+                <li>• Financial need consideration</li>
+                <li>• Strong letters of recommendation</li>
+                <li>• Compelling personal statement and application essay</li>
+              </ul>
             </div>
           </div>
 
@@ -92,27 +126,39 @@ export default function Programs() {
             <h2 className="text-2xl font-bold text-primary-700 mb-4">
               How to Access Our Services
             </h2>
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
+            <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Need Legal Help?</h3>
                 <p className="text-gray-600 mb-3">
                   If you're facing legal challenges and cannot afford representation, contact us to discuss your situation. We'll assess your needs and connect you with appropriate pro bono assistance.
                 </p>
                 <a
-                  href="mailto:legal@ockabaf.org?subject=Legal Assistance Request"
-                  className="bg-primary-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+                  href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
+                  className="bg-primary-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block text-sm"
                 >
                   Request Legal Help
                 </a>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Law Student Applications</h3>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Fellowship Applications</h3>
                 <p className="text-gray-600 mb-3">
-                  Scholarship applications are typically accepted twice per year. We encourage all eligible law students who are committed to public service to apply for our fellowship program.
+                  Pre-law individuals interested in gaining hands-on experience with foundation operations and legal work can apply for our fellowship program.
                 </p>
                 <a
-                  href="mailto:scholarships@ockabaf.org?subject=Fellowship Application"
-                  className="bg-accent-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-accent-700 transition-colors inline-block"
+                  href="mailto:info@ockabaf.org?subject=Fellowship Application"
+                  className="bg-accent-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-accent-700 transition-colors inline-block text-sm"
+                >
+                  Apply for Fellowship
+                </a>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Scholarship Applications</h3>
+                <p className="text-gray-600 mb-3">
+                  Law students seeking merit-based financial assistance can apply for our scholarship program. Applications are typically accepted twice per year.
+                </p>
+                <a
+                  href="mailto:info@ockabaf.org?subject=Scholarship Application"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700 transition-colors inline-block text-sm"
                 >
                   Apply for Scholarship
                 </a>
