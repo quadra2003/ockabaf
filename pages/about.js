@@ -50,7 +50,7 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Impact</h2>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">500+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">1,000+</div>
                 <div className="text-gray-600">Community Members Served</div>
               </div>
               <div>
@@ -58,7 +58,7 @@ export default function About() {
                 <div className="text-gray-600">2024 Fellowship Recipients</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">$50K+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">$25K+</div>
                 <div className="text-gray-600">Law Student Scholarships Awarded</div>
               </div>
             </div>
