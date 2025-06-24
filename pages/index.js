@@ -12,7 +12,7 @@ export default function Home() {
               OCKABA Foundation
             </h1>
             <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
-              A 501(c)(3) nonprofit providing free legal services to those in need and scholarships to exceptional law students.
+              A 501(c)(3) nonprofit providing free legal services to those in need, scholarships to exceptional law students, and fellowship opportunities for pre-law individuals.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -42,16 +42,16 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
-              <div className="text-5xl mb-6 text-center">⚖️</div>
-              <h3 className="text-2xl font-semibold mb-4 text-primary-600 text-center">Pro Bono Legal Services</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <div className="text-4xl mb-4 text-center">⚖️</div>
+              <h3 className="text-xl font-semibold mb-3 text-primary-600 text-center">Pro Bono Legal Services</h3>
               <p className="text-gray-600 text-center mb-4">
                 Providing free legal assistance to community members who cannot afford representation. Our volunteer attorneys help with immigration, family law, housing, and other critical legal matters.
               </p>
               <div className="text-center">
                 <Link
-                  href="mailto:legal@ockabaf.org?subject=Legal Assistance Request"
+                  href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
                   className="text-primary-600 hover:text-primary-700 font-semibold"
                 >
                   Request Legal Help →
@@ -59,18 +59,34 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-sm border">
-              <div className="text-5xl mb-6 text-center">🎓</div>
-              <h3 className="text-2xl font-semibold mb-4 text-primary-600 text-center">Law Student Scholarships</h3>
+            <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <div className="text-4xl mb-4 text-center">🎓</div>
+              <h3 className="text-xl font-semibold mb-3 text-primary-600 text-center">Law Student Scholarships</h3>
               <p className="text-gray-600 text-center mb-4">
                 Supporting outstanding law students through merit-based scholarships, enabling them to focus on their studies and develop into ethical, community-minded legal professionals.
               </p>
               <div className="text-center">
                 <Link
-                  href="mailto:scholarships@ockabaf.org?subject=Scholarship Application"
+                  href="mailto:info@ockabaf.org?subject=Scholarship Application"
                   className="text-primary-600 hover:text-primary-700 font-semibold"
                 >
                   Apply for Scholarships →
+                </Link>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <div className="text-4xl mb-4 text-center">🤝</div>
+              <h3 className="text-xl font-semibold mb-3 text-primary-600 text-center">Fellowship Program</h3>
+              <p className="text-gray-600 text-center mb-4">
+                Pre-law individuals gain hands-on experience assisting with foundation operations and pro bono legal work, building valuable skills while serving the community.
+              </p>
+              <div className="text-center">
+                <Link
+                  href="mailto:info@ockabaf.org?subject=Fellowship Application"
+                  className="text-primary-600 hover:text-primary-700 font-semibold"
+                >
+                  Apply for Fellowship →
                 </Link>
               </div>
             </div>
@@ -82,9 +98,9 @@ export default function Home() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Current Scholarship Recipients</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Current Fellows</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Meet our Minyard Morris Fellowship recipients who are making a difference through pro bono legal work while pursuing their law degrees
+              Meet our Minyard Morris Fellowship recipients - pre-law individuals who assist with foundation operations and gain valuable legal experience
             </p>
           </div>
           
@@ -105,7 +121,7 @@ export default function Home() {
             </div>
             
             <p className="text-gray-700 mb-6 max-w-2xl mx-auto">
-              Our scholarship recipients are exceptional law students who demonstrate both academic excellence and a commitment to public service, providing valuable legal assistance to community members in need.
+              Our fellowship recipients are dedicated pre-law individuals who assist with foundation operations and gain hands-on experience in legal advocacy while helping serve community members in need.
             </p>
             
             <Link
@@ -128,7 +144,7 @@ export default function Home() {
                 If you're facing legal challenges and cannot afford representation, we're here to help.
               </p>
               <Link
-                href="mailto:legal@ockabaf.org"
+                href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
                 className="bg-white text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors inline-block"
               >
                 Request Legal Assistance
