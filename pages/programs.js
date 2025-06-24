@@ -74,15 +74,10 @@ export default function Programs() {
                 </ul>
               </div>
               <div className="bg-yellow-50 p-4 rounded-md">
-                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Requirements:</h3>
-                <ul className="text-gray-600 space-y-1">
-                  <li>• Pre-law undergraduate or recent graduate status</li>
-                  <li>• Strong academic performance and commitment to public service</li>
-                  <li>• Interest in pursuing a legal career</li>
-                  <li>• Excellent communication and organizational skills</li>
-                  <li>• Commitment to foundation values and mission</li>
-                  <li>• Availability for regular volunteer hours</li>
-                </ul>
+                <h3 className="font-semibold text-gray-900 mb-2">Current Fellows:</h3>
+                <p className="text-gray-600">
+                  Our current fellowship recipients were selected for this year and are actively contributing to foundation operations and community service. The fellowship provides valuable experience in legal advocacy and nonprofit management.
+                </p>
               </div>
             </div>
           </div>
@@ -126,7 +121,7 @@ export default function Programs() {
             <h2 className="text-2xl font-bold text-primary-700 mb-4">
               How to Access Our Services
             </h2>
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Need Legal Help?</h3>
                 <p className="text-gray-600 mb-3">
@@ -134,21 +129,9 @@ export default function Programs() {
                 </p>
                 <a
                   href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
-                  className="bg-primary-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block text-sm"
+                  className="bg-primary-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
                 >
                   Request Legal Help
-                </a>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Fellowship Applications</h3>
-                <p className="text-gray-600 mb-3">
-                  Pre-law individuals interested in gaining hands-on experience with foundation operations and legal work can apply for our fellowship program.
-                </p>
-                <a
-                  href="mailto:info@ockabaf.org?subject=Fellowship Application"
-                  className="bg-accent-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-accent-700 transition-colors inline-block text-sm"
-                >
-                  Apply for Fellowship
                 </a>
               </div>
               <div>
@@ -158,7 +141,7 @@ export default function Programs() {
                 </p>
                 <a
                   href="mailto:info@ockabaf.org?subject=Scholarship Application"
-                  className="bg-green-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-green-700 transition-colors inline-block text-sm"
+                  className="bg-green-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-green-700 transition-colors inline-block"
                 >
                   Apply for Scholarship
                 </a>
