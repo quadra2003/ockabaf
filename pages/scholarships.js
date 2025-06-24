@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 
-export default function ScholarshipRecipients2024() {
+export default function Scholarships() {
   const recipients = [
     {
       name: "Yonghyung (Thomas) Chung",
@@ -42,7 +42,7 @@ export default function ScholarshipRecipients2024() {
   ]
 
   return (
-    <Layout title="2024 Scholarship Recipients - OCKABA Foundation">
+    <Layout title="Scholarships - OCKABA Foundation">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
