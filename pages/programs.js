@@ -50,38 +50,6 @@ export default function Programs() {
             </div>
           </div>
 
-          {/* Minyard Morris Fellowship - Pre-Law Program */}
-          <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
-            <div className="border-l-4 border-accent-500 pl-6">
-              <h2 className="text-2xl font-bold text-accent-600 mb-2">
-                Minyard Morris Fellowship
-              </h2>
-              <p className="text-lg text-primary-600 font-semibold mb-4">
-                Pre-Law Individual Development Program
-              </p>
-              <p className="text-gray-600 mb-4">
-                Our fellowship program provides pre-law individuals with hands-on experience assisting with foundation operations and pro bono legal work. Fellows gain valuable skills and exposure to legal practice while contributing to our mission of serving community members in need.
-              </p>
-              <div className="bg-green-50 p-4 rounded-md mb-4">
-                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Responsibilities:</h3>
-                <ul className="text-gray-600 space-y-1">
-                  <li>• Assist with foundation operations and administration</li>
-                  <li>• Support pro bono legal services under supervision</li>
-                  <li>• Help with client intake and case management</li>
-                  <li>• Participate in community outreach programs</li>
-                  <li>• Conduct legal research and document preparation</li>
-                  <li>• Gain exposure to various areas of legal practice</li>
-                </ul>
-              </div>
-              <div className="bg-yellow-50 p-4 rounded-md">
-                <h3 className="font-semibold text-gray-900 mb-2">Current Fellows:</h3>
-                <p className="text-gray-600">
-                  Our current fellowship recipients were selected for this year and are actively contributing to foundation operations and community service. The fellowship provides valuable experience in legal advocacy and nonprofit management.
-                </p>
-              </div>
-            </div>
-          </div>
-
           {/* Law Student Scholarships */}
           <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
             <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -113,6 +81,38 @@ export default function Programs() {
                 <li>• Strong letters of recommendation</li>
                 <li>• Compelling personal statement and application essay</li>
               </ul>
+            </div>
+          </div>
+
+          {/* Minyard Morris Fellowship - Pre-Law Program */}
+          <div className="bg-white border border-gray-200 rounded-lg p-8 hover:shadow-md transition-shadow">
+            <div className="border-l-4 border-accent-500 pl-6">
+              <h2 className="text-2xl font-bold text-accent-600 mb-2">
+                Minyard Morris Fellowship
+              </h2>
+              <p className="text-lg text-primary-600 font-semibold mb-4">
+                Pre-Law Individual Development Program
+              </p>
+              <p className="text-gray-600 mb-4">
+                Our fellowship program provides pre-law individuals with hands-on experience assisting with foundation operations and pro bono legal work. Fellows gain valuable skills and exposure to legal practice while contributing to our mission of serving community members in need.
+              </p>
+              <div className="bg-green-50 p-4 rounded-md mb-4">
+                <h3 className="font-semibold text-gray-900 mb-2">Fellowship Responsibilities:</h3>
+                <ul className="text-gray-600 space-y-1">
+                  <li>• Assist with foundation operations and administration</li>
+                  <li>• Support pro bono legal services under supervision</li>
+                  <li>• Help with client intake and case management</li>
+                  <li>• Participate in community outreach programs</li>
+                  <li>• Conduct legal research and document preparation</li>
+                  <li>• Gain exposure to various areas of legal practice</li>
+                </ul>
+              </div>
+              <div className="bg-yellow-50 p-4 rounded-md">
+                <h3 className="font-semibold text-gray-900 mb-2">Current Fellows:</h3>
+                <p className="text-gray-600">
+                  Our current fellowship recipients were selected for this year and are actively contributing to foundation operations and community service. The fellowship provides valuable experience in legal advocacy and nonprofit management.
+                </p>
+              </div>
             </div>
           </div>
 
