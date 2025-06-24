@@ -50,15 +50,15 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Impact</h2>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">50+</div>
-                <div className="text-gray-600">Students Supported</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">1,000+</div>
+                <div className="text-gray-600">Community Members Assisted</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-600 mb-2">20+</div>
-                <div className="text-gray-600">Mentor Attorneys</div>
+                <div className="text-gray-600">Volunteer Attorneys</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">$100K+</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">$25K+</div>
                 <div className="text-gray-600">Scholarships Awarded</div>
               </div>
             </div>
