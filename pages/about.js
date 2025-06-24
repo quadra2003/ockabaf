@@ -54,8 +54,8 @@ export default function About() {
                 <div className="text-gray-600">Community Members Served</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">2</div>
-                <div className="text-gray-600">Current Fellowship Recipients</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">6</div>
+                <div className="text-gray-600">2024 Fellowship Recipients</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-600 mb-2">$50K+</div>
