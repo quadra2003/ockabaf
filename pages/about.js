@@ -9,18 +9,18 @@ export default function About() {
             About OCKABA Foundation
           </h1>
           <p className="text-lg text-gray-600">
-            Empowering Korean-American legal professionals through education, mentorship, and community
+            A 501(c)(3) nonprofit providing pro bono legal services and educational scholarships to strengthen our community
           </p>
         </div>
 
         <div className="prose prose-lg mx-auto">
           <div className="bg-white border border-gray-200 rounded-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Story</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
             <p className="text-gray-600 mb-4">
-              The OCKABA Foundation was established to address the unique challenges and opportunities facing Korean-American students pursuing careers in law. We recognized the need for targeted support, mentorship, and resources to help talented individuals navigate the path from undergraduate studies to successful legal careers.
+              The OCKABA Foundation is a 501(c)(3) charitable organization dedicated to serving our community through two essential programs: providing free legal assistance to those who cannot afford representation, and supporting the next generation of legal professionals through educational scholarships.
             </p>
             <p className="text-gray-600">
-              Through our comprehensive programs, we bridge the gap between academic achievement and professional success, creating a supportive community that extends far beyond graduation.
+              We believe that access to justice should not depend on one's ability to pay, and that investing in promising law students creates a ripple effect of positive impact throughout our community for years to come.
             </p>
           </div>
 
@@ -28,20 +28,20 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Values</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="text-lg font-semibold text-primary-600 mb-2">Excellence</h3>
-                <p className="text-gray-600">We strive for the highest standards in everything we do, supporting students and professionals in achieving their full potential.</p>
+                <h3 className="text-lg font-semibold text-primary-600 mb-2">Justice for All</h3>
+                <p className="text-gray-600">We believe everyone deserves access to quality legal representation regardless of their financial circumstances.</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-primary-600 mb-2">Integrity</h3>
-                <p className="text-gray-600">We operate with honesty, transparency, and ethical principles in all our interactions and programs.</p>
+                <h3 className="text-lg font-semibold text-primary-600 mb-2">Educational Investment</h3>
+                <p className="text-gray-600">We invest in exceptional law students who demonstrate both academic excellence and commitment to serving others.</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-primary-600 mb-2">Community</h3>
-                <p className="text-gray-600">We foster connections and collaboration, building lasting relationships within the Korean-American legal community.</p>
+                <h3 className="text-lg font-semibold text-primary-600 mb-2">Community Service</h3>
+                <p className="text-gray-600">Our work is driven by a deep commitment to strengthening and supporting our local communities.</p>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-primary-600 mb-2">Service</h3>
-                <p className="text-gray-600">We are committed to giving back to our communities and supporting those who serve others through pro bono work.</p>
+                <h3 className="text-lg font-semibold text-primary-600 mb-2">Transparency</h3>
+                <p className="text-gray-600">As a 501(c)(3) organization, we operate with full transparency and accountability to our donors and community.</p>
               </div>
             </div>
           </div>
@@ -50,17 +50,23 @@ export default function About() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Our Impact</h2>
             <div className="grid md:grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">1,000+</div>
-                <div className="text-gray-600">Community Members Assisted</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">500+</div>
+                <div className="text-gray-600">Community Members Served</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">20+</div>
-                <div className="text-gray-600">Volunteer Attorneys</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">2,000+</div>
+                <div className="text-gray-600">Pro Bono Hours Provided</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-primary-600 mb-2">$25K+</div>
-                <div className="text-gray-600">Scholarships Awarded</div>
+                <div className="text-3xl font-bold text-primary-600 mb-2">$50K+</div>
+                <div className="text-gray-600">Law Student Scholarships Awarded</div>
               </div>
+            </div>
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <p className="text-sm text-gray-500 text-center">
+                OCKABA Foundation is a 501(c)(3) tax-exempt nonprofit organization. 
+                All donations are tax-deductible to the fullest extent allowed by law.
+              </p>
             </div>
           </div>
         </div>
