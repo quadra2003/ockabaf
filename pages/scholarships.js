@@ -156,7 +156,7 @@ export default function Scholarships() {
               <div className="text-gray-600">2024 Scholarship Recipients</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
-              <div className="text-4xl font-bold text-green-600 mb-2">$50K+</div>
+              <div className="text-4xl font-bold text-green-600 mb-2">$25K+</div>
               <div className="text-gray-600">Total Scholarships Awarded</div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-6">
