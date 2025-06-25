@@ -29,7 +29,7 @@ export default function Fellows() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            2025 Minyard Morris Fellows
+            Current Fellows
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
             Meet our outstanding fellowship recipients who assist with foundation operations while gaining valuable experience in legal advocacy and community service.
@@ -117,7 +117,7 @@ export default function Fellows() {
               Our Programs
             </Link>
             <Link
-              href="/scholarship-recipients-2024"
+              href="/scholarships"
               className="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-primary-600 transition-colors"
             >
               2024 Scholarship Recipients
