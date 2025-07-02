@@ -330,8 +330,8 @@ export default async function handler(req, res) {
       payment_intent_id
     }, receiptNumber)
 
-    // Store PDF temporarily for attachment
-    const pdfPath = path.join('/tmp', `ockabaf-receipt-${receiptNumber}.pdf`)
+    // Store PDF temporarily for attachment with user-friendly filename
+    const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
     
     try {
       fs.writeFileSync(pdfPath, pdfBuffer)
@@ -343,17 +343,13 @@ export default async function handler(req, res) {
       throw writeError
     }
 
-    // Email data for Mailgun with file attachment and explicit filename
+    // Email data for Mailgun with file attachment
     const mailData = {
       from: 'OCKABA Foundation <noreply@ockabaf.org>',
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
-      attachment: {
-        data: pdfBuffer,
-        filename: `receipt-${receiptNumber}.pdf`,
-        contentType: 'application/pdf'
-      },
+      attachment: pdfPath, // Mailgun-js expects file path for attachments
       // BCC organization email for records
       bcc: 'info@ockabaf.org'
     }
@@ -377,7 +373,7 @@ export default async function handler(req, res) {
       } catch (cleanupError) {
         console.log('PDF cleanup failed:', cleanupError.message)
       }
-    }, 30 * 60 * 1000) // 30 minutes instead of 5
+    }, 30 * 60 * 1000) // 30 minutes
 
     // Send internal notification to organization
     await sendInternalNotification({
