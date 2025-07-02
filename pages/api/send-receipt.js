@@ -53,7 +53,6 @@ function generateReceiptHTML(donationData, receiptNumber) {
         <div class="logo">
           <img src="${process.env.NEXT_PUBLIC_BASE_URL}/images/ockabaf-logo.png" alt="OCKABA Foundation Logo" />
         </div>
-        <div class="org-name">OCKABA Foundation</div>
         <h2>Donation Receipt</h2>
       </div>
 
@@ -135,14 +134,11 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
       doc.image(logoPath, 250, 50, { width: 100 })
-      doc.moveDown(4)
+      doc.moveDown(6)
     }
 
     // Header
-    doc.fontSize(24).font('Helvetica-Bold')
-       .text('OCKABA Foundation', { align: 'center' })
-       .moveDown()
-       .fontSize(20).font('Helvetica-Bold')
+    doc.fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
        .moveDown(2)
 
