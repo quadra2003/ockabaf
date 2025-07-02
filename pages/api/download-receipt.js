@@ -104,11 +104,12 @@ export default async function handler(req, res) {
     // If we have all the data, generate PDF on-demand
     if (donor_name && donor_email && amount && donation_date && transaction_id) {
       console.log(`Generating PDF on-demand for receipt: ${receipt}`)
+      console.log(`Amount received: ${amount}`)
       
       const pdfBuffer = await generatePDFOnDemand({
         donor_name: decodeURIComponent(donor_name),
         donor_email: decodeURIComponent(donor_email),
-        amount,
+        amount: amount, // Keep as string/number, format in PDF generation
         donation_date: decodeURIComponent(donation_date),
         receipt_number: receipt,
         transaction_id: decodeURIComponent(transaction_id)
