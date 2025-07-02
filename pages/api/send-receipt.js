@@ -14,7 +14,6 @@ const mg = mailgun({
 function generateReceiptHTML(donationData, receiptNumber) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note } = donationData
   const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
-  const downloadUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/download-receipt?receipt=${receiptNumber}`
 
   return `
     <!DOCTYPE html>
@@ -55,7 +54,6 @@ function generateReceiptHTML(donationData, receiptNumber) {
           <img src="${process.env.NEXT_PUBLIC_BASE_URL}/images/ockabaf-logo.png" alt="OCKABA Foundation Logo" />
         </div>
         <div class="org-name">OCKABA Foundation</div>
-        <div class="org-subtitle">Orange County Korean American Bar Association</div>
         <h2>Donation Receipt</h2>
       </div>
 
@@ -97,12 +95,6 @@ function generateReceiptHTML(donationData, receiptNumber) {
         <em>"${donation_note}"</em>
       </div>
       ` : ''}
-
-      <div class="download-section">
-        <strong>📄 Need a PDF copy?</strong><br>
-        <small>Download your receipt as a PDF for your records</small><br>
-        <a href="${downloadUrl}" class="download-btn">Download PDF Receipt</a>
-      </div>
 
       <div class="tax-info">
         <strong>Tax Deductible Information:</strong><br>
@@ -149,8 +141,6 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     // Header
     doc.fontSize(24).font('Helvetica-Bold')
        .text('OCKABA Foundation', { align: 'center' })
-       .fontSize(14).font('Helvetica')
-       .text('Orange County Korean American Bar Association', { align: 'center' })
        .moveDown()
        .fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
@@ -252,18 +242,18 @@ export default async function handler(req, res) {
       donation_note
     }, receiptNumber)
 
-    // Store PDF temporarily in Vercel's /tmp directory
-    const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
-    
-    // Write PDF to Vercel's temp directory (no need to create dir, /tmp always exists)
-    fs.writeFileSync(pdfPath, pdfBuffer)
-
     // Email data for Mailgun
     const mailData = {
       from: 'OCKABA Foundation <noreply@ockabaf.org>',
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
+      // Attach PDF directly to email
+      attachment: [{
+        filename: `OCKABA-Receipt-${receiptNumber}.pdf`,
+        data: pdfBuffer,
+        contentType: 'application/pdf'
+      }],
       // BCC organization email for records
       bcc: 'info@ockabaf.org'
     }
