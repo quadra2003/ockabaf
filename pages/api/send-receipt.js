@@ -272,14 +272,14 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     doc.y = startY + 140
 
     // Tax info section - more compact
-    doc.rect(50, doc.y, 495, 70).fill('#fff3cd').stroke('#ffeaa7')  // Smaller height
+    doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')  // Taller height
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
     doc.font('Helvetica').fontSize(9)  // Smaller font
-       .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475 })
+       .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475, lineGap: 2 })
 
     // Footer - positioned right after tax info
-    doc.y += 85  // Position footer closer
+    doc.y += 105  // Position footer after taller box
     doc.fontSize(10).font('Helvetica').fillColor('black')
        .text('OCKABA Foundation', { align: 'center' })
        .moveDown(0.3)
