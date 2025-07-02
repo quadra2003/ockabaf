@@ -96,7 +96,10 @@ function CheckoutForm() {
           })
 
           setReceiptStatus('Receipt sent to your email!')
-          setReceiptNumber(receiptResponse.data.receipt_number)
+          // Make sure we capture the receipt number from the response
+          if (receiptResponse.data && receiptResponse.data.receipt_number) {
+            setReceiptNumber(receiptResponse.data.receipt_number)
+          }
         } catch (receiptError) {
           console.error('Receipt sending failed:', receiptError)
           setReceiptStatus('Payment successful, but receipt could not be sent. Please contact us for your receipt.')
