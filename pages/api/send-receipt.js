@@ -133,8 +133,8 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     // Add logo if it exists
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
-      doc.image(logoPath, 250, 50, { width: 100 })
-      doc.moveDown(6)
+      doc.image(logoPath, 225, 50, { width: 150 })  // Larger logo: 150px instead of 100px
+      doc.moveDown(8)  // More space after larger logo
     }
 
     // Header
@@ -182,7 +182,9 @@ async function generatePDFReceipt(donationData, receiptNumber) {
       doc.y += 80
     }
 
-    // Tax info section
+    // Tax info section - adjust position to prevent overlap
+    const taxY = Math.max(doc.y, 580)  // Ensure minimum Y position
+    doc.y = taxY
     doc.rect(50, doc.y, 495, 80).fill('#fff3cd').stroke('#ffeaa7')
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
@@ -190,14 +192,18 @@ async function generatePDFReceipt(donationData, receiptNumber) {
        .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475 })
 
     // Footer
-    doc.y = 650
+    doc.y = 680  // Lower position to avoid overlap
     doc.fontSize(10).font('Helvetica')
        .text('OCKABA Foundation', { align: 'center' })
+       .moveDown(0.5)
        .text('PO Box 6130', { align: 'center' })
+       .moveDown(0.5)
        .text('Newport Beach, CA 92658', { align: 'center' })
+       .moveDown(0.5)
        .text('Email: info@ockabaf.org', { align: 'center' })
-       .moveDown()
-       .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center', fillColor: '#666' })
+       .moveDown(1)
+       .fillColor('#666')
+       .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center' })
 
     doc.end()
   })
