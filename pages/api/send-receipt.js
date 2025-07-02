@@ -12,7 +12,7 @@ const mg = mailgun({
 })
 
 function generateReceiptHTML(donationData, receiptNumber) {
-  const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
+  const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note } = donationData
   const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
   const downloadUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/download-receipt?receipt=${receiptNumber}`
 
@@ -33,6 +33,7 @@ function generateReceiptHTML(donationData, receiptNumber) {
         .amount { font-size: 28px; font-weight: bold; color: #2563eb; text-align: center; }
         .details { margin: 20px 0; }
         .details td { padding: 8px 0; }
+        .note-section { background: #f0f9ff; border: 1px solid #0ea5e9; padding: 15px; border-radius: 5px; margin: 20px 0; }
         .tax-info { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }
         .download-section { background: #e3f2fd; border: 1px solid #2196f3; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: center; }
         .download-btn { 
@@ -59,7 +60,7 @@ function generateReceiptHTML(donationData, receiptNumber) {
       </div>
 
       <div class="receipt-info">
-        <div class="amount">${amount}.00</div>
+        <div class="amount">$${amount}.00</div>
         <p style="text-align: center; margin: 10px 0 0 0;">Thank you for your generous donation!</p>
       </div>
 
@@ -90,6 +91,13 @@ function generateReceiptHTML(donationData, receiptNumber) {
         </tr>
       </table>
 
+      ${donation_note ? `
+      <div class="note-section">
+        <strong>💝 Donation Purpose:</strong><br>
+        <em>"${donation_note}"</em>
+      </div>
+      ` : ''}
+
       <div class="download-section">
         <strong>📄 Need a PDF copy?</strong><br>
         <small>Download your receipt as a PDF for your records</small><br>
@@ -119,7 +127,7 @@ function generateReceiptHTML(donationData, receiptNumber) {
 
 async function generatePDFReceipt(donationData, receiptNumber) {
   return new Promise((resolve, reject) => {
-    const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
+    const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note } = donationData
     const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
     
     // Create PDF document
@@ -151,7 +159,7 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     // Amount section
     doc.rect(50, doc.y, 495, 80).fill('#f9f9f9').stroke('#ddd')
     doc.fillColor('#2563eb').fontSize(32).font('Helvetica-Bold')
-       .text(`${amount}.00`, 50, doc.y + 15, { align: 'center', width: 495 })
+       .text(`$${amount}.00`, 50, doc.y + 15, { align: 'center', width: 495 })
     doc.fillColor('black').fontSize(14).font('Helvetica')
        .text('Thank you for your generous donation!', 50, doc.y + 10, { align: 'center', width: 495 })
     doc.moveDown(3)
@@ -178,19 +186,29 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     
     doc.y = startY + 140
 
+    // Donation note section (if provided)
+    if (donation_note) {
+      doc.rect(50, doc.y, 495, 60).fill('#f0f9ff').stroke('#0ea5e9')
+      doc.fillColor('black').fontSize(11).font('Helvetica-Bold')
+         .text('Donation Purpose:', 60, doc.y + 10)
+      doc.font('Helvetica').fontSize(10)
+         .text(`"${donation_note}"`, 60, doc.y + 25, { width: 475, style: 'italic' })
+      doc.y += 80
+    }
+
     // Tax info section
     doc.rect(50, doc.y, 495, 80).fill('#fff3cd').stroke('#ffeaa7')
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
     doc.font('Helvetica')
-       .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: XX-XXXXXXX). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475 })
+       .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475 })
 
     // Footer
     doc.y = 650
     doc.fontSize(10).font('Helvetica')
        .text('OCKABA Foundation', { align: 'center' })
-       .text('[Your Address]', { align: 'center' })
-       .text('[City, State ZIP]', { align: 'center' })
+       .text('PO Box 6130', { align: 'center' })
+       .text('Newport Beach, CA 92658', { align: 'center' })
        .text('Email: info@ockabaf.org', { align: 'center' })
        .moveDown()
        .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center', fillColor: '#666' })
@@ -198,17 +216,21 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     doc.end()
   })
 }
+
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
   try {
-    const { payment_intent_id, amount, donor_email, donor_name, transaction_date } = req.body
+    const { payment_intent_id, amount, donor_email, donor_name, donation_note, transaction_date } = req.body
 
     // Validate required fields
     if (!payment_intent_id || !amount || !donor_email || !donor_name || !transaction_date) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
+
+    const receiptNumber = `OCKABA-${payment_intent_id.slice(-8).toUpperCase()}`
 
     // Generate receipt HTML
     const receiptHTML = generateReceiptHTML({
@@ -216,8 +238,30 @@ async function generatePDFReceipt(donationData, receiptNumber) {
       donor_email,
       amount,
       transaction_date,
-      payment_intent_id
-    })
+      payment_intent_id,
+      donation_note
+    }, receiptNumber)
+
+    // Generate PDF receipt
+    const pdfBuffer = await generatePDFReceipt({
+      donor_name,
+      donor_email,
+      amount,
+      transaction_date,
+      payment_intent_id,
+      donation_note
+    }, receiptNumber)
+
+    // Store PDF temporarily (in production, use cloud storage)
+    const pdfPath = path.join(process.cwd(), 'temp', `receipt-${receiptNumber}.pdf`)
+    const tempDir = path.dirname(pdfPath)
+    
+    // Create temp directory if it doesn't exist
+    if (!fs.existsSync(tempDir)) {
+      fs.mkdirSync(tempDir, { recursive: true })
+    }
+    
+    fs.writeFileSync(pdfPath, pdfBuffer)
 
     // Email data for Mailgun
     const mailData = {
@@ -247,14 +291,17 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     //   donor_email,
     //   amount,
     //   transaction_date,
-    //   receipt_sent: true
+    //   donation_note,
+    //   receipt_sent: true,
+    //   receipt_number: receiptNumber
     // })
 
     console.log(`Receipt sent to ${donor_email} for donation of $${amount}`)
 
     res.status(200).json({ 
       success: true, 
-      message: 'Receipt sent successfully' 
+      message: 'Receipt sent successfully',
+      receipt_number: receiptNumber
     })
 
   } catch (error) {
