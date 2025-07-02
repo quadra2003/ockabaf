@@ -34,6 +34,7 @@ function CheckoutForm() {
   const [amount, setAmount] = useState('')
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
+  const [donationNote, setDonationNote] = useState('')
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [receiptStatus, setReceiptStatus] = useState('')
@@ -60,7 +61,8 @@ function CheckoutForm() {
         amount: parseInt(amount) * 100, // Convert to cents
         currency: 'usd',
         donor_email: email,
-        donor_name: name
+        donor_name: name,
+        donation_note: donationNote
       })
 
       // Confirm payment
@@ -88,6 +90,7 @@ function CheckoutForm() {
             amount: parseInt(amount),
             donor_email: email,
             donor_name: name,
+            donation_note: donationNote,
             transaction_date: new Date().toISOString()
           })
 
@@ -101,6 +104,7 @@ function CheckoutForm() {
         setAmount('')
         setEmail('')
         setName('')
+        setDonationNote('')
         elements.getElement(CardElement).clear()
       }
     } catch (error) {
@@ -182,6 +186,24 @@ function CheckoutForm() {
             required
           />
         </div>
+      </div>
+
+      {/* Donation note/purpose */}
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-2">
+          What is this donation for? <span className="text-gray-500">(Optional)</span>
+        </label>
+        <textarea
+          value={donationNote}
+          onChange={(e) => setDonationNote(e.target.value)}
+          placeholder="e.g., Scholarship fund, General operations, Event sponsorship..."
+          className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500 resize-none"
+          rows="3"
+          maxLength="500"
+        />
+        <p className="text-xs text-gray-500 mt-1">
+          {donationNote.length}/500 characters
+        </p>
       </div>
 
       {/* Card element */}
