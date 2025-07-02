@@ -331,7 +331,16 @@ export default async function handler(req, res) {
 
     // Store PDF temporarily for attachment
     const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
-    fs.writeFileSync(pdfPath, pdfBuffer)
+    
+    try {
+      fs.writeFileSync(pdfPath, pdfBuffer)
+      console.log(`PDF saved successfully at: ${pdfPath}`)
+      console.log(`PDF file size: ${pdfBuffer.length} bytes`)
+      console.log(`File exists after write: ${fs.existsSync(pdfPath)}`)
+    } catch (writeError) {
+      console.error('Failed to write PDF file:', writeError)
+      throw writeError
+    }
 
     // Email data for Mailgun with file attachment
     const mailData = {
@@ -355,14 +364,15 @@ export default async function handler(req, res) {
       })
     })
 
-    // Clean up temporary file after a delay (5 minutes) to allow downloads
+    // Clean up temporary file after a longer delay (30 minutes) to allow downloads
     setTimeout(() => {
       try {
         fs.unlinkSync(pdfPath)
+        console.log(`PDF file cleaned up: ${receiptNumber}`)
       } catch (cleanupError) {
         console.log('PDF cleanup failed:', cleanupError.message)
       }
-    }, 5 * 60 * 1000) // 5 minutes
+    }, 30 * 60 * 1000) // 30 minutes instead of 5
 
     // Send internal notification to organization
     await sendInternalNotification({
