@@ -19,7 +19,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Invalid receipt number' })
     }
 
-    const pdfPath = path.join(process.cwd(), 'temp', `receipt-${receipt}.pdf`)
+    const pdfPath = path.join('/tmp', `receipt-${receipt}.pdf`)
 
     // Check if PDF exists
     if (!fs.existsSync(pdfPath)) {
