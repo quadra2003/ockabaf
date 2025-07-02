@@ -133,7 +133,7 @@ export default async function handler(req, res) {
     }
 
     // Fallback: try to find the temporary file
-    const pdfPath = path.join('/tmp', `ockabaf-receipt-${receipt}.pdf`)
+    const pdfPath = path.join('/tmp', `receipt-${receipt}.pdf`)
     
     console.log(`Looking for PDF at: ${pdfPath}`)
     console.log(`File exists: ${fs.existsSync(pdfPath)}`)
