@@ -115,9 +115,9 @@ export default async function handler(req, res) {
         transaction_id: decodeURIComponent(transaction_id)
       })
 
-      // Set headers for PDF download
+      // Set headers for PDF download with consistent filename
       res.setHeader('Content-Type', 'application/pdf')
-      res.setHeader('Content-Disposition', `attachment; filename="OCKABA-Receipt-${receipt}.pdf"`)
+      res.setHeader('Content-Disposition', `attachment; filename="OCKABAF-Donation-Receipt-${receipt}.pdf"`)
       res.setHeader('Content-Length', pdfBuffer.length)
       res.setHeader('Cache-Control', 'no-cache')
 
@@ -126,7 +126,7 @@ export default async function handler(req, res) {
     }
 
     // Fallback: try to find the temporary file
-    const pdfPath = path.join('/tmp', `receipt-${receipt}.pdf`)
+    const pdfPath = path.join('/tmp', `ockabaf-receipt-${receipt}.pdf`)
     
     console.log(`Looking for PDF at: ${pdfPath}`)
     console.log(`File exists: ${fs.existsSync(pdfPath)}`)
@@ -141,7 +141,7 @@ export default async function handler(req, res) {
 
     const pdfBuffer = fs.readFileSync(pdfPath)
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', `attachment; filename="OCKABA-Receipt-${receipt}.pdf"`)
+    res.setHeader('Content-Disposition', `attachment; filename="OCKABAF-Donation-Receipt-${receipt}.pdf"`)
     res.setHeader('Content-Length', pdfBuffer.length)
     res.setHeader('Cache-Control', 'no-cache')
 
