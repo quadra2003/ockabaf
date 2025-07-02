@@ -1,6 +1,112 @@
 // pages/api/send-receipt.js
 import mailgun from 'mailgun-js'
-import { format } from 'date-fns'
+import { format }
+
+async function sendInternalNotification(donationData) {
+  const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note, receiptNumber } = donationData
+  const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
+  const formattedTime = format(new Date(transaction_date), 'h:mm a')
+
+  const internalHTML = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>New Donation Received</title>
+      <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
+        .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
+        .amount { font-size: 24px; font-weight: bold; color: #2563eb; text-align: center; margin: 15px 0; }
+        .details { background: white; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .details table { width: 100%; }
+        .details td { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .details td:first-child { font-weight: bold; width: 150px; }
+        .purpose { background: #e3f2fd; border: 1px solid #2196f3; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .no-purpose { background: #f5f5f5; border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin: 15px 0; color: #666; font-style: italic; }
+      </style>
+    </head>
+    <body>
+      <div class="header">
+        <h2>🎉 New Donation Received!</h2>
+        <p>OCKABA Foundation</p>
+      </div>
+      
+      <div class="content">
+        <div class="amount">${amount}.00</div>
+        
+        <div class="details">
+          <table>
+            <tr>
+              <td>Donor Name:</td>
+              <td>${donor_name}</td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td>${donor_email}</td>
+            </tr>
+            <tr>
+              <td>Date & Time:</td>
+              <td>${formattedDate} at ${formattedTime}</td>
+            </tr>
+            <tr>
+              <td>Receipt Number:</td>
+              <td>${receiptNumber}</td>
+            </tr>
+            <tr>
+              <td>Transaction ID:</td>
+              <td>${payment_intent_id}</td>
+            </tr>
+          </table>
+        </div>
+
+        ${donation_note ? `
+        <div class="purpose">
+          <strong>💝 Donation Purpose:</strong><br>
+          "${donation_note}"
+        </div>
+        ` : `
+        <div class="no-purpose">
+          No specific donation purpose provided.
+        </div>
+        `}
+
+        <p><strong>Next Steps:</strong></p>
+        <ul>
+          <li>Donation receipt has been automatically sent to ${donor_email}</li>
+          <li>Consider sending a personal thank you note</li>
+          <li>Update your donor database with this information</li>
+        </ul>
+      </div>
+    </body>
+    </html>
+  `
+
+  // Send internal notification email
+  const internalMailData = {
+    from: 'OCKABA Foundation <noreply@ockabaf.org>',
+    to: 'info@ockabaf.org',
+    subject: `New Donation: ${amount} from ${donor_name}`,
+    html: internalHTML
+  }
+
+  try {
+    await new Promise((resolve, reject) => {
+      mg.messages().send(internalMailData, (error, body) => {
+        if (error) {
+          console.error('Internal notification failed:', error)
+          reject(error)
+        } else {
+          console.log('Internal notification sent successfully')
+          resolve(body)
+        }
+      })
+    })
+  } catch (error) {
+    console.error('Failed to send internal notification:', error)
+    // Don't throw error - donor receipt is more important
+  }
+} from 'date-fns'
 import PDFDocument from 'pdfkit'
 import fs from 'fs'
 import path from 'path'
@@ -12,7 +118,7 @@ const mg = mailgun({
 })
 
 function generateReceiptHTML(donationData, receiptNumber) {
-  const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note } = donationData
+  const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
   const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
 
   return `
@@ -88,13 +194,6 @@ function generateReceiptHTML(donationData, receiptNumber) {
         </tr>
       </table>
 
-      ${donation_note ? `
-      <div class="note-section">
-        <strong>💝 Donation Purpose:</strong><br>
-        <em>"${donation_note}"</em>
-      </div>
-      ` : ''}
-
       <div class="tax-info">
         <strong>Tax Deductible Information:</strong><br>
         OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). 
@@ -118,7 +217,7 @@ function generateReceiptHTML(donationData, receiptNumber) {
 
 async function generatePDFReceipt(donationData, receiptNumber) {
   return new Promise((resolve, reject) => {
-    const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note } = donationData
+    const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
     const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
     
     // Create PDF document
@@ -133,8 +232,8 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     // Add logo if it exists
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
-      doc.image(logoPath, 225, 50, { width: 150 })  // Larger logo: 150px instead of 100px
-      doc.moveDown(8)  // More space after larger logo
+      doc.image(logoPath, 200, 50, { width: 200 })  // Even larger logo: 200px instead of 150px
+      doc.moveDown(10)  // More space after larger logo
     }
 
     // Header
@@ -172,37 +271,25 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     
     doc.y = startY + 140
 
-    // Donation note section (if provided)
-    if (donation_note) {
-      doc.rect(50, doc.y, 495, 60).fill('#f0f9ff').stroke('#0ea5e9')
-      doc.fillColor('black').fontSize(11).font('Helvetica-Bold')
-         .text('Donation Purpose:', 60, doc.y + 10)
-      doc.font('Helvetica').fontSize(10)
-         .text(`"${donation_note}"`, 60, doc.y + 25, { width: 475, style: 'italic' })
-      doc.y += 80
-    }
-
-    // Tax info section - adjust position to prevent overlap
-    const taxY = Math.max(doc.y, 580)  // Ensure minimum Y position
-    doc.y = taxY
-    doc.rect(50, doc.y, 495, 80).fill('#fff3cd').stroke('#ffeaa7')
+    // Tax info section - more compact
+    doc.rect(50, doc.y, 495, 70).fill('#fff3cd').stroke('#ffeaa7')  // Smaller height
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
-    doc.font('Helvetica')
+    doc.font('Helvetica').fontSize(9)  // Smaller font
        .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475 })
 
-    // Footer
-    doc.y = 680  // Lower position to avoid overlap
-    doc.fontSize(10).font('Helvetica')
+    // Footer - positioned right after tax info
+    doc.y += 85  // Position footer closer
+    doc.fontSize(10).font('Helvetica').fillColor('black')
        .text('OCKABA Foundation', { align: 'center' })
-       .moveDown(0.5)
+       .moveDown(0.3)
        .text('PO Box 6130', { align: 'center' })
-       .moveDown(0.5)
+       .moveDown(0.3)
        .text('Newport Beach, CA 92658', { align: 'center' })
-       .moveDown(0.5)
+       .moveDown(0.3)
        .text('Email: info@ockabaf.org', { align: 'center' })
-       .moveDown(1)
-       .fillColor('#666')
+       .moveDown(0.5)
+       .fillColor('#666').fontSize(9)
        .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center' })
 
     doc.end()
@@ -230,8 +317,7 @@ export default async function handler(req, res) {
       donor_email,
       amount,
       transaction_date,
-      payment_intent_id,
-      donation_note
+      payment_intent_id
     }, receiptNumber)
 
     // Generate PDF receipt
@@ -240,8 +326,7 @@ export default async function handler(req, res) {
       donor_email,
       amount,
       transaction_date,
-      payment_intent_id,
-      donation_note
+      payment_intent_id
     }, receiptNumber)
 
     // Store PDF temporarily for attachment
@@ -278,6 +363,17 @@ export default async function handler(req, res) {
         console.log('PDF cleanup failed:', cleanupError.message)
       }
     }, 5 * 60 * 1000) // 5 minutes
+
+    // Send internal notification to organization
+    await sendInternalNotification({
+      donor_name,
+      donor_email,
+      amount,
+      transaction_date,
+      payment_intent_id,
+      donation_note,
+      receiptNumber
+    })
 
     // Optional: Store donation record in database
     // await saveDonationRecord({
