@@ -252,15 +252,10 @@ export default async function handler(req, res) {
       donation_note
     }, receiptNumber)
 
-    // Store PDF temporarily (in production, use cloud storage)
-    const pdfPath = path.join(process.cwd(), 'temp', `receipt-${receiptNumber}.pdf`)
-    const tempDir = path.dirname(pdfPath)
+    // Store PDF temporarily in Vercel's /tmp directory
+    const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
     
-    // Create temp directory if it doesn't exist
-    if (!fs.existsSync(tempDir)) {
-      fs.mkdirSync(tempDir, { recursive: true })
-    }
-    
+    // Write PDF to Vercel's temp directory (no need to create dir, /tmp always exists)
     fs.writeFileSync(pdfPath, pdfBuffer)
 
     // Email data for Mailgun
