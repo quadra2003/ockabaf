@@ -232,14 +232,14 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     // Add logo if it exists
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
-      doc.image(logoPath, 200, 50, { width: 200 })  // Even larger logo: 200px instead of 150px
-      doc.moveDown(10)  // More space after larger logo
+      doc.image(logoPath, 200, 50, { width: 200 })
+      doc.moveDown(4)  // Much less space after logo
     }
 
-    // Header
+    // Header - closer to logo
     doc.fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
-       .moveDown(2)
+       .moveDown(1)  // Less space before amount section
 
     // Amount section
     doc.rect(50, doc.y, 495, 80).fill('#f9f9f9').stroke('#ddd')
@@ -247,7 +247,7 @@ async function generatePDFReceipt(donationData, receiptNumber) {
        .text(`$${amount}.00`, 50, doc.y + 15, { align: 'center', width: 495 })
     doc.fillColor('black').fontSize(14).font('Helvetica')
        .text('Thank you for your generous donation!', 50, doc.y + 10, { align: 'center', width: 495 })
-    doc.moveDown(3)
+    doc.moveDown(2)  // Less space after amount section
 
     // Details section
     const startY = doc.y
