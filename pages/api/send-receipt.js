@@ -98,7 +98,7 @@ function generateReceiptHTML(donationData, receiptNumber) {
 
       <div class="tax-info">
         <strong>Tax Deductible Information:</strong><br>
-        OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: XX-XXXXXXX). 
+        OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). 
         Your donation is tax-deductible to the extent allowed by law. 
         No goods or services were provided in exchange for this donation.
         Please consult your tax advisor for specific deduction information.
@@ -106,8 +106,8 @@ function generateReceiptHTML(donationData, receiptNumber) {
 
       <div class="footer">
         <p>OCKABA Foundation<br>
-        [Your Address]<br>
-        [City, State ZIP]<br>
+        PO Box 6130<br>
+        Newport Beach, CA 92658<br>
         Email: info@ockabaf.org</p>
         
         <p><em>This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.</em></p>
