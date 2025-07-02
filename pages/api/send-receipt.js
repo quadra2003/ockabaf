@@ -264,12 +264,14 @@ export default async function handler(req, res) {
       })
     })
 
-    // Clean up temporary file
-    try {
-      fs.unlinkSync(pdfPath)
-    } catch (cleanupError) {
-      console.log('PDF cleanup failed:', cleanupError.message)
-    }
+    // Clean up temporary file after a delay (5 minutes) to allow downloads
+    setTimeout(() => {
+      try {
+        fs.unlinkSync(pdfPath)
+      } catch (cleanupError) {
+        console.log('PDF cleanup failed:', cleanupError.message)
+      }
+    }, 5 * 60 * 1000) // 5 minutes
 
     // Optional: Store donation record in database
     // await saveDonationRecord({
