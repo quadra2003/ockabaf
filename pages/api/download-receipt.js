@@ -124,7 +124,7 @@ export default async function handler(req, res) {
 
       // Set headers for PDF download with consistent filename
       res.setHeader('Content-Type', 'application/pdf')
-      res.setHeader('Content-Disposition', `attachment; filename="OCKABAF-Donation-Receipt-${receipt}.pdf"`)
+      res.setHeader('Content-Disposition', `attachment; filename="receipt-${receipt}.pdf"`)
       res.setHeader('Content-Length', pdfBuffer.length)
       res.setHeader('Cache-Control', 'no-cache')
 
@@ -148,7 +148,7 @@ export default async function handler(req, res) {
 
     const pdfBuffer = fs.readFileSync(pdfPath)
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', `attachment; filename="OCKABAF-Donation-Receipt-${receipt}.pdf"`)
+    res.setHeader('Content-Disposition', `attachment; filename="receipt-${receipt}.pdf"`)
     res.setHeader('Content-Length', pdfBuffer.length)
     res.setHeader('Cache-Control', 'no-cache')
 
