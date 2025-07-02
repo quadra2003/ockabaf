@@ -238,18 +238,17 @@ export default async function handler(req, res) {
       donation_note
     }, receiptNumber)
 
-    // Email data for Mailgun
+    // Store PDF temporarily for attachment
+    const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
+    fs.writeFileSync(pdfPath, pdfBuffer)
+
+    // Email data for Mailgun with file attachment
     const mailData = {
       from: 'OCKABA Foundation <noreply@ockabaf.org>',
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
-      // Attach PDF directly to email
-      attachment: [{
-        filename: `OCKABA-Receipt-${receiptNumber}.pdf`,
-        data: pdfBuffer,
-        contentType: 'application/pdf'
-      }],
+      attachment: pdfPath, // Mailgun-js expects file path for attachments
       // BCC organization email for records
       bcc: 'info@ockabaf.org'
     }
@@ -264,6 +263,13 @@ export default async function handler(req, res) {
         }
       })
     })
+
+    // Clean up temporary file
+    try {
+      fs.unlinkSync(pdfPath)
+    } catch (cleanupError) {
+      console.log('PDF cleanup failed:', cleanupError.message)
+    }
 
     // Optional: Store donation record in database
     // await saveDonationRecord({
