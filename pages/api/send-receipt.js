@@ -1,19 +1,12 @@
 // pages/api/send-receipt.js
-import nodemailer from 'nodemailer'
+import mailgun from 'mailgun-js'
 import { format } from 'date-fns'
 
-// Configure your email transporter (example with Gmail)
-const transporter = nodemailer.createTransporter({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER, // your-email@gmail.com
-    pass: process.env.EMAIL_APP_PASSWORD // Gmail App Password
-  }
+// Configure Mailgun
+const mg = mailgun({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN
 })
-
-// Alternative: Use SendGrid, Mailgun, or other email services
-// const sgMail = require('@sendgrid/mail')
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 function generateReceiptHTML(donationData) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
@@ -89,7 +82,7 @@ function generateReceiptHTML(donationData) {
         <p>OCKABA Foundation<br>
         [Your Address]<br>
         [City, State ZIP]<br>
-        Email: info@ockaba.org</p>
+        Email: info@ockabaf.org</p>
         
         <p><em>This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.</em></p>
       </div>
@@ -120,18 +113,26 @@ export default async function handler(req, res) {
       payment_intent_id
     })
 
-    // Email options
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
+    // Email data for Mailgun
+    const mailData = {
+      from: 'OCKABA Foundation <noreply@ockabaf.org>',
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
-      // Optional: Add organization email as BCC for records
-      bcc: process.env.ORGANIZATION_EMAIL || process.env.EMAIL_USER
+      // BCC organization email for records
+      bcc: 'info@ockabaf.org'
     }
 
-    // Send email
-    await transporter.sendMail(mailOptions)
+    // Send email via Mailgun
+    await new Promise((resolve, reject) => {
+      mg.messages().send(mailData, (error, body) => {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(body)
+        }
+      })
+    })
 
     // Optional: Store donation record in database
     // await saveDonationRecord({
