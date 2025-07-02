@@ -330,7 +330,7 @@ export default async function handler(req, res) {
     }, receiptNumber)
 
     // Store PDF temporarily for attachment
-    const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
+    const pdfPath = path.join('/tmp', `ockabaf-receipt-${receiptNumber}.pdf`)
     
     try {
       fs.writeFileSync(pdfPath, pdfBuffer)
