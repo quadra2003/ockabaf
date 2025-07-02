@@ -1,6 +1,15 @@
 // pages/api/send-receipt.js
 import mailgun from 'mailgun-js'
-import { format }
+import { format } from 'date-fns'
+import PDFDocument from 'pdfkit'
+import fs from 'fs'
+import path from 'path'
+
+// Configure Mailgun
+const mg = mailgun({
+  apiKey: process.env.MAILGUN_API_KEY,
+  domain: process.env.MAILGUN_DOMAIN
+})
 
 async function sendInternalNotification(donationData) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note, receiptNumber } = donationData
@@ -33,7 +42,7 @@ async function sendInternalNotification(donationData) {
       </div>
       
       <div class="content">
-        <div class="amount">${amount}.00</div>
+        <div class="amount">$${amount}.00</div>
         
         <div class="details">
           <table>
@@ -86,7 +95,7 @@ async function sendInternalNotification(donationData) {
   const internalMailData = {
     from: 'OCKABA Foundation <noreply@ockabaf.org>',
     to: 'info@ockabaf.org',
-    subject: `New Donation: ${amount} from ${donor_name}`,
+    subject: `New Donation: $${amount} from ${donor_name}`,
     html: internalHTML
   }
 
@@ -106,16 +115,7 @@ async function sendInternalNotification(donationData) {
     console.error('Failed to send internal notification:', error)
     // Don't throw error - donor receipt is more important
   }
-} from 'date-fns'
-import PDFDocument from 'pdfkit'
-import fs from 'fs'
-import path from 'path'
-
-// Configure Mailgun
-const mg = mailgun({
-  apiKey: process.env.MAILGUN_API_KEY,
-  domain: process.env.MAILGUN_DOMAIN
-})
+}
 
 function generateReceiptHTML(donationData, receiptNumber) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
@@ -374,18 +374,6 @@ export default async function handler(req, res) {
       donation_note,
       receiptNumber
     })
-
-    // Optional: Store donation record in database
-    // await saveDonationRecord({
-    //   payment_intent_id,
-    //   donor_name,
-    //   donor_email,
-    //   amount,
-    //   transaction_date,
-    //   donation_note,
-    //   receipt_sent: true,
-    //   receipt_number: receiptNumber
-    // })
 
     console.log(`Receipt sent to ${donor_email} for donation of $${amount}`)
 
