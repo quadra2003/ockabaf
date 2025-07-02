@@ -110,8 +110,8 @@ function CheckoutForm() {
         setEmail('')
         setName('')
         setDonationNote('')
-        setReceiptNumber('')
         elements.getElement(CardElement).clear()
+        // Don't clear receiptNumber here - we need it for the download button!
       }
     } catch (error) {
       console.error('Payment error:', error)
@@ -119,6 +119,13 @@ function CheckoutForm() {
     }
 
     setLoading(false)
+  }
+
+  // Clear receipt info when starting new donation
+  const handleNewDonation = () => {
+    setReceiptStatus('')
+    setReceiptNumber('')
+    setMessage('')
   }
 
   return (
@@ -158,7 +165,10 @@ function CheckoutForm() {
           <input
             type="number"
             value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            onChange={(e) => {
+              setAmount(e.target.value)
+              handleNewDonation() // Clear receipt info when amount changes
+            }}
             className="block w-full pl-7 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
             placeholder="0"
             min="1"
