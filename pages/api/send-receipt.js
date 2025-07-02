@@ -309,7 +309,8 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' })
     }
 
-    const receiptNumber = `OCKABA-${payment_intent_id.slice(-8).toUpperCase()}`
+    const receiptNumber = `OCKABAF-${payment_intent_id.slice(-8).toUpperCase()}`
+    console.log(`Generated receipt number: ${receiptNumber}`)
 
     // Generate receipt HTML
     const receiptHTML = generateReceiptHTML({
