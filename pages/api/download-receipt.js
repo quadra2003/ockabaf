@@ -7,6 +7,10 @@ import path from 'path'
 async function generatePDFOnDemand(receiptData) {
   return new Promise((resolve, reject) => {
     const { donor_name, donor_email, amount, donation_date, receipt_number, transaction_id } = receiptData
+    const formattedDate = donation_date // Already formatted from the form
+    
+    console.log(`PDF Generation - Amount: "${amount}", Type: ${typeof amount}`)
+    console.log(`Amount will be formatted as: $${amount}.00`)
     
     // Create PDF document
     const doc = new PDFDocument({ margin: 50 })
@@ -21,23 +25,26 @@ async function generatePDFOnDemand(receiptData) {
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
       doc.image(logoPath, 200, 50, { width: 200 })
-      doc.moveDown(4)
+      doc.moveDown(4)  // Same spacing as email version
     }
 
-    // Header
+    // Header - same as email version
     doc.fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
        .moveDown(1)
 
-    // Amount section
+    // Amount section - Force the $ symbol to appear
+    const displayAmount = `$${amount}.00`
+    console.log(`Display amount string: "${displayAmount}"`)
+    
     doc.rect(50, doc.y, 495, 80).fill('#f9f9f9').stroke('#ddd')
     doc.fillColor('#2563eb').fontSize(32).font('Helvetica-Bold')
-       .text(`${amount}.00`, 50, doc.y + 15, { align: 'center', width: 495 })
+       .text(displayAmount, 50, doc.y + 15, { align: 'center', width: 495 })
     doc.fillColor('black').fontSize(14).font('Helvetica')
        .text('Thank you for your generous donation!', 50, doc.y + 10, { align: 'center', width: 495 })
     doc.moveDown(2)
 
-    // Details section
+    // Details section - same as email version
     const startY = doc.y
     doc.fontSize(12).font('Helvetica-Bold').text('Donor Name:', 50, startY)
     doc.font('Helvetica').text(donor_name, 150, startY)
@@ -46,7 +53,7 @@ async function generatePDFOnDemand(receiptData) {
     doc.font('Helvetica').text(donor_email, 150, startY + 20)
     
     doc.font('Helvetica-Bold').text('Donation Date:', 50, startY + 40)
-    doc.font('Helvetica').text(donation_date, 150, startY + 40)
+    doc.font('Helvetica').text(formattedDate, 150, startY + 40)
     
     doc.font('Helvetica-Bold').text('Receipt Number:', 50, startY + 60)
     doc.font('Helvetica').text(receipt_number, 150, startY + 60)
@@ -59,15 +66,15 @@ async function generatePDFOnDemand(receiptData) {
     
     doc.y = startY + 140
 
-    // Tax info section
-    doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')  // Taller box
+    // Tax info section - same as email version
+    doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
     doc.font('Helvetica').fontSize(9)
        .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475, lineGap: 2 })
 
-    // Footer
-    doc.y += 105  // Adjust for taller tax box
+    // Footer - same as email version
+    doc.y += 105
     doc.fontSize(10).font('Helvetica').fillColor('black')
        .text('OCKABA Foundation', { align: 'center' })
        .moveDown(0.3)
