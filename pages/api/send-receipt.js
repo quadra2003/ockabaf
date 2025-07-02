@@ -343,13 +343,17 @@ export default async function handler(req, res) {
       throw writeError
     }
 
-    // Email data for Mailgun with file attachment
+    // Email data for Mailgun with file attachment and explicit filename
     const mailData = {
       from: 'OCKABA Foundation <noreply@ockabaf.org>',
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
-      attachment: pdfPath, // Mailgun-js expects file path for attachments
+      attachment: {
+        data: pdfBuffer,
+        filename: `receipt-${receiptNumber}.pdf`,
+        contentType: 'application/pdf'
+      },
       // BCC organization email for records
       bcc: 'info@ockabaf.org'
     }
