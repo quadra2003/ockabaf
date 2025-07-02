@@ -7,6 +7,7 @@ import {
   useElements
 } from '@stripe/react-stripe-js'
 import axios from 'axios'
+import { format } from 'date-fns'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
@@ -38,7 +39,7 @@ function CheckoutForm() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [receiptStatus, setReceiptStatus] = useState('')
-  const [receiptNumber, setReceiptNumber] = useState('')
+  const [receiptData, setReceiptData] = useState(null)
 
   const presetAmounts = [25, 50, 100, 250, 500, 1000]
 
@@ -96,9 +97,16 @@ function CheckoutForm() {
           })
 
           setReceiptStatus('Receipt sent to your email!')
-          // Make sure we capture the receipt number from the response
+          // Store all receipt data for download
           if (receiptResponse.data && receiptResponse.data.receipt_number) {
-            setReceiptNumber(receiptResponse.data.receipt_number)
+            setReceiptData({
+              receipt_number: receiptResponse.data.receipt_number,
+              donor_name: name,
+              donor_email: email,
+              amount: parseInt(amount),
+              donation_date: format(new Date(), 'MMMM dd, yyyy'),
+              transaction_id: result.paymentIntent.id
+            })
           }
         } catch (receiptError) {
           console.error('Receipt sending failed:', receiptError)
@@ -124,7 +132,7 @@ function CheckoutForm() {
   // Clear receipt info when starting new donation
   const handleNewDonation = () => {
     setReceiptStatus('')
-    setReceiptNumber('')
+    setReceiptData(null)
     setMessage('')
   }
 
@@ -260,9 +268,9 @@ function CheckoutForm() {
         }`}>
           <div className="flex items-center justify-between">
             <span>{receiptStatus}</span>
-            {receiptNumber && receiptStatus.includes('sent to your email') && (
+            {receiptData && receiptStatus.includes('sent to your email') && (
               <a
-                href={`/api/download-receipt?receipt=${receiptNumber}`}
+                href={`/api/download-receipt?receipt=${receiptData.receipt_number}&donor_name=${encodeURIComponent(receiptData.donor_name)}&donor_email=${encodeURIComponent(receiptData.donor_email)}&amount=${receiptData.amount}&donation_date=${encodeURIComponent(receiptData.donation_date)}&transaction_id=${encodeURIComponent(receiptData.transaction_id)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-3 bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors"
