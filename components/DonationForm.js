@@ -38,6 +38,7 @@ function CheckoutForm() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const [receiptStatus, setReceiptStatus] = useState('')
+  const [receiptNumber, setReceiptNumber] = useState('')
 
   const presetAmounts = [25, 50, 100, 250, 500, 1000]
 
@@ -85,7 +86,7 @@ function CheckoutForm() {
 
         try {
           // Send receipt
-          await axios.post('/api/send-receipt', {
+          const receiptResponse = await axios.post('/api/send-receipt', {
             payment_intent_id: result.paymentIntent.id,
             amount: parseInt(amount),
             donor_email: email,
@@ -95,6 +96,7 @@ function CheckoutForm() {
           })
 
           setReceiptStatus('Receipt sent to your email!')
+          setReceiptNumber(receiptResponse.data.receipt_number)
         } catch (receiptError) {
           console.error('Receipt sending failed:', receiptError)
           setReceiptStatus('Payment successful, but receipt could not be sent. Please contact us for your receipt.')
@@ -105,6 +107,7 @@ function CheckoutForm() {
         setEmail('')
         setName('')
         setDonationNote('')
+        setReceiptNumber('')
         elements.getElement(CardElement).clear()
       }
     } catch (error) {
@@ -242,7 +245,19 @@ function CheckoutForm() {
             ? 'bg-yellow-50 text-yellow-800'
             : 'bg-gray-50 text-gray-800'
         }`}>
-          {receiptStatus}
+          <div className="flex items-center justify-between">
+            <span>{receiptStatus}</span>
+            {receiptNumber && receiptStatus.includes('sent to your email') && (
+              <a
+                href={`/api/download-receipt?receipt=${receiptNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-3 bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors"
+              >
+                📄 Download PDF
+              </a>
+            )}
+          </div>
         </div>
       )}
 
