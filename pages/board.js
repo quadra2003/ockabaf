@@ -54,7 +54,7 @@ export default function Board() {
           </p>
         )}
         {isOfficer && member.subtitle && (
-          <p className="text-2xs text-gray-500 mb-3 leading-tight">
+          <p className="text-gray-500 mb-3 leading-tight" style={{ fontSize: '10px' }}>
             {member.subtitle}
           </p>
         )}
