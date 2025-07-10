@@ -49,7 +49,7 @@ export default function Board() {
           {member.affiliation}
         </p>
         {isOfficer && member.title && (
-          <p className="text-xs font-medium mb-1 leading-tight" style={{ color: '#0047A0' }}>
+          <p className="text-xs text-blue-600 font-medium mb-1 leading-tight">
             {member.title}
           </p>
         )}
