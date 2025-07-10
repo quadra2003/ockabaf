@@ -45,14 +45,17 @@ export default function Board() {
         <h3 className="text-sm font-semibold text-gray-900 mb-1 leading-tight">
           {member.name}
         </h3>
+        <p className="text-xs text-gray-600 mb-1 leading-tight">
+          {member.affiliation}
+        </p>
         {isOfficer && member.title && (
-          <p className="text-xs text-blue-600 font-medium mb-1 leading-tight whitespace-pre-line">
+          <p className="text-xs text-blue-600 font-medium mb-3 leading-tight whitespace-pre-line">
             {member.title}
           </p>
         )}
-        <p className="text-xs text-gray-600 mb-3 leading-tight">
-          {member.affiliation}
-        </p>
+        {!isOfficer && (
+          <div className="mb-3"></div>
+        )}
         
         {/* Social Links */}
         {(member.website || member.linkedin) && (
