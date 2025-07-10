@@ -2,8 +2,8 @@ import Layout from '../components/Layout'
 
 export default function Board() {
   const officers = [
-    { name: "Chang Lim", title: "President &\nFundraising Committee Chair", affiliation: "Knobbe Martens", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
-    { name: "Eric Lim", title: "President-Elect &\nPro Bono Committee Chair", affiliation: "American Healthcare REIT", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
+    { name: "Chang Lim", title: "President\nFundraising Committee Chair", affiliation: "Knobbe Martens", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
+    { name: "Eric Lim", title: "President-Elect\nPro Bono Committee Chair", affiliation: "American Healthcare REIT", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
     { name: "Jung Ah Kim", title: "Treasurer", affiliation: "Verve Law Group", photo: "JungAh.jpg", website: "", linkedin: "https://www.linkedin.com/in/jung-ah-kim-03044b218/" },
     { name: "Christopher Kim", title: "Secretary", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" }
   ]
