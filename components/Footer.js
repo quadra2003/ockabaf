@@ -71,6 +71,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors">
+                  Sponsor
+                </Link>
+              </li>
+              <li>
                 <Link href="/donate" className="text-gray-300 hover:text-white transition-colors">
                   Donate
                 </Link>
@@ -98,6 +103,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors">
+                  Taste of Korea Event
+                </Link>
+              </li>
+              <li>
                 <a
                   href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
                   className="text-gray-300 hover:text-white transition-colors"
@@ -112,6 +122,11 @@ export default function Footer() {
                 >
                   Apply for Scholarship
                 </a>
+              </li>
+              <li>
+                <Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors">
+                  Corporate Sponsorship
+                </Link>
               </li>
             </ul>
           </div>
