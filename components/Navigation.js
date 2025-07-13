@@ -116,6 +116,21 @@ export default function Navigation() {
               <span className="relative">Board</span>
             </Link>
             <Link 
+              href="/sponsor"
+              className={`text-gray-600 transition-colors relative ${
+                isActive('/sponsor') ? 'font-semibold' : ''
+              }`}
+              style={{ 
+                color: isActive('/sponsor') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/sponsor') ? '600' : '400'
+              }}
+              onMouseOver={(e) => e.target.style.color = primaryBlue}
+              onMouseOut={(e) => e.target.style.color = isActive('/sponsor') ? primaryBlue : '#6b7280'}
+            >
+              <span className="invisible font-semibold absolute">Sponsor</span>
+              <span className="relative">Sponsor</span>
+            </Link>
+            <Link 
               href="/donate"
               className="text-white px-4 py-2 rounded-md transition-colors"
               style={{ backgroundColor: primaryBlue }}
@@ -150,6 +165,7 @@ export default function Navigation() {
             <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
             <Link href="/scholarships" className="block px-3 py-2 text-gray-600">Scholarships</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
+            <Link href="/sponsor" className="block px-3 py-2 text-gray-600">Sponsor</Link>
             <Link 
               href="/donate" 
               className="block px-3 py-2 font-semibold"
