@@ -86,6 +86,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Taste of Korea Sponsorship Section */}
+      <section className="py-16 bg-gradient-to-r from-accent-600 to-primary-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Sponsor Taste of Korea 2025
+            </h2>
+            <p className="text-xl mb-2 opacity-90">
+              Wednesday, August 27, 2025 • 6:00 PM - 8:30 PM
+            </p>
+            <p className="text-lg mb-6 opacity-80">
+              Join us for an evening of Korean food, drinks, and entertainment while supporting our mission
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link
+                href="/sponsor"
+                className="bg-white text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"
+              >
+                View Sponsorship Opportunities
+              </Link>
+              <a
+                href="mailto:info@ockabaf.org?subject=Sponsorship Inquiry"
+                className="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-primary-600 transition-colors"
+              >
+                Contact About Sponsorship
+              </a>
+            </div>
+            <p className="text-sm opacity-75">
+              Multiple sponsorship levels available • Corporate partnerships welcome
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Fellows Spotlight Section */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
