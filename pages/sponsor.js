@@ -229,31 +229,45 @@ function SponsorshipForm() {
         </div>
 
       {/* Last Year's Event Photos */}
-      <div className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
           Last Year's Taste of Korea Highlights
         </h2>
-        <div className="grid grid-cols-5 gap-2 mb-6">
-          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((num) => (
-            <div key={num} className="aspect-square overflow-hidden rounded-lg">
+        <div className="grid grid-cols-10 gap-1 mb-4">
+          {[1,2,3,4,5,6,7,8,9,10].map((num) => (
+            <div key={num} className="aspect-square overflow-hidden rounded">
               <img
                 src={`/images/taste-of-korea-2024/${num}.jpg`}
                 alt={`Taste of Korea 2024 - Photo ${num}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
+                style={{ imageRendering: 'crisp-edges' }}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-10 gap-1 mb-4">
+          {[11,12,13,14,15,16,17,18,19,20].map((num) => (
+            <div key={num} className="aspect-square overflow-hidden rounded">
+              <img
+                src={`/images/taste-of-korea-2024/${num}.jpg`}
+                alt={`Taste of Korea 2024 - Photo ${num}`}
+                className="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
+                style={{ imageRendering: 'crisp-edges' }}
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}
               />
             </div>
           ))}
         </div>
         <div className="text-center">
-          <p className="text-gray-600 mb-4">
-            Join 200+ legal professionals for an evening of networking, Korean cuisine, and community building
+          <p className="text-gray-600 text-sm mb-3">
+            Join 200+ legal professionals for networking, Korean cuisine, and community building
           </p>
           <a
             href="https://www.flickr.com/photos/165825565@N05/albums/72177720318269914"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+            className="bg-primary-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block text-sm"
           >
             View All Photos from 2024 Event
           </a>
