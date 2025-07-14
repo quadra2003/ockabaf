@@ -295,11 +295,13 @@ function SponsorshipForm() {
                       </div>
                     </div>
                   ) : (
-                    <div className={`text-lg font-bold ${tier.textColor}`}>
-                      Title Sponsor
-                    </div>
-                    <div className="text-sm text-green-600 font-semibold mt-1">
-                      Matching all donations
+                    <div>
+                      <div className={`text-lg font-bold ${tier.textColor}`}>
+                        Title Sponsor
+                      </div>
+                      <div className="text-sm text-green-600 font-semibold mt-1">
+                        Matching all donations
+                      </div>
                     </div>
                   )}
                 </div>
