@@ -242,9 +242,6 @@ function SponsorshipForm() {
           />
         </div>
         <div className="text-center">
-          <p className="text-gray-600 text-sm mb-3">
-            Join 200+ legal professionals for networking, Korean cuisine, and community building
-          </p>
           <a
             href="https://www.flickr.com/photos/165825565@N05/albums/72177720318269914"
             target="_blank"
@@ -275,12 +272,12 @@ function SponsorshipForm() {
           {sponsorshipTiers.map((tier) => (
             <div
               key={tier.id}
-              className={`border-2 rounded-lg p-6 cursor-pointer transition-all ${
+              className={`border-2 rounded-lg p-6 transition-all ${
                 selectedTier?.id === tier.id
                   ? `border-primary-600 bg-primary-50`
                   : tier.disabled
-                  ? 'border-gray-300 bg-gray-50 cursor-not-allowed opacity-60'
-                  : 'border-gray-300 hover:border-primary-400'
+                  ? 'border-gray-300 bg-gray-50 cursor-not-allowed'
+                  : 'border-gray-300 hover:border-primary-400 cursor-pointer'
               }`}
               onClick={() => !tier.disabled && setSelectedTier(tier)}
             >
@@ -293,11 +290,6 @@ function SponsorshipForm() {
                     {tier.status && (
                       <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-sm font-medium">
                         {tier.status}
-                      </span>
-                    )}
-                    {tier.isMatching && (
-                      <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
-                        🎁 MATCHING ALL DONATIONS
                       </span>
                     )}
                   </div>
@@ -481,14 +473,6 @@ function SponsorshipForm() {
               className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors"
             >
               Email Us
-            </a>
-            <a
-              href="https://www.ockabaf.org/sponsor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-primary-600 text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-primary-50 transition-colors"
-            >
-              Visit www.ockabaf.org/sponsor
             </a>
           </div>
         </div>
