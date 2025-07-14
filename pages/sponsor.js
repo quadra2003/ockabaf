@@ -44,8 +44,8 @@ function SponsorshipForm() {
   const sponsorshipTiers = [
     {
       id: 'ichthus',
-      name: 'Ichthus Injury Network',
-      level: 'TITLE SPONSOR',
+      name: 'Title Sponsor',
+      level: 'ICHTHUS INJURY NETWORK',
       status: 'SOLD OUT',
       isMatching: true,
       benefits: [
@@ -57,12 +57,13 @@ function SponsorshipForm() {
       color: 'bg-red-600',
       textColor: 'text-red-600',
       disabled: true,
-      description: 'As our Title Sponsor, Ichthus Injury Network is generously matching all donations and sponsorships dollar-for-dollar!'
+      description: 'As our Title Sponsor, Ichthus Injury Network is generously matching all donations and sponsorships dollar-for-dollar!',
+      logo: 'ichthus-logo.png'
     },
     {
       id: 'joseon',
-      name: 'Joseon 조선',
-      level: 'SPONSOR',
+      name: 'Joseon 조선 Sponsor',
+      level: '$5,000 SPONSORSHIP',
       amount: 5000,
       benefits: [
         'Fifteen (15) tickets',
@@ -75,8 +76,8 @@ function SponsorshipForm() {
     },
     {
       id: 'goryeo',
-      name: 'Goryeo 고려',
-      level: 'SPONSOR',
+      name: 'Goryeo 고려 Sponsor',
+      level: '$3,500 SPONSORSHIP',
       amount: 3500,
       benefits: [
         'Twelve (12) tickets',
@@ -88,8 +89,8 @@ function SponsorshipForm() {
     },
     {
       id: 'silla',
-      name: 'Silla 신라',
-      level: 'SPONSOR',
+      name: 'Silla 신라 Sponsor',
+      level: '$2,500 SPONSORSHIP',
       amount: 2500,
       benefits: [
         'Ten (10) tickets',
@@ -100,8 +101,8 @@ function SponsorshipForm() {
     },
     {
       id: 'baekje',
-      name: 'Baekje 백제',
-      level: 'SPONSOR',
+      name: 'Baekje 백제 Sponsor',
+      level: '$1,000 SPONSORSHIP',
       amount: 1000,
       benefits: [
         'Four (4) tickets',
@@ -112,8 +113,8 @@ function SponsorshipForm() {
     },
     {
       id: 'goguryeo',
-      name: 'Goguryeo 고구려',
-      level: 'SPONSOR',
+      name: 'Goguryeo 고구려 Sponsor',
+      level: '$500 SPONSORSHIP',
       amount: 500,
       benefits: [
         'Two (2) tickets',
@@ -124,8 +125,8 @@ function SponsorshipForm() {
     },
     {
       id: 'gojoseon',
-      name: 'Gojoseon 고조선',
-      level: 'SPONSOR',
+      name: 'Gojoseon 고조선 Sponsor',
+      level: '$250 SPONSORSHIP',
       amount: 250,
       benefits: [
         'Standard logo recognition at the event, via website, and via e-mail'
@@ -256,7 +257,7 @@ function SponsorshipForm() {
               onClick={() => !tier.disabled && setSelectedTier(tier)}
             >
               <div className="flex justify-between items-start mb-4">
-                <div>
+                <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className={`text-2xl font-bold ${tier.textColor}`}>
                       {tier.name}
@@ -272,11 +273,23 @@ function SponsorshipForm() {
                       </span>
                     )}
                   </div>
-                  <p className="text-gray-600 text-sm uppercase tracking-wide font-medium">
+                  <p className="text-gray-600 text-sm uppercase tracking-wide font-medium mb-3">
                     {tier.level}
                   </p>
+                  {tier.logo && (
+                    <div className="mb-3">
+                      <img
+                        src={`/images/${tier.logo}`}
+                        alt="Ichthus Injury Network"
+                        className="h-16 w-auto"
+                        onError={(e) => {
+                          e.target.style.display = 'none'
+                        }}
+                      />
+                    </div>
+                  )}
                   {tier.description && (
-                    <p className="text-gray-600 text-sm mt-2 italic">
+                    <p className="text-gray-600 text-sm italic">
                       {tier.description}
                     </p>
                   )}
@@ -296,10 +309,7 @@ function SponsorshipForm() {
                     </div>
                   ) : (
                     <div>
-                      <div className={`text-lg font-bold ${tier.textColor}`}>
-                        Title Sponsor
-                      </div>
-                      <div className="text-sm text-green-600 font-semibold mt-1">
+                      <div className="text-lg text-green-600 font-semibold">
                         Matching all donations
                       </div>
                     </div>
