@@ -233,31 +233,12 @@ function SponsorshipForm() {
         <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
           Last Year's Taste of Korea Highlights
         </h2>
-        <div className="grid grid-cols-10 gap-1 mb-4">
-          {[1,2,3,4,5,6,7,8,9,10].map((num) => (
-            <div key={num} className="aspect-square overflow-hidden rounded">
-              <img
-                src={`/images/taste-of-korea-2024/${num}.jpg`}
-                alt={`Taste of Korea 2024 - Photo ${num}`}
-                className="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
-                style={{ imageRendering: 'crisp-edges' }}
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-10 gap-1 mb-4">
-          {[11,12,13,14,15,16,17,18,19,20].map((num) => (
-            <div key={num} className="aspect-square overflow-hidden rounded">
-              <img
-                src={`/images/taste-of-korea-2024/${num}.jpg`}
-                alt={`Taste of Korea 2024 - Photo ${num}`}
-                className="w-full h-full object-cover hover:scale-110 transition-transform cursor-pointer"
-                style={{ imageRendering: 'crisp-edges' }}
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}
-              />
-            </div>
-          ))}
+        <div className="mb-4 cursor-pointer" onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}>
+          <img
+            src="/images/taste-of-korea-2024-collage.png"
+            alt="Taste of Korea 2024 Event Highlights"
+            className="w-full rounded-lg hover:shadow-lg transition-shadow"
+          />
         </div>
         <div className="text-center">
           <p className="text-gray-600 text-sm mb-3">
