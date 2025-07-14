@@ -128,7 +128,11 @@ export default function Navigation() {
               onMouseOut={(e) => e.target.style.color = isActive('/sponsor') ? primaryBlue : '#6b7280'}
             >
               <span className="invisible font-semibold absolute">Taste of Korea</span>
-              <span className="relative">Taste of Korea</span>
+              <span className="relative flex items-center gap-1">
+                <span className="animate-pulse">🍽️</span>
+                Taste of Korea
+                <span className="bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">Aug 27</span>
+              </span>
             </Link>
             <Link 
               href="/donate"
@@ -165,7 +169,11 @@ export default function Navigation() {
             <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
             <Link href="/scholarships" className="block px-3 py-2 text-gray-600">Scholarships</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
-            <Link href="/sponsor" className="block px-3 py-2 text-gray-600">Taste of Korea</Link>
+            <Link href="/sponsor" className="block px-3 py-2 text-gray-600 flex items-center gap-1">
+              <span className="animate-pulse">🍽️</span>
+              Taste of Korea
+              <span className="bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">Aug 27</span>
+            </Link>
             <Link 
               href="/donate" 
               className="block px-3 py-2 font-semibold"
