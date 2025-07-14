@@ -227,6 +227,38 @@ function SponsorshipForm() {
             Our event will include traditional Korean food, drinks, and entertainment.
           </p>
         </div>
+
+      {/* Last Year's Event Photos */}
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          Last Year's Taste of Korea Highlights
+        </h2>
+        <div className="grid grid-cols-5 gap-2 mb-6">
+          {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((num) => (
+            <div key={num} className="aspect-square overflow-hidden rounded-lg">
+              <img
+                src={`/images/taste-of-korea-2024/${num}.jpg`}
+                alt={`Taste of Korea 2024 - Photo ${num}`}
+                className="w-full h-full object-cover hover:scale-105 transition-transform cursor-pointer"
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="text-center">
+          <p className="text-gray-600 mb-4">
+            Join 200+ legal professionals for an evening of networking, Korean cuisine, and community building
+          </p>
+          <a
+            href="https://www.flickr.com/photos/165825565@N05/albums/72177720318269914"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block"
+          >
+            View All Photos from 2024 Event
+          </a>
+        </div>
+      </div>
       </div>
 
       {/* Matching Sponsor Callout */}
