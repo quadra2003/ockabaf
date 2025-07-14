@@ -46,17 +46,18 @@ function SponsorshipForm() {
       id: 'ichthus',
       name: 'Ichthus Injury Network',
       level: 'TITLE SPONSOR',
-      amount: 10000, // Estimated based on "matching every donation dollar-for-dollar"
       status: 'SOLD OUT',
+      isMatching: true,
       benefits: [
         'Matching every donation and sponsorship dollar-for-dollar',
-        'Doubling the impact of all contributions',
+        'Doubling the impact of all contributions up to $25,000',
         'Exclusive title sponsor recognition',
         'Premium logo placement on all materials'
       ],
       color: 'bg-red-600',
       textColor: 'text-red-600',
-      disabled: true
+      disabled: true,
+      description: 'As our Title Sponsor, Ichthus Injury Network is generously matching all donations and sponsorships dollar-for-dollar!'
     },
     {
       id: 'joseon',
@@ -227,6 +228,17 @@ function SponsorshipForm() {
         </div>
       </div>
 
+      {/* Matching Sponsor Callout */}
+      <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg p-6 mb-8 text-center">
+        <h2 className="text-2xl font-bold mb-3">🎉 Your Impact is DOUBLED! 🎉</h2>
+        <p className="text-lg mb-2">
+          Thanks to our Title Sponsor <strong>Ichthus Injury Network</strong>, every sponsorship and donation is matched dollar-for-dollar!
+        </p>
+        <p className="text-sm opacity-90">
+          Your $1,000 sponsorship becomes $2,000 of impact • Your $500 becomes $1,000 • Every dollar counts twice!
+        </p>
+      </div>
+
       {/* Sponsorship Tiers */}
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Choose Your Sponsorship Level</h2>
@@ -254,15 +266,42 @@ function SponsorshipForm() {
                         {tier.status}
                       </span>
                     )}
+                    {tier.isMatching && (
+                      <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-sm font-medium">
+                        🎁 MATCHING ALL DONATIONS
+                      </span>
+                    )}
                   </div>
                   <p className="text-gray-600 text-sm uppercase tracking-wide font-medium">
                     {tier.level}
                   </p>
+                  {tier.description && (
+                    <p className="text-gray-600 text-sm mt-2 italic">
+                      {tier.description}
+                    </p>
+                  )}
                 </div>
                 <div className="text-right">
-                  <div className={`text-3xl font-bold ${tier.textColor}`}>
-                    ${tier.amount.toLocaleString()}
-                  </div>
+                  {tier.amount ? (
+                    <div>
+                      <div className={`text-3xl font-bold ${tier.textColor}`}>
+                        ${tier.amount.toLocaleString()}
+                      </div>
+                      <div className="text-sm text-green-600 font-semibold">
+                        + ${tier.amount.toLocaleString()} match!
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Total Impact: ${(tier.amount * 2).toLocaleString()}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className={`text-lg font-bold ${tier.textColor}`}>
+                      Title Sponsor
+                    </div>
+                    <div className="text-sm text-green-600 font-semibold mt-1">
+                      Matching all donations
+                    </div>
+                  )}
                 </div>
               </div>
               
@@ -285,6 +324,14 @@ function SponsorshipForm() {
           <h3 className="text-2xl font-bold text-gray-900 mb-6">
             Complete Your {selectedTier.name} Sponsorship
           </h3>
+          
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+            <h4 className="text-lg font-semibold text-green-800 mb-2">Your Impact Summary:</h4>
+            <p className="text-green-700">
+              Your ${selectedTier.amount?.toLocaleString()} sponsorship + ${selectedTier.amount?.toLocaleString()} match = 
+              <span className="font-bold"> ${((selectedTier.amount || 0) * 2).toLocaleString()} total impact!</span>
+            </p>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Company Information */}
@@ -357,7 +404,7 @@ function SponsorshipForm() {
               disabled={!stripe || loading}
               className={`w-full text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors ${selectedTier.color} hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed`}
             >
-              {loading ? 'Processing...' : `Complete ${selectedTier.name} Sponsorship - $${selectedTier.amount.toLocaleString()}`}
+              {loading ? 'Processing...' : `Complete ${selectedTier.name} Sponsorship - $${selectedTier.amount?.toLocaleString()}`}
             </button>
 
             {/* Messages */}
