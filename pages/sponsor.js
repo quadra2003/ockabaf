@@ -237,7 +237,8 @@ function SponsorshipForm() {
           <img
             src="/images/taste-of-korea-2024-collage.png"
             alt="Taste of Korea 2024 Event Highlights"
-            className="w-full rounded-lg hover:shadow-lg transition-shadow"
+            className="rounded-lg hover:shadow-lg transition-shadow mx-auto"
+            style={{ width: '1200px', height: '180px', maxWidth: '100%', objectFit: 'cover' }}
           />
         </div>
         <div className="text-center">
