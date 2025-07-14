@@ -72,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors">
-                  Sponsor
+                  Taste of Korea
                 </Link>
               </li>
               <li>
@@ -125,7 +125,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/sponsor" className="text-gray-300 hover:text-white transition-colors">
-                  Corporate Sponsorship
+                  Taste of Korea Sponsorship
                 </Link>
               </li>
             </ul>
