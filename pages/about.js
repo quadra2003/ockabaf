@@ -89,7 +89,7 @@ export default function About() {
             </div>
             <div className="text-center">
               <Link
-                href="/sponsor"
+                href="/taste2025"
                 className="bg-primary-600 text-white px-8 py-3 rounded-md font-semibold hover:bg-primary-700 transition-colors inline-block mr-4"
               >
                 Explore Sponsorship Opportunities
