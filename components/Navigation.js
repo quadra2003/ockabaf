@@ -116,16 +116,16 @@ export default function Navigation() {
               <span className="relative">Board</span>
             </Link>
             <Link 
-              href="/sponsor"
+              href="/taste2025"
               className={`text-gray-600 transition-colors relative ${
-                isActive('/sponsor') ? 'font-semibold' : ''
+                isActive('/taste2025') ? 'font-semibold' : ''
               }`}
               style={{ 
-                color: isActive('/sponsor') ? primaryBlue : '#6b7280',
-                fontWeight: isActive('/sponsor') ? '600' : '400'
+                color: isActive('/taste2025') ? primaryBlue : '#6b7280',
+                fontWeight: isActive('/taste2025') ? '600' : '400'
               }}
               onMouseOver={(e) => e.target.style.color = primaryBlue}
-              onMouseOut={(e) => e.target.style.color = isActive('/sponsor') ? primaryBlue : '#6b7280'}
+              onMouseOut={(e) => e.target.style.color = isActive('/taste2025') ? primaryBlue : '#6b7280'}
             >
               <span className="invisible font-semibold absolute">Taste of Korea</span>
               <span className="relative flex items-center gap-1">
@@ -169,7 +169,7 @@ export default function Navigation() {
             <Link href="/fellows" className="block px-3 py-2 text-gray-600">Minyard Morris Fellows</Link>
             <Link href="/scholarships" className="block px-3 py-2 text-gray-600">Scholarships</Link>
             <Link href="/board" className="block px-3 py-2 text-gray-600">Board</Link>
-            <Link href="/sponsor" className="block px-3 py-2 text-gray-600 flex items-center gap-1">
+            <Link href="/taste2025" className="block px-3 py-2 text-gray-600 flex items-center gap-1">
               <span className="animate-pulse">🍽️</span>
               Taste of Korea
               <span className="bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full font-medium">Aug 27</span>
