@@ -163,7 +163,7 @@ export default function Programs() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/sponsor"
+                  href="/taste2025"
                   className="bg-accent-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-accent-700 transition-colors text-center"
                 >
                   Become a Sponsor
