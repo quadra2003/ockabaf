@@ -101,7 +101,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link
-                href="/sponsor"
+                href="/taste2025"
                 className="bg-white text-primary-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-50 transition-colors"
               >
                 View Sponsorship Opportunities
