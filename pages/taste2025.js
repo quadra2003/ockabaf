@@ -281,8 +281,8 @@ function SponsorshipForm() {
               }`}
               onClick={() => !tier.disabled && setSelectedTier(tier)}
             >
-              <div className="flex justify-between items-start mb-4">
-                <div className="flex-1">
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
+                <div className="flex-1 lg:pr-4">
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className={`text-2xl font-bold ${tier.textColor}`}>
                       {tier.name}
@@ -296,25 +296,26 @@ function SponsorshipForm() {
                   <p className="text-gray-600 text-sm uppercase tracking-wide font-medium mb-3">
                     {tier.level}
                   </p>
-                  {tier.logo && (
-                    <div className="mb-3">
-                      <img
-                        src={`/images/${tier.logo}`}
-                        alt="Ichthus Injury Network"
-                        className="h-12 sm:h-16 w-auto max-w-full"
-                        onError={(e) => {
-                          e.target.style.display = 'none'
-                        }}
-                      />
-                    </div>
-                  )}
                   {tier.description && (
-                    <p className="text-gray-600 text-sm italic">
+                    <p className="text-gray-600 text-sm italic mb-3">
                       {tier.description}
                     </p>
                   )}
                 </div>
-                <div className="text-right">
+                {tier.logo && (
+                  <div className="mb-3 lg:mb-0 lg:ml-4 flex justify-center lg:justify-end">
+                    <img
+                      src={`/images/${tier.logo}`}
+                      alt="Ichthus Injury Network"
+                      className="h-12 sm:h-16 w-auto"
+                      style={{ maxWidth: 'none' }}
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                      }}
+                    />
+                  </div>
+                )}
+                <div className="text-right lg:ml-4">
                   {tier.amount ? (
                     <div>
                       <div className={`text-3xl font-bold ${tier.textColor}`}>
