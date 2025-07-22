@@ -316,7 +316,7 @@ function SponsorshipForm() {
         </h1>
         <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 mb-8">
           <h2 className="text-2xl font-bold text-primary-700 mb-4">
-            Wednesday, August 27, 2025 • 6:00 PM - 8:30 PM
+            Wednesday, August 27, 2025 • 6:00 PM - 9:00 PM
           </h2>
           <p className="text-lg text-gray-700 mb-2">
             <strong>Location:</strong> Crowell & Moring LLP (3 Park Plaza, 20th Floor, Irvine, CA 92614)
