@@ -76,7 +76,7 @@ function SponsorshipForm() {
     },
     {
       id: 'poker-addon',
-      name: 'Poker Tournament&nbsp;Add-On',
+      name: 'Poker Tournament Add-On',
       price: 75,
       description: 'For those who already have a ticket (purchased or sponsored)',
       color: 'bg-orange-600',
@@ -613,7 +613,11 @@ function SponsorshipForm() {
             >
               <div className="text-center mb-4">
                 <h3 className={`text-xl font-bold ${ticket.textColor} mb-2`}>
-                  {ticket.name}
+                  {ticket.name === 'Poker Tournament Add-On' ? (
+                    <>Poker Tournament <span className="whitespace-nowrap">Add-On</span></>
+                  ) : (
+                    ticket.name
+                  )}
                 </h3>
                 <div className={`text-3xl font-bold ${ticket.textColor} mb-2`}>
                   ${ticket.price}
