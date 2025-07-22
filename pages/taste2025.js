@@ -209,7 +209,7 @@ function SponsorshipForm() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto overflow-hidden">
       {/* Event Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
@@ -297,11 +297,11 @@ function SponsorshipForm() {
                     {tier.level}
                   </p>
                   {tier.logo && (
-                    <div className="mb-3 overflow-visible">
+                    <div className="mb-3">
                       <img
                         src={`/images/${tier.logo}`}
                         alt="Ichthus Injury Network"
-                        className="h-16 w-auto max-w-none"
+                        className="h-12 sm:h-16 w-auto max-w-full"
                         onError={(e) => {
                           e.target.style.display = 'none'
                         }}
