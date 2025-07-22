@@ -164,7 +164,8 @@ function SponsorshipForm() {
       level: '$250 SPONSORSHIP',
       amount: 250,
       benefits: [
-        'Standard logo recognition at the event, via website, and via e-mail'
+        'Standard logo recognition at the event, via website, and via e-mail',
+        'Tickets not included (may be purchased separately)'
       ],
       color: 'bg-indigo-600',
       textColor: 'text-indigo-600'
