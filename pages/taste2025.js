@@ -61,16 +61,16 @@ function SponsorshipForm() {
     },
     {
       id: 'poker',
-      name: 'VIP with Poker Tournament',
+      name: 'General Admission + Poker',
       price: 200,
-      description: 'Includes everything in General Admission plus charity poker tournament seat',
+      description: 'Everything in General Admission plus charity poker tournament seat',
       color: 'bg-amber-600',
       textColor: 'text-amber-600',
+      saveAmount: 25,
       features: [
         'Everything in General Admission',
         'Reserved seat at charity poker tournament',
-        'Exclusive VIP networking area',
-        'Premium tournament prizes'
+        'Save $25 vs. buying poker add-on at event ($100)'
       ]
     }
   ]
@@ -169,6 +169,20 @@ function SponsorshipForm() {
       textColor: 'text-indigo-600'
     }
   ]
+
+  const scrollToSponsorships = () => {
+    document.getElementById('sponsorship-section').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+
+  const scrollToTickets = () => {
+    document.getElementById('tickets-section').scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -296,6 +310,22 @@ function SponsorshipForm() {
           </p>
         </div>
 
+        {/* Navigation Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+          <button
+            onClick={scrollToSponsorships}
+            className="bg-primary-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-primary-700 transition-colors shadow-lg"
+          >
+            🤝 Sponsorship Opportunities
+          </button>
+          <button
+            onClick={scrollToTickets}
+            className="bg-gray-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-600 transition-colors"
+          >
+            🎫 Individual Tickets
+          </button>
+        </div>
+
         {/* Last Year's Event Photos */}
         <div className="mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
@@ -322,54 +352,8 @@ function SponsorshipForm() {
         </div>
       </div>
 
-      {/* Individual Tickets Section */}
-      <div className="mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Individual Tickets</h2>
-        <p className="text-gray-600 text-center mb-8">
-          Purchase tickets for yourself or colleagues to join us for this special evening
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {ticketOptions.map((ticket) => (
-            <div
-              key={ticket.id}
-              className={`border-2 rounded-lg p-6 transition-all cursor-pointer ${
-                selectedTicket?.id === ticket.id
-                  ? 'border-primary-600 bg-primary-50'
-                  : 'border-gray-300 hover:border-primary-400'
-              }`}
-              onClick={() => {
-                setSelectedTicket(ticket)
-                setSelectedTier(null)
-              }}
-            >
-              <div className="text-center mb-4">
-                <h3 className={`text-2xl font-bold ${ticket.textColor} mb-2`}>
-                  {ticket.name}
-                </h3>
-                <div className={`text-4xl font-bold ${ticket.textColor} mb-2`}>
-                  ${ticket.price}
-                </div>
-                <p className="text-gray-600 text-sm">
-                  {ticket.description}
-                </p>
-              </div>
-              
-              <ul className="space-y-2">
-                {ticket.features.map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className={`${ticket.textColor} mr-2 mt-1`}>✓</span>
-                    <span className="text-gray-700 text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Matching Sponsor Callout */}
-      <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg p-6 mb-8 text-center">
+      <div id="sponsorship-section" className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg p-6 mb-8 text-center">
         <h2 className="text-2xl font-bold mb-3">🎉 Sponsorship Impact is DOUBLED! 🎉</h2>
         <p className="text-lg mb-2">
           Thanks to our Title Sponsor <strong>Ichthus Injury Network</strong>, every sponsorship is matched dollar-for-dollar!
@@ -380,7 +364,7 @@ function SponsorshipForm() {
       </div>
 
       {/* Sponsorship Tiers */}
-      <div className="mb-12">
+      <div className="mb-16">
         <h2 className="text-3xl font-bold text-gray-900 mb-2 text-center">Sponsorship Opportunities</h2>
         <p className="text-gray-600 text-center mb-8">
           Support our mission while gaining valuable exposure to the legal community
@@ -474,12 +458,12 @@ function SponsorshipForm() {
         </div>
       </div>
 
-      {/* Purchase Form */}
-      {(selectedTier || selectedTicket) && (
-        <div className="bg-white border border-gray-200 rounded-lg p-8">
+      {/* Purchase Form - shows when sponsorship is selected */}
+      {selectedTier && (
+        <div className="bg-white border border-gray-200 rounded-lg p-8 mb-16">
           <div className="flex justify-between items-start mb-6">
             <h3 className="text-2xl font-bold text-gray-900">
-              {selectedTicket ? 'Purchase Tickets' : `Complete Your ${selectedTier.name} Sponsorship`}
+              Complete Your {selectedTier.name} Sponsorship
             </h3>
             <button
               onClick={clearSelection}
@@ -489,58 +473,32 @@ function SponsorshipForm() {
             </button>
           </div>
           
-          {selectedTier && (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-              <h4 className="text-lg font-semibold text-green-800 mb-2">Your Impact Summary:</h4>
-              <p className="text-green-700">
-                Your ${selectedTier.amount?.toLocaleString()} sponsorship + ${selectedTier.amount?.toLocaleString()} match = 
-                <span className="font-bold"> ${((selectedTier.amount || 0) * 2).toLocaleString()} total impact!</span>
-              </p>
-            </div>
-          )}
-
-          {selectedTicket && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <h4 className="text-lg font-semibold text-blue-800 mb-3">Ticket Summary:</h4>
-              <div className="flex items-center gap-4 mb-3">
-                <label className="text-blue-700 font-medium">Quantity:</label>
-                <select
-                  value={ticketQuantity}
-                  onChange={(e) => setTicketQuantity(parseInt(e.target.value))}
-                  className="border border-gray-300 rounded px-3 py-1"
-                >
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                    <option key={num} value={num}>{num}</option>
-                  ))}
-                </select>
-              </div>
-              <p className="text-blue-700">
-                {ticketQuantity}x {selectedTicket.name} = 
-                <span className="font-bold"> ${(selectedTicket.price * ticketQuantity).toLocaleString()}</span>
-              </p>
-            </div>
-          )}
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+            <h4 className="text-lg font-semibold text-green-800 mb-2">Your Impact Summary:</h4>
+            <p className="text-green-700">
+              Your ${selectedTier.amount?.toLocaleString()} sponsorship + ${selectedTier.amount?.toLocaleString()} match = 
+              <span className="font-bold"> ${((selectedTier.amount || 0) * 2).toLocaleString()} total impact!</span>
+            </p>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Contact Information */}
+            {/* Company Information */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {selectedTier && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Company/Organization Name *
-                  </label>
-                  <input
-                    type="text"
-                    value={companyName}
-                    onChange={(e) => setCompanyName(e.target.value)}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    required={!!selectedTier}
-                  />
-                </div>
-              )}
-              <div className={selectedTier ? '' : 'md:col-span-2'}>
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  {selectedTicket ? 'Full Name *' : 'Contact Name *'}
+                  Company/Organization Name *
+                </label>
+                <input
+                  type="text"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Contact Name *
                 </label>
                 <input
                   type="text"
@@ -592,14 +550,178 @@ function SponsorshipForm() {
             <button
               type="submit"
               disabled={!stripe || loading}
-              className={`w-full text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors ${
-                selectedTicket ? selectedTicket.color : selectedTier.color
-              } hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed`}
+              className={`w-full text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors ${selectedTier.color} hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed`}
+            >
+              {loading ? 'Processing...' : `Complete ${selectedTier.name} Sponsorship - $${selectedTier.amount?.toLocaleString()}`}
+            </button>
+
+            {/* Messages */}
+            {message && (
+              <div className={`p-4 rounded-md ${
+                message.includes('Thank you') ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+              }`}>
+                {message}
+              </div>
+            )}
+
+            {receiptStatus && (
+              <div className="p-4 rounded-md bg-blue-50 text-blue-800">
+                {receiptStatus}
+              </div>
+            )}
+          </form>
+        </div>
+      )}
+
+      {/* Individual Tickets Section - moved to bottom */}
+      <div id="tickets-section" className="mb-12 border-t-2 border-gray-200 pt-12">
+        <h2 className="text-2xl font-bold text-gray-700 mb-2 text-center">Individual Tickets</h2>
+        <p className="text-gray-500 text-center mb-8 text-sm">
+          Can't sponsor but still want to attend? Purchase individual tickets below.
+        </p>
+        
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {ticketOptions.map((ticket) => (
+            <div
+              key={ticket.id}
+              className={`border-2 rounded-lg p-6 transition-all cursor-pointer ${
+                selectedTicket?.id === ticket.id
+                  ? 'border-primary-600 bg-primary-50'
+                  : 'border-gray-300 hover:border-gray-400'
+              }`}
+              onClick={() => {
+                setSelectedTicket(ticket)
+                setSelectedTier(null)
+              }}
+            >
+              <div className="text-center mb-4">
+                <h3 className={`text-xl font-bold ${ticket.textColor} mb-2`}>
+                  {ticket.name}
+                </h3>
+                <div className={`text-3xl font-bold ${ticket.textColor} mb-2`}>
+                  ${ticket.price}
+                </div>
+                {ticket.id === 'poker' && (
+                  <div className="text-sm text-green-600 font-semibold mb-1">
+                    Save $25 vs. day-of pricing
+                  </div>
+                )}
+                <p className="text-gray-600 text-sm">
+                  {ticket.description}
+                </p>
+              </div>
+              
+              <ul className="space-y-2">
+                {ticket.features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`${ticket.textColor} mr-2 mt-1`}>✓</span>
+                    <span className="text-gray-700 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center text-sm text-gray-500 mb-8">
+          <p>Note: Poker tournament add-on will be available at the event for $100 (vs. $75 when purchased in advance)</p>
+        </div>
+      </div>
+
+      {/* Ticket Purchase Form - shows when ticket is selected */}
+      {selectedTicket && (
+        <div className="bg-white border border-gray-200 rounded-lg p-8 mb-16">
+          <div className="flex justify-between items-start mb-6">
+            <h3 className="text-2xl font-bold text-gray-900">
+              Purchase Tickets
+            </h3>
+            <button
+              onClick={clearSelection}
+              className="text-gray-500 hover:text-gray-700 text-sm"
+            >
+              ✕ Clear Selection
+            </button>
+          </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+            <h4 className="text-lg font-semibold text-blue-800 mb-3">Ticket Summary:</h4>
+            <div className="flex items-center gap-4 mb-3">
+              <label className="text-blue-700 font-medium">Quantity:</label>
+              <select
+                value={ticketQuantity}
+                onChange={(e) => setTicketQuantity(parseInt(e.target.value))}
+                className="border border-gray-300 rounded px-3 py-1"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                  <option key={num} value={num}>{num}</option>
+                ))}
+              </select>
+            </div>
+            <p className="text-blue-700">
+              {ticketQuantity}x {selectedTicket.name} = 
+              <span className="font-bold"> ${(selectedTicket.price * ticketQuantity).toLocaleString()}</span>
+            </p>
+          </div>
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Contact Information */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  value={contactName}
+                  onChange={(e) => setContactName(e.target.value)}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address *
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  required
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+              />
+            </div>
+
+            {/* Payment Information */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Payment Information
+              </label>
+              <div className="border border-gray-300 rounded-md p-3 bg-white">
+                <CardElement options={CARD_ELEMENT_OPTIONS} />
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={!stripe || loading}
+              className={`w-full text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors ${selectedTicket.color} hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {loading ? 'Processing...' : 
-                selectedTicket 
-                  ? `Purchase ${ticketQuantity} Ticket${ticketQuantity > 1 ? 's' : ''} - $${(selectedTicket.price * ticketQuantity).toLocaleString()}`
-                  : `Complete ${selectedTier.name} Sponsorship - $${selectedTier.amount?.toLocaleString()}`
+                `Purchase ${ticketQuantity} Ticket${ticketQuantity > 1 ? 's' : ''} - $${(selectedTicket.price * ticketQuantity).toLocaleString()}`
               }
             </button>
 
