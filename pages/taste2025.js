@@ -508,15 +508,6 @@ function SponsorshipForm() {
                   </div>
                 </div>
               )}
-              
-              <ul className="space-y-2">
-                {tier.benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className={`${tier.textColor} mr-2 mt-1`}>✓</span>
-                    <span className="text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           ))}
         </div>
