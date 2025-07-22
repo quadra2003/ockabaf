@@ -62,7 +62,7 @@ function SponsorshipForm() {
     {
       id: 'poker',
       name: 'General Admission + Poker',
-      price: 200,
+      price: 175,
       description: 'Everything in General Admission plus charity poker tournament seat',
       color: 'bg-amber-600',
       textColor: 'text-amber-600',
@@ -70,6 +70,7 @@ function SponsorshipForm() {
       features: [
         'Everything in General Admission',
         'Reserved seat at charity poker tournament',
+        'Trophy for tournament winner',
         'Save $25 vs. buying poker add-on at event ($100)'
       ]
     }
