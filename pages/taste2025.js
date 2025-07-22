@@ -348,12 +348,12 @@ function SponsorshipForm() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">
             Last Year's Taste of Korea Highlights
           </h2>
-          <div className="mb-4 cursor-pointer -mx-4 sm:-mx-6 lg:-mx-8" onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}>
+          <div className="mb-4 cursor-pointer" onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720318269914', '_blank')}>
             <img
               src="/images/taste-of-korea-2024-collage.png"
               alt="Taste of Korea 2024 Event Highlights"
               className="w-full rounded-lg hover:shadow-lg transition-shadow"
-              style={{ objectFit: 'contain' }}
+              style={{ aspectRatio: '1200/180', objectFit: 'contain' }}
             />
           </div>
           <div className="text-center">
