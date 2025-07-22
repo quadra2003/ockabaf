@@ -435,65 +435,67 @@ function SponsorshipForm() {
                     </p>
                   )}
                 </div>
-                {tier.logo && (
-                  <div className="mb-3 lg:mb-0 lg:ml-4 flex justify-center lg:justify-end">
-                    <img
-                      src={`/images/${tier.logo}`}
-                      alt="Ichthus Injury Network"
-                      className="h-12 sm:h-16 w-auto"
-                      style={{ maxWidth: 'none' }}
-                      onError={(e) => {
-                        e.target.style.display = 'none'
-                      }}
-                    />
-                  </div>
-                )}
-                {tier.sponsors && (
-                  <div className="mb-3 lg:mb-0 lg:ml-4 flex flex-col items-center lg:items-end">
-                    <div className="text-xs text-gray-500 mb-2 font-medium text-center lg:text-right">
-                      Current {tier.name}s:
+                <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-6">
+                  {tier.logo && (
+                    <div className="flex justify-center lg:justify-end">
+                      <img
+                        src={`/images/${tier.logo}`}
+                        alt="Ichthus Injury Network"
+                        className="h-12 sm:h-16 w-auto"
+                        style={{ maxWidth: 'none' }}
+                        onError={(e) => {
+                          e.target.style.display = 'none'
+                        }}
+                      />
                     </div>
-                    <div className={`flex flex-wrap gap-4 justify-center lg:justify-end items-center ${
-                      tier.id === 'silla' ? 'max-w-[240px]' : ''
-                    }`}>
-                      {tier.sponsors.map((sponsor, index) => (
-                        <img
-                          key={index}
-                          src={`/${sponsor.logo}`}
-                          alt={sponsor.name}
-                          className={`w-auto object-contain ${
-                            tier.id === 'joseon' 
-                              ? 'h-16 sm:h-24 max-w-[180px]' 
-                              : 'h-8 sm:h-12 max-w-[100px]'
-                          }`}
-                          onError={(e) => {
-                            e.target.style.display = 'none'
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div className="text-right lg:ml-4">
-                  {tier.amount ? (
-                    <div>
-                      <div className={`text-3xl font-bold ${tier.textColor}`}>
-                        ${tier.amount.toLocaleString()}
+                  )}
+                  {tier.sponsors && (
+                    <div className="flex flex-col items-center lg:items-end">
+                      <div className="text-xs text-gray-500 mb-2 font-medium text-center lg:text-right">
+                        Current {tier.name}s:
                       </div>
-                      <div className="text-sm text-green-600 font-semibold">
-                        + ${tier.amount.toLocaleString()} match!
-                      </div>
-                      <div className="text-xs text-gray-500">
-                        Total Impact: ${(tier.amount * 2).toLocaleString()}
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <div className="text-lg text-green-600 font-semibold">
-                        Matching all donations
+                      <div className={`flex flex-wrap gap-3 justify-center lg:justify-end items-center ${
+                        tier.id === 'silla' ? 'max-w-[220px]' : ''
+                      }`}>
+                        {tier.sponsors.map((sponsor, index) => (
+                          <img
+                            key={index}
+                            src={`/${sponsor.logo}`}
+                            alt={sponsor.name}
+                            className={`w-auto object-contain ${
+                              tier.id === 'joseon' 
+                                ? 'h-20 sm:h-32 max-w-[200px]' 
+                                : 'h-8 sm:h-12 max-w-[90px]'
+                            }`}
+                            onError={(e) => {
+                              e.target.style.display = 'none'
+                            }}
+                          />
+                        ))}
                       </div>
                     </div>
                   )}
+                  <div className="text-right">
+                    {tier.amount ? (
+                      <div>
+                        <div className={`text-3xl font-bold ${tier.textColor}`}>
+                          ${tier.amount.toLocaleString()}
+                        </div>
+                        <div className="text-sm text-green-600 font-semibold">
+                          + ${tier.amount.toLocaleString()} match!
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          Total Impact: ${(tier.amount * 2).toLocaleString()}
+                        </div>
+                      </div>
+                    ) : (
+                      <div>
+                        <div className="text-lg text-green-600 font-semibold">
+                          Matching all donations
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
               
