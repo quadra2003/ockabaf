@@ -435,69 +435,79 @@ function SponsorshipForm() {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-col lg:flex-row lg:items-start gap-4 lg:gap-6">
-                  {tier.logo && (
-                    <div className="flex justify-center lg:justify-end">
-                      <img
-                        src={`/images/${tier.logo}`}
-                        alt="Ichthus Injury Network"
-                        className="h-12 sm:h-16 w-auto"
-                        style={{ maxWidth: 'none' }}
-                        onError={(e) => {
-                          e.target.style.display = 'none'
-                        }}
-                      />
-                    </div>
-                  )}
-                  {tier.sponsors && (
-                    <div className="flex flex-col items-center lg:items-end">
-                      <div className="text-xs text-gray-500 mb-2 font-medium text-center lg:text-right">
-                        Current {tier.name}s:
-                      </div>
-                      <div className={`flex flex-wrap gap-3 justify-center lg:justify-end items-center ${
-                        tier.id === 'silla' ? 'max-w-[220px]' : ''
-                      }`}>
-                        {tier.sponsors.map((sponsor, index) => (
-                          <img
-                            key={index}
-                            src={`/${sponsor.logo}`}
-                            alt={sponsor.name}
-                            className={`w-auto object-contain ${
-                              tier.id === 'joseon' 
-                                ? 'h-20 sm:h-32 max-w-[200px]' 
-                                : 'h-8 sm:h-12 max-w-[90px]'
-                            }`}
-                            onError={(e) => {
-                              e.target.style.display = 'none'
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  <div className="text-right">
-                    {tier.amount ? (
-                      <div>
-                        <div className={`text-3xl font-bold ${tier.textColor}`}>
-                          ${tier.amount.toLocaleString()}
-                        </div>
-                        <div className="text-sm text-green-600 font-semibold">
-                          + ${tier.amount.toLocaleString()} match!
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          Total Impact: ${(tier.amount * 2).toLocaleString()}
-                        </div>
-                      </div>
-                    ) : (
-                      <div>
-                        <div className="text-lg text-green-600 font-semibold">
-                          Matching all donations
-                        </div>
-                      </div>
-                    )}
+                {tier.logo && (
+                  <div className="mb-3 lg:mb-0 lg:ml-4 flex justify-center lg:justify-end">
+                    <img
+                      src={`/images/${tier.logo}`}
+                      alt="Ichthus Injury Network"
+                      className="h-12 sm:h-16 w-auto"
+                      style={{ maxWidth: 'none' }}
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                      }}
+                    />
                   </div>
+                )}
+                <div className="text-right lg:ml-4">
+                  {tier.amount ? (
+                    <div>
+                      <div className={`text-3xl font-bold ${tier.textColor}`}>
+                        ${tier.amount.toLocaleString()}
+                      </div>
+                      <div className="text-sm text-green-600 font-semibold">
+                        + ${tier.amount.toLocaleString()} match!
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Total Impact: ${(tier.amount * 2).toLocaleString()}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="text-lg text-green-600 font-semibold">
+                        Matching all donations
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
+              
+              <ul className="space-y-2">
+                {tier.benefits.map((benefit, index) => (
+                  <li key={index} className="flex items-start">
+                    <span className={`${tier.textColor} mr-2 mt-1`}>✓</span>
+                    <span className="text-gray-700">{benefit}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {tier.sponsors && (
+                <div className="flex justify-end mt-4">
+                  <div className="flex flex-col items-end">
+                    <div className="text-xs text-gray-500 mb-2 font-medium">
+                      Current {tier.name}s:
+                    </div>
+                    <div className={`flex flex-wrap gap-3 justify-end items-center ${
+                      tier.id === 'silla' ? 'max-w-[220px]' : ''
+                    }`}>
+                      {tier.sponsors.map((sponsor, index) => (
+                        <img
+                          key={index}
+                          src={`/${sponsor.logo}`}
+                          alt={sponsor.name}
+                          className={`w-auto object-contain ${
+                            tier.id === 'joseon' 
+                              ? 'h-20 sm:h-32 max-w-[200px]' 
+                              : 'h-8 sm:h-12 max-w-[90px]'
+                          }`}
+                          onError={(e) => {
+                            e.target.style.display = 'none'
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
               
               <ul className="space-y-2">
                 {tier.benefits.map((benefit, index) => (
