@@ -297,11 +297,11 @@ function SponsorshipForm() {
                     {tier.level}
                   </p>
                   {tier.logo && (
-                    <div className="mb-3">
+                    <div className="mb-3 overflow-visible">
                       <img
                         src={`/images/${tier.logo}`}
                         alt="Ichthus Injury Network"
-                        className="h-16 w-auto"
+                        className="h-16 w-auto max-w-none"
                         onError={(e) => {
                           e.target.style.display = 'none'
                         }}
