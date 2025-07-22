@@ -449,14 +449,21 @@ function SponsorshipForm() {
                   </div>
                 )}
                 {tier.sponsors && (
-                  <div className="mb-3 lg:mb-0 lg:ml-4 flex justify-center lg:justify-end">
+                  <div className="mb-3 lg:mb-0 lg:ml-4 flex flex-col items-center lg:items-end">
+                    <div className="text-xs text-gray-500 mb-2 font-medium text-center lg:text-right">
+                      Current {tier.name} Sponsors:
+                    </div>
                     <div className="flex flex-wrap gap-4 justify-center lg:justify-end items-center">
                       {tier.sponsors.map((sponsor, index) => (
                         <img
                           key={index}
                           src={`/${sponsor.logo}`}
                           alt={sponsor.name}
-                          className="h-8 sm:h-12 w-auto max-w-[120px] object-contain"
+                          className={`w-auto max-w-[120px] object-contain ${
+                            tier.id === 'joseon' 
+                              ? 'h-10 sm:h-16' 
+                              : 'h-8 sm:h-12'
+                          }`}
                           onError={(e) => {
                             e.target.style.display = 'none'
                           }}
