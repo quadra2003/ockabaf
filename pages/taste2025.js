@@ -73,6 +73,20 @@ function SponsorshipForm() {
         'Trophy for tournament winner',
         'Save $25 vs. buying poker add-on at event ($100)'
       ]
+    },
+    {
+      id: 'poker-addon',
+      name: 'Poker Tournament Add-On',
+      price: 75,
+      description: 'For those who already have a ticket (purchased or sponsored)',
+      color: 'bg-orange-600',
+      textColor: 'text-orange-600',
+      features: [
+        'Reserved seat at charity poker tournament',
+        'Trophy for tournament winner',
+        'Save $25 vs. day-of registration ($100)',
+        'Must already have event ticket'
+      ]
     }
   ]
 
@@ -582,7 +596,7 @@ function SponsorshipForm() {
           Can't sponsor but still want to attend? Purchase individual tickets below.
         </p>
         
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
           {ticketOptions.map((ticket) => (
             <div
               key={ticket.id}
