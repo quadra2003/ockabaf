@@ -353,7 +353,7 @@ function SponsorshipForm() {
               src="/images/taste-of-korea-2024-collage.png"
               alt="Taste of Korea 2024 Event Highlights"
               className="w-full rounded-lg hover:shadow-lg transition-shadow"
-              style={{ aspectRatio: '1200/180', objectFit: 'cover' }}
+              style={{ objectFit: 'contain' }}
             />
           </div>
           <div className="text-center">
