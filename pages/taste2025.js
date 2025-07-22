@@ -122,7 +122,10 @@ function SponsorshipForm() {
         'Premium logo recognition at the event, via website, and via e-mail'
       ],
       color: 'bg-blue-600',
-      textColor: 'text-blue-600'
+      textColor: 'text-blue-600',
+      sponsors: [
+        { name: 'Minyard Morris', logo: 'minyard.png' }
+      ]
     },
     {
       id: 'goryeo',
@@ -147,7 +150,13 @@ function SponsorshipForm() {
         'Premium logo recognition at the event, via website, and via e-mail'
       ],
       color: 'bg-green-600',
-      textColor: 'text-green-600'
+      textColor: 'text-green-600',
+      sponsors: [
+        { name: 'Briana Kim PC', logo: 'briana.jpg' },
+        { name: 'Crowell & Moring LLP', logo: 'crowell.png' },
+        { name: 'Knobbe Martens', logo: 'knobbe.jpg' },
+        { name: 'OCKABA', logo: 'ockaba.jpg' }
+      ]
     },
     {
       id: 'baekje',
@@ -437,6 +446,23 @@ function SponsorshipForm() {
                         e.target.style.display = 'none'
                       }}
                     />
+                  </div>
+                )}
+                {tier.sponsors && (
+                  <div className="mb-3 lg:mb-0 lg:ml-4 flex justify-center lg:justify-end">
+                    <div className="flex flex-wrap gap-4 justify-center lg:justify-end items-center">
+                      {tier.sponsors.map((sponsor, index) => (
+                        <img
+                          key={index}
+                          src={`/${sponsor.logo}`}
+                          alt={sponsor.name}
+                          className="h-8 sm:h-12 w-auto max-w-[120px] object-contain"
+                          onError={(e) => {
+                            e.target.style.display = 'none'
+                          }}
+                        />
+                      ))}
+                    </div>
                   </div>
                 )}
                 <div className="text-right lg:ml-4">
@@ -742,7 +768,7 @@ function SponsorshipForm() {
               className={`w-full text-white py-4 px-6 rounded-md font-semibold text-lg transition-colors ${selectedTicket.color} hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed`}
             >
               {loading ? 'Processing...' : 
-                `Purchase ${ticketQuantity} Ticket${ticketQuantity > 1 ? 's' : ''} - $${(selectedTicket.price * ticketQuantity).toLocaleString()}`
+                `Purchase ${ticketQuantity} Ticket${ticketQuantity > 1 ? 's' : ''} - ${(selectedTicket.price * ticketQuantity).toLocaleString()}`
               }
             </button>
 
