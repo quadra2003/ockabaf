@@ -17,6 +17,7 @@
     "stripe": "^14.5.0",
     "axios": "^1.6.0",
     "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
     "mailgun-js": "^0.22.0",
     "pdfkit": "^0.14.0"
   },
