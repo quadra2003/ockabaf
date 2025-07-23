@@ -1,6 +1,7 @@
 // pages/api/download-receipt.js
 import PDFDocument from 'pdfkit'
 import { format } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 import fs from 'fs'
 import path from 'path'
 
@@ -25,15 +26,15 @@ async function generatePDFOnDemand(receiptData) {
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
       doc.image(logoPath, 200, 50, { width: 200 })
-      doc.moveDown(4)  // Same spacing as email version
+      doc.moveDown(4)
     }
 
-    // Header - same as email version
+    // Header
     doc.fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
        .moveDown(1)
 
-    // Amount section - Force the $ symbol to appear
+    // Amount section
     const displayAmount = `$${amount}.00`
     console.log(`Display amount string: "${displayAmount}"`)
     
@@ -44,7 +45,7 @@ async function generatePDFOnDemand(receiptData) {
        .text('Thank you for your generous donation!', 50, doc.y + 10, { align: 'center', width: 495 })
     doc.moveDown(2)
 
-    // Details section - same as email version
+    // Details section
     const startY = doc.y
     doc.fontSize(12).font('Helvetica-Bold').text('Donor Name:', 50, startY)
     doc.font('Helvetica').text(donor_name, 150, startY)
@@ -66,14 +67,14 @@ async function generatePDFOnDemand(receiptData) {
     
     doc.y = startY + 140
 
-    // Tax info section - same as email version
+    // Tax info section
     doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
     doc.font('Helvetica').fontSize(9)
        .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475, lineGap: 2 })
 
-    // Footer - same as email version
+    // Footer with fixed generation date
     doc.y += 105
     doc.fontSize(10).font('Helvetica').fillColor('black')
        .text('OCKABA Foundation', { align: 'center' })
@@ -85,7 +86,11 @@ async function generatePDFOnDemand(receiptData) {
        .text('Email: info@ockabaf.org', { align: 'center' })
        .moveDown(0.5)
        .fillColor('#666').fontSize(9)
-       .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center' })
+       .text(`This receipt was automatically generated on ${(() => {
+         const now = new Date()
+         const localNow = utcToZonedTime(now, 'America/Los_Angeles')
+         return format(localNow, 'MMMM dd, yyyy')
+       })()}.`, { align: 'center' })
 
     doc.end()
   })
@@ -116,13 +121,13 @@ export default async function handler(req, res) {
       const pdfBuffer = await generatePDFOnDemand({
         donor_name: decodeURIComponent(donor_name),
         donor_email: decodeURIComponent(donor_email),
-        amount: amount, // Keep as string/number, format in PDF generation
+        amount: amount,
         donation_date: decodeURIComponent(donation_date),
         receipt_number: receipt,
         transaction_id: decodeURIComponent(transaction_id)
       })
 
-      // Set headers for PDF download with consistent filename
+      // Set headers for PDF download
       res.setHeader('Content-Type', 'application/pdf')
       res.setHeader('Content-Disposition', `attachment; filename="receipt-${receipt}.pdf"`)
       res.setHeader('Content-Length', pdfBuffer.length)
