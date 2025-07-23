@@ -496,9 +496,10 @@ function SponsorshipForm() {
                           alt={sponsor.name}
                           className={`w-auto object-contain ${
                             tier.id === 'joseon' 
-                              ? 'h-20 sm:h-32 max-w-[200px]' 
+                              ? 'h-12 sm:h-16 max-w-[200px]' 
                               : 'h-8 sm:h-12 max-w-[90px]'
                           }`}
+                          style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
                           onError={(e) => {
                             e.target.style.display = 'none'
                           }}
