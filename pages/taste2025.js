@@ -168,7 +168,13 @@ function SponsorshipForm() {
         'Preferred logo recognition at the event, via website, and via e-mail'
       ],
       color: 'bg-orange-600',
-      textColor: 'text-orange-600'
+      textColor: 'text-orange-600',
+      sponsors: [
+        { name: 'John Cha', logo: null },
+        { name: 'Kahana Feld', logo: null },
+        { name: 'SL Law', logo: null },
+        { name: 'Kim Law APC', logo: null }
+      ]
     },
     {
       id: 'goguryeo',
@@ -180,7 +186,20 @@ function SponsorshipForm() {
         'Standard logo recognition at the event, via website, and via e-mail'
       ],
       color: 'bg-teal-600',
-      textColor: 'text-teal-600'
+      textColor: 'text-teal-600',
+      sponsors: [
+        { name: 'April Gilbert', logo: null },
+        { name: 'Avodah Law Group', logo: null },
+        { name: 'Capto Advisors', logo: null },
+        { name: 'Chin Law Group', logo: null },
+        { name: 'In-sīt Coffee', logo: null },
+        { name: 'KABA SoCal', logo: null },
+        { name: 'RO & YOU', logo: null },
+        { name: 'Steno', logo: null },
+        { name: 'UCI Law Korea Law Center', logo: null },
+        { name: 'Umberg Zipser', logo: null },
+        { name: 'ZC Settlement Advisors', logo: null }
+      ]
     },
     {
       id: 'gojoseon',
@@ -192,7 +211,10 @@ function SponsorshipForm() {
         'Tickets not included (may be purchased separately)'
       ],
       color: 'bg-indigo-600',
-      textColor: 'text-indigo-600'
+      textColor: 'text-indigo-600',
+      sponsors: [
+        { name: 'Kairos Academics', logo: null }
+      ]
     }
   ]
 
@@ -486,22 +508,33 @@ function SponsorshipForm() {
                     <div className="text-xs text-gray-500 mb-2 font-medium">
                       Current {tier.name}s:
                     </div>
-                    <div className="flex gap-3 justify-end items-center flex-nowrap">
+                    <div className={`flex gap-3 justify-end items-center ${
+                      tier.sponsors.length > 4 ? 'flex-wrap max-w-[300px]' : 'flex-nowrap'
+                    }`}>
                       {tier.sponsors.map((sponsor, index) => (
-                        <img
-                          key={index}
-                          src={`/${sponsor.logo}`}
-                          alt={sponsor.name}
-                          className={`w-auto object-contain ${
-                            tier.id === 'joseon' 
-                              ? 'h-12 sm:h-16 max-w-[200px]' 
-                              : 'h-10 sm:h-14 max-w-[100px]'
-                          }`}
-                          style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
-                          onError={(e) => {
-                            e.target.style.display = 'none'
-                          }}
-                        />
+                        sponsor.logo ? (
+                          <img
+                            key={index}
+                            src={`/${sponsor.logo}`}
+                            alt={sponsor.name}
+                            className={`w-auto object-contain ${
+                              tier.id === 'joseon' 
+                                ? 'h-16 sm:h-20 max-w-[240px]' 
+                                : 'h-12 sm:h-16 max-w-[120px]'
+                            }`}
+                            style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
+                            onError={(e) => {
+                              e.target.style.display = 'none'
+                            }}
+                          />
+                        ) : (
+                          <span
+                            key={index}
+                            className={`text-xs px-2 py-1 rounded border ${tier.textColor} bg-white border-current`}
+                          >
+                            {sponsor.name}
+                          </span>
+                        )
                       ))}
                     </div>
                   </div>
