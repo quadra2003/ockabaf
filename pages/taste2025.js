@@ -437,8 +437,8 @@ function SponsorshipForm() {
               }}
             >
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                <div className="flex-1 lg:pr-4 mb-4 lg:mb-0">
-                  <div className="flex items-center gap-3 mb-2">
+                <div className="flex-1 lg:pr-4">
+                  <div className="flex justify-between items-start lg:items-center lg:justify-start gap-3 mb-2">
                     <h3 className={`text-xl lg:text-2xl font-bold ${tier.textColor}`}>
                       {tier.name}
                     </h3>
@@ -447,6 +447,28 @@ function SponsorshipForm() {
                         {tier.status}
                       </span>
                     )}
+                    {/* Mobile pricing - top right */}
+                    <div className="lg:hidden text-right">
+                      {tier.amount ? (
+                        <div>
+                          <div className={`text-xl font-bold ${tier.textColor}`}>
+                            ${tier.amount.toLocaleString()}
+                          </div>
+                          <div className="text-xs text-green-600 font-semibold">
+                            + ${tier.amount.toLocaleString()} match!
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Total Impact: ${(tier.amount * 2).toLocaleString()}
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="text-sm text-green-600 font-semibold">
+                            Matching all donations
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <p className="text-gray-600 text-sm uppercase tracking-wide font-medium mb-3">
                     {tier.level}
@@ -470,10 +492,11 @@ function SponsorshipForm() {
                     />
                   </div>
                 )}
-                <div className="text-center lg:text-right lg:ml-4">
+                {/* Desktop pricing - right side */}
+                <div className="hidden lg:block text-right lg:ml-4">
                   {tier.amount ? (
                     <div>
-                      <div className={`text-2xl lg:text-3xl font-bold ${tier.textColor}`}>
+                      <div className={`text-3xl font-bold ${tier.textColor}`}>
                         ${tier.amount.toLocaleString()}
                       </div>
                       <div className="text-sm text-green-600 font-semibold">
@@ -509,10 +532,12 @@ function SponsorshipForm() {
                       Current {tier.name}s:
                     </div>
                     <div className={`flex gap-2 lg:gap-3 justify-center lg:justify-end items-center ${
-                      tier.sponsors.length > 4 
-                        ? 'flex-wrap max-w-full lg:max-w-[400px]' 
+                      tier.sponsors.length > 6 
+                        ? 'flex-wrap max-w-full lg:max-w-[420px]' 
                         : tier.sponsors.length === 4
-                        ? 'flex-wrap max-w-full lg:max-w-[280px]'
+                        ? 'flex-wrap lg:flex-nowrap max-w-full lg:max-w-none'
+                        : tier.sponsors.length <= 4
+                        ? 'flex-wrap lg:flex-nowrap max-w-full lg:max-w-none'
                         : 'flex-wrap lg:flex-nowrap'
                     }`}>
                       {tier.sponsors.map((sponsor, index) => (
