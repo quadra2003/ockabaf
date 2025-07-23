@@ -94,7 +94,7 @@ export default function Home() {
               Sponsor Taste of Korea 2025
             </h2>
             <p className="text-xl mb-2 opacity-90">
-              Wednesday, August 27, 2025 • 6:00 PM - 8:30 PM
+              Wednesday, August 27, 2025 • 6:00 PM - 9:00 PM
             </p>
             <p className="text-lg mb-6 opacity-80">
               Join us for an evening of Korean food, drinks, and entertainment while supporting our mission
