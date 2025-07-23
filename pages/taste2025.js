@@ -486,9 +486,7 @@ function SponsorshipForm() {
                     <div className="text-xs text-gray-500 mb-2 font-medium">
                       Current {tier.name}s:
                     </div>
-                    <div className={`flex flex-wrap gap-3 justify-end items-center ${
-                      tier.id === 'silla' ? 'max-w-[220px]' : ''
-                    }`}>
+                    <div className="flex gap-3 justify-end items-center flex-nowrap">
                       {tier.sponsors.map((sponsor, index) => (
                         <img
                           key={index}
@@ -497,7 +495,7 @@ function SponsorshipForm() {
                           className={`w-auto object-contain ${
                             tier.id === 'joseon' 
                               ? 'h-12 sm:h-16 max-w-[200px]' 
-                              : 'h-8 sm:h-12 max-w-[90px]'
+                              : 'h-10 sm:h-14 max-w-[100px]'
                           }`}
                           style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
                           onError={(e) => {
