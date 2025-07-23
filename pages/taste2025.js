@@ -172,8 +172,8 @@ function SponsorshipForm() {
       sponsors: [
         { name: 'John Cha', logo: null },
         { name: 'Kahana Feld', logo: null },
-        { name: 'SL Law', logo: null },
-        { name: 'Kim Law APC', logo: null }
+        { name: 'Kim Law APC', logo: null },
+        { name: 'SL Law', logo: null }
       ]
     },
     {
@@ -437,13 +437,13 @@ function SponsorshipForm() {
               }}
             >
               <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
-                <div className="flex-1 lg:pr-4">
+                <div className="flex-1 lg:pr-4 mb-4 lg:mb-0">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className={`text-2xl font-bold ${tier.textColor}`}>
+                    <h3 className={`text-xl lg:text-2xl font-bold ${tier.textColor}`}>
                       {tier.name}
                     </h3>
                     {tier.status && (
-                      <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-sm font-medium">
+                      <span className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium">
                         {tier.status}
                       </span>
                     )}
@@ -462,7 +462,7 @@ function SponsorshipForm() {
                     <img
                       src={`/images/${tier.logo}`}
                       alt="Ichthus Injury Network"
-                      className="h-12 sm:h-16 w-auto"
+                      className="h-12 sm:h-16 w-auto max-w-full"
                       style={{ maxWidth: 'none' }}
                       onError={(e) => {
                         e.target.style.display = 'none'
@@ -470,10 +470,10 @@ function SponsorshipForm() {
                     />
                   </div>
                 )}
-                <div className="text-right lg:ml-4">
+                <div className="text-center lg:text-right lg:ml-4">
                   {tier.amount ? (
                     <div>
-                      <div className={`text-3xl font-bold ${tier.textColor}`}>
+                      <div className={`text-2xl lg:text-3xl font-bold ${tier.textColor}`}>
                         ${tier.amount.toLocaleString()}
                       </div>
                       <div className="text-sm text-green-600 font-semibold">
@@ -503,13 +503,17 @@ function SponsorshipForm() {
               </ul>
 
               {tier.sponsors && (
-                <div className="flex justify-end mt-4">
-                  <div className="flex flex-col items-end">
-                    <div className="text-xs text-gray-500 mb-2 font-medium">
+                <div className="flex justify-center lg:justify-end mt-4">
+                  <div className="flex flex-col items-center lg:items-end w-full lg:w-auto">
+                    <div className="text-xs text-gray-500 mb-2 font-medium text-center lg:text-right">
                       Current {tier.name}s:
                     </div>
-                    <div className={`flex gap-3 justify-end items-center ${
-                      tier.sponsors.length > 4 ? 'flex-wrap max-w-[300px]' : 'flex-nowrap'
+                    <div className={`flex gap-2 lg:gap-3 justify-center lg:justify-end items-center ${
+                      tier.sponsors.length > 4 
+                        ? 'flex-wrap max-w-full lg:max-w-[400px]' 
+                        : tier.sponsors.length === 4
+                        ? 'flex-wrap max-w-full lg:max-w-[280px]'
+                        : 'flex-wrap lg:flex-nowrap'
                     }`}>
                       {tier.sponsors.map((sponsor, index) => (
                         sponsor.logo ? (
@@ -519,8 +523,8 @@ function SponsorshipForm() {
                             alt={sponsor.name}
                             className={`w-auto object-contain ${
                               tier.id === 'joseon' 
-                                ? 'h-16 sm:h-20 max-w-[240px]' 
-                                : 'h-12 sm:h-16 max-w-[120px]'
+                                ? 'h-12 sm:h-16 lg:h-20 max-w-[120px] lg:max-w-[240px]' 
+                                : 'h-10 sm:h-12 lg:h-16 max-w-[80px] lg:max-w-[120px]'
                             }`}
                             style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
                             onError={(e) => {
@@ -530,7 +534,7 @@ function SponsorshipForm() {
                         ) : (
                           <span
                             key={index}
-                            className={`text-xs px-2 py-1 rounded border ${tier.textColor} bg-white border-current`}
+                            className={`text-xs px-2 py-1 rounded border ${tier.textColor} bg-white border-current whitespace-nowrap`}
                           >
                             {sponsor.name}
                           </span>
