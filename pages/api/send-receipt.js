@@ -1,6 +1,7 @@
 // pages/api/send-receipt.js
 import mailgun from 'mailgun-js'
-import { format } from 'date-fns'
+import { format, parseISO } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 import PDFDocument from 'pdfkit'
 import fs from 'fs'
 import path from 'path'
@@ -13,8 +14,12 @@ const mg = mailgun({
 
 async function sendInternalNotification(donationData) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id, donation_note, receiptNumber } = donationData
-  const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
-  const formattedTime = format(new Date(transaction_date), 'h:mm a')
+  
+  // Fix timezone handling for internal notification
+  const parsedDate = parseISO(transaction_date)
+  const localDate = utcToZonedTime(parsedDate, 'America/Los_Angeles')
+  const formattedDate = format(localDate, 'MMMM dd, yyyy')
+  const formattedTime = format(localDate, 'h:mm a')
 
   const internalHTML = `
     <!DOCTYPE html>
@@ -119,7 +124,11 @@ async function sendInternalNotification(donationData) {
 
 function generateReceiptHTML(donationData, receiptNumber) {
   const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
-  const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
+  
+  // Fix timezone handling for receipt HTML
+  const parsedDate = parseISO(transaction_date)
+  const localDate = utcToZonedTime(parsedDate, 'America/Los_Angeles')
+  const formattedDate = format(localDate, 'MMMM dd, yyyy')
 
   return `
     <!DOCTYPE html>
@@ -208,7 +217,11 @@ function generateReceiptHTML(donationData, receiptNumber) {
         Newport Beach, CA 92658<br>
         Email: info@ockabaf.org</p>
         
-        <p><em>This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.</em></p>
+        <p><em>This receipt was automatically generated on ${(() => {
+          const now = new Date()
+          const localNow = utcToZonedTime(now, 'America/Los_Angeles')
+          return format(localNow, 'MMMM dd, yyyy')
+        })()}.</em></p>
       </div>
     </body>
     </html>
@@ -218,7 +231,11 @@ function generateReceiptHTML(donationData, receiptNumber) {
 async function generatePDFReceipt(donationData, receiptNumber) {
   return new Promise((resolve, reject) => {
     const { donor_name, donor_email, amount, transaction_date, payment_intent_id } = donationData
-    const formattedDate = format(new Date(transaction_date), 'MMMM dd, yyyy')
+    
+    // Fix timezone handling for PDF
+    const parsedDate = parseISO(transaction_date)
+    const localDate = utcToZonedTime(parsedDate, 'America/Los_Angeles')
+    const formattedDate = format(localDate, 'MMMM dd, yyyy')
     
     // Create PDF document
     const doc = new PDFDocument({ margin: 50 })
@@ -233,13 +250,13 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     const logoPath = path.join(process.cwd(), 'public', 'images', 'ockabaf-logo.png')
     if (fs.existsSync(logoPath)) {
       doc.image(logoPath, 200, 50, { width: 200 })
-      doc.moveDown(4)  // Much less space after logo
+      doc.moveDown(4)
     }
 
-    // Header - closer to logo
+    // Header
     doc.fontSize(20).font('Helvetica-Bold')
        .text('Donation Receipt', { align: 'center' })
-       .moveDown(1)  // Less space before amount section
+       .moveDown(1)
 
     // Amount section
     doc.rect(50, doc.y, 495, 80).fill('#f9f9f9').stroke('#ddd')
@@ -247,7 +264,7 @@ async function generatePDFReceipt(donationData, receiptNumber) {
        .text(`$${amount}.00`, 50, doc.y + 15, { align: 'center', width: 495 })
     doc.fillColor('black').fontSize(14).font('Helvetica')
        .text('Thank you for your generous donation!', 50, doc.y + 10, { align: 'center', width: 495 })
-    doc.moveDown(2)  // Less space after amount section
+    doc.moveDown(2)
 
     // Details section
     const startY = doc.y
@@ -271,15 +288,15 @@ async function generatePDFReceipt(donationData, receiptNumber) {
     
     doc.y = startY + 140
 
-    // Tax info section - more compact
-    doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')  // Taller height
+    // Tax info section
+    doc.rect(50, doc.y, 495, 90).fill('#fff3cd').stroke('#ffeaa7')
     doc.fillColor('black').fontSize(10).font('Helvetica-Bold')
        .text('Tax Deductible Information:', 60, doc.y + 10)
-    doc.font('Helvetica').fontSize(9)  // Smaller font
+    doc.font('Helvetica').fontSize(9)
        .text('OCKABA Foundation is a 501(c)(3) nonprofit organization (EIN: 27-4456831). Your donation is tax-deductible to the extent allowed by law. No goods or services were provided in exchange for this donation. Please consult your tax advisor for specific deduction information.', 60, doc.y + 25, { width: 475, lineGap: 2 })
 
-    // Footer - positioned right after tax info
-    doc.y += 105  // Position footer after taller box
+    // Footer with fixed generation date
+    doc.y += 105
     doc.fontSize(10).font('Helvetica').fillColor('black')
        .text('OCKABA Foundation', { align: 'center' })
        .moveDown(0.3)
@@ -290,7 +307,11 @@ async function generatePDFReceipt(donationData, receiptNumber) {
        .text('Email: info@ockabaf.org', { align: 'center' })
        .moveDown(0.5)
        .fillColor('#666').fontSize(9)
-       .text(`This receipt was automatically generated on ${format(new Date(), 'MMMM dd, yyyy')}.`, { align: 'center' })
+       .text(`This receipt was automatically generated on ${(() => {
+         const now = new Date()
+         const localNow = utcToZonedTime(now, 'America/Los_Angeles')
+         return format(localNow, 'MMMM dd, yyyy')
+       })()}.`, { align: 'center' })
 
     doc.end()
   })
@@ -330,7 +351,7 @@ export default async function handler(req, res) {
       payment_intent_id
     }, receiptNumber)
 
-    // Store PDF temporarily for attachment with user-friendly filename
+    // Store PDF temporarily for attachment
     const pdfPath = path.join('/tmp', `receipt-${receiptNumber}.pdf`)
     
     try {
@@ -349,8 +370,7 @@ export default async function handler(req, res) {
       to: donor_email,
       subject: 'Your OCKABA Foundation Donation Receipt',
       html: receiptHTML,
-      attachment: pdfPath, // Mailgun-js expects file path for attachments
-      // BCC organization email for records
+      attachment: pdfPath,
       bcc: 'info@ockabaf.org'
     }
 
@@ -365,7 +385,7 @@ export default async function handler(req, res) {
       })
     })
 
-    // Clean up temporary file after a longer delay (30 minutes) to allow downloads
+    // Clean up temporary file after 30 minutes
     setTimeout(() => {
       try {
         fs.unlinkSync(pdfPath)
@@ -373,7 +393,7 @@ export default async function handler(req, res) {
       } catch (cleanupError) {
         console.log('PDF cleanup failed:', cleanupError.message)
       }
-    }, 30 * 60 * 1000) // 30 minutes
+    }, 30 * 60 * 1000)
 
     // Send internal notification to organization
     await sendInternalNotification({
