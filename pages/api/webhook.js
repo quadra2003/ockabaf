@@ -9,10 +9,12 @@ export default async function handler(req, res) {
     let event
 
     try {
-      event = stripe.webhooks.constructEvent(req.body, sig, process.env.STRIPE_WEBHOOK_SECRET)
+      // Convert buffer to string for Stripe
+      const body = req.body.toString()
+      event = stripe.webhooks.constructEvent(body, sig, process.env.STRIPE_WEBHOOK_SECRET)
     } catch (err) {
       console.error('Webhook signature verification failed:', err.message)
-      return res.status(400).send(`Webhook signature verification failed.`)
+      return res.status(400).send(`Webhook signature verification failed: ${err.message}`)
     }
 
     // Handle the payment_intent.succeeded event
@@ -90,10 +92,9 @@ export default async function handler(req, res) {
   }
 }
 
+// This is the key fix - disable body parsing to get raw body for Stripe signature verification
 export const config = {
   api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
+    bodyParser: false,
   },
 }
