@@ -24,7 +24,7 @@ export default function About() {
               We believe that access to justice should not depend on one's ability to pay, and that investing in promising law students while engaging dedicated pre-law individuals creates a ripple effect of positive impact throughout our community for years to come.
             </p>
             <p className="text-gray-600">
-              Through strategic partnerships with corporate sponsors and community supporters, we amplify our impact and ensure the sustainability of our programs. Our annual Taste of Korea fundraiser and corporate sponsorship opportunities enable us to expand our services and reach more community members in need.
+              The generous contributions from our community supporters enable us to ensure the sustainability of our programs and expand our services to reach more community members in need.
             </p>
           </div>
 
