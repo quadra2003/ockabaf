@@ -28,12 +28,12 @@ export default function AdminReceiptGenerator() {
       } = router.query
 
       const newFormData = {
-        donorName: donor_name || 'Linda Carter',
-        donorEmail: donor_email || 'lcarter@kahanafeld.com',
-        amount: amount || '1000',
-        donationDate: donation_date || 'July 21, 2025',
-        receiptNumber: receipt_number || 'OCKABAF-1XXHD0YA',
-        transactionId: transaction_id || 'pi_3RnQkGBjlJm8Jh2R1XxHD0yA'
+        donorName: donor_name || '',
+        donorEmail: donor_email || '',
+        amount: amount || '',
+        donationDate: donation_date || '',
+        receiptNumber: receipt_number || '',
+        transactionId: transaction_id || ''
       }
       
       setFormData(newFormData)
