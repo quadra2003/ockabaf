@@ -9,7 +9,7 @@ export default function Board() {
   ]
 
   const directors = [
-    { name: "Mimi Ahn", affiliation: "Kahana Feld", photo: "Mimi.jpg", website: "https://kahanafeld.com/team-member/mimi-ahn-esq/", linkedin: "https://www.linkedin.com/in/mimi-ahn-81480389/" },
+    { name: "Mimi Ahn", affiliation: "Kahana Feld", photo: "Mimi2.jpg", website: "https://kahanafeld.com/team-member/mimi-ahn-esq/", linkedin: "https://www.linkedin.com/in/mimi-ahn-81480389/" },
     { name: "Gahram Kang Chao", affiliation: "Avodah Law Group", photo: "Gahram.jpg", website: "https://avodahlawgroup.com/about-us/gahram-kang-chao/", linkedin: "https://www.linkedin.com/in/gahram-kang-chao-1040001/" },
     { name: "Janet Park Dennerline", affiliation: "KTGY Group", photo: "Janet.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdennerline/" },
     { name: "Young Ham", affiliation: "Qcells USA", photo: "Young2.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdyoungham/" },
