@@ -1,16 +1,61 @@
 // pages/admin/receipt-generator.js
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Layout from '../../components/Layout'
 
 export default function AdminReceiptGenerator() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
-    donorName: 'Linda Carter',
-    donorEmail: 'lcarter@kahanafeld.com',
-    amount: '1000',
-    donationDate: 'July 21, 2025',
-    receiptNumber: 'OCKABAF-1XXHD0YA',
-    transactionId: 'pi_3RnQkGBjlJm8Jh2R1XxHD0yA'
+    donorName: '',
+    donorEmail: '',
+    amount: '',
+    donationDate: '',
+    receiptNumber: '',
+    transactionId: ''
   })
+
+  // Load data from URL parameters
+  useEffect(() => {
+    if (router.isReady) {
+      const { 
+        donor_name, 
+        donor_email, 
+        amount, 
+        donation_date, 
+        receipt_number, 
+        transaction_id,
+        auto_download
+      } = router.query
+
+      const newFormData = {
+        donorName: donor_name || 'Linda Carter',
+        donorEmail: donor_email || 'lcarter@kahanafeld.com',
+        amount: amount || '1000',
+        donationDate: donation_date || 'July 21, 2025',
+        receiptNumber: receipt_number || 'OCKABAF-1XXHD0YA',
+        transactionId: transaction_id || 'pi_3RnQkGBjlJm8Jh2R1XxHD0yA'
+      }
+      
+      setFormData(newFormData)
+
+      // Auto-download if parameter is present and all required fields are filled
+      if (auto_download === 'true' && donor_name && donor_email && amount && donation_date && receipt_number && transaction_id) {
+        setTimeout(() => {
+          const params = new URLSearchParams({
+            receipt: receipt_number,
+            donor_name: donor_name,
+            donor_email: donor_email,
+            amount: amount,
+            donation_date: donation_date,
+            transaction_id: transaction_id
+          })
+          
+          const downloadUrl = `/api/download-receipt?${params.toString()}`
+          window.open(downloadUrl, '_blank')
+        }, 500) // Small delay to ensure page is loaded
+      }
+    }
+  }, [router.isReady, router.query])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
