@@ -194,9 +194,13 @@ function SponsorshipForm() {
         { name: 'Capto Advisors', logo: null },
         { name: 'Chin Law Group', logo: null },
         { name: 'In-sīt Coffee', logo: null },
+        { name: 'Judicate West', logo: null },
         { name: 'KABA SoCal', logo: null },
+        { name: 'Nationwide Legal', logo: null },
         { name: 'RO & YOU', logo: null },
+        { name: 'Sgt. Pepperoni\'s Pizza', logo: null },
         { name: 'Steno', logo: null },
+        { name: 'Susan Kang Group', logo: null },
         { name: 'UCI Law Korea Law Center', logo: null },
         { name: 'Umberg Zipser', logo: null },
         { name: 'ZC Settlement Advisors', logo: null }
