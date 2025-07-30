@@ -193,6 +193,7 @@ function SponsorshipForm() {
         { name: 'Avodah Law Group', logo: null },
         { name: 'Capto Advisors', logo: null },
         { name: 'Chin Law Group', logo: null },
+        { name: 'FLOC', logo: null },
         { name: 'In-sīt Coffee', logo: null },
         { name: 'Judicate West', logo: null },
         { name: 'KABA SoCal', logo: null },
