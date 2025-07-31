@@ -13,7 +13,7 @@ export default function Board() {
     { name: "Gahram Kang Chao", affiliation: "Avodah Law Group", photo: "Gahram.jpg", website: "https://avodahlawgroup.com/about-us/gahram-kang-chao/", linkedin: "https://www.linkedin.com/in/gahram-kang-chao-1040001/" },
     { name: "Janet Park Dennerline", affiliation: "KTGY Group", photo: "Janet.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdennerline/" },
     { name: "Young Ham", affiliation: "Qcells USA", photo: "Young2.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdyoungham/" },
-    { name: "Cecilia Hong", affiliation: "Kahana Feld", photo: "Cecilia.jpg", website: "https://kahanafeld.com/team-member/cecilia-hong-esq/", linkedin: "https://www.linkedin.com/in/cecilia-hong-bb614830/" },
+    { name: "Cecilia Hong", affiliation: "Gordon Rees Scully Mansukhani", photo: "Cecilia.jpg", website: "", linkedin: "https://www.linkedin.com/in/cecilia-hong-bb614830/" },
     { name: "Susan Kang", affiliation: "Susan Kang Group", photo: "Susan.jpg", website: "https://susankanggroup.com/", linkedin: "https://www.linkedin.com/in/susan-heesoo-%ED%9D%AC%EC%88%98-kang-%EA%B0%95-89829950/" },
     { name: "Ellen Kim", affiliation: "Umberg Zipser", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" },
     { name: "Joshua Lee", affiliation: "Law Office of Joshua Y. Lee", photo: "Joshua.jpg", website: "https://lawandevidence.com/", linkedin: "https://www.linkedin.com/in/joshuaylee/" },
