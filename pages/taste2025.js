@@ -200,6 +200,7 @@ function SponsorshipForm() {
         { name: 'Nationwide Legal', logo: null },
         { name: 'RO & YOU', logo: null },
         { name: 'Sgt. Pepperoni\'s Pizza', logo: null },
+        { name: 'Signature Resolution', logo: null },
         { name: 'Steno', logo: null },
         { name: 'Susan Kang Group', logo: null },
         { name: 'UCI Law Korea Law Center', logo: null },
