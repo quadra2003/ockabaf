@@ -138,7 +138,10 @@ function SponsorshipForm() {
         'Premium logo recognition at the event, via website, and via e-mail'
       ],
       color: 'bg-purple-600',
-      textColor: 'text-purple-600'
+      textColor: 'text-purple-600',
+      sponsors: [
+        { name: 'Briana Kim PC', logo: 'briana.jpg' }
+      ]
     },
     {
       id: 'silla',
@@ -152,7 +155,6 @@ function SponsorshipForm() {
       color: 'bg-green-600',
       textColor: 'text-green-600',
       sponsors: [
-        { name: 'Briana Kim PC', logo: 'briana.jpg' },
         { name: 'Crowell & Moring LLP', logo: 'crowell.png' },
         { name: 'Knobbe Martens', logo: 'knobbe.jpg' },
         { name: 'OCKABA', logo: 'ockaba.jpg' }
@@ -555,10 +557,12 @@ function SponsorshipForm() {
                             alt={sponsor.name}
                             className={`w-auto object-contain ${
                               tier.id === 'joseon' 
-                                ? 'h-12 sm:h-16 lg:h-20 max-w-[120px] lg:max-w-[240px]' 
+                                ? 'h-16 sm:h-20 lg:h-24 max-w-[150px] lg:max-w-[300px]' 
+                                : tier.id === 'goryeo'
+                                ? 'h-16 sm:h-20 lg:h-24 max-w-[150px] lg:max-w-[300px]'
                                 : 'h-10 sm:h-12 lg:h-16 max-w-[80px] lg:max-w-[120px]'
                             }`}
-                            style={tier.id === 'joseon' ? { objectPosition: 'center' } : {}}
+                            style={tier.id === 'joseon' || tier.id === 'goryeo' ? { objectPosition: 'center' } : {}}
                             onError={(e) => {
                               e.target.style.display = 'none'
                             }}
