@@ -175,6 +175,7 @@ function SponsorshipForm() {
         { name: 'John Cha', logo: null },
         { name: 'Kahana Feld', logo: null },
         { name: 'Kim Law APC', logo: null },
+        { name: 'OCAABA', logo: null },
         { name: 'SL Law', logo: null },
         { name: 'Womble Bond Dickinson', logo: null }
       ]
