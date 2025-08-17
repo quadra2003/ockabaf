@@ -17,7 +17,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
               <img 
-                src="/images/ockaba-foundation-logo.png" 
+                src="/images/ockabaf-logo-small.png" 
                 alt="OCKABA Foundation"
                 className="h-10 w-auto"
               />
