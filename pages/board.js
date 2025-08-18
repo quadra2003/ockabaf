@@ -24,6 +24,7 @@ export default function Board() {
     { name: "Alexander Payne", affiliation: "Minyard Morris", photo: "Alex.jpg", website: "https://www.minyardmorris.com/attorney/alexander-payne/", linkedin: "https://www.linkedin.com/in/alexander-payne-cfls-26b76050/" },
     { name: "Deborah Song", affiliation: "Minyard Morris", photo: "Deborah.jpg", website: "https://www.minyardmorris.com/attorney/deborah-j-song/", linkedin: "https://www.linkedin.com/in/deborah-jieun-song-esq-b245521aa/" },
     { name: "Ja H. Suh", affiliation: "Law Offices of Suh & Suh", photo: "Ja.jpg", website: "https://suhlaw.com/about-1", linkedin: "https://www.linkedin.com/in/ja-h-suh-3235282/" },
+    { name: "Vu Tran", affiliation: "OC Public Defender's Office", photo: "Vu.jpg", website: "https://apps.calbar.ca.gov/attorney/Licensee/Detail/254130", linkedin: "" },
     { name: "Samuel Yu", affiliation: "Kahana Feld", photo: "Samuel.jpg", website: "https://kahanafeld.com/team-member/samuel-yu-esq/", linkedin: "https://www.linkedin.com/in/samuel-yu-6277721b/" }
   ]
 
