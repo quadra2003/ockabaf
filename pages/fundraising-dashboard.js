@@ -131,7 +131,7 @@ export default function DonationTracker() {
     refreshData()
     
     // Auto-refresh every 2 minutes
-    const interval = setInterval(refreshData, 2 * 60 * 1000)
+    const interval = setInterval(refreshData, 5 * 1000)
     return () => clearInterval(interval)
   }, [])
 
