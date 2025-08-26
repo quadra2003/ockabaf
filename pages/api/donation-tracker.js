@@ -39,28 +39,47 @@ export default async function handler(req, res) {
 
     console.log('Fetching fresh donation data from Stripe...')
 
-    // Get successful payment intents from the last 30 days
-    const thirtyDaysAgo = Math.floor((Date.now() - (30 * 24 * 60 * 60 * 1000)) / 1000)
-    
-    const paymentIntents = await stripe.paymentIntents.list({
-      limit: 100,
-      created: {
-        gte: thirtyDaysAgo
-      },
-      expand: ['data.latest_charge']
-    })
+    // Get ALL successful payment intents (no date limit)
+    let allPayments = []
+    let hasMore = true
+    let startingAfter = undefined
 
-    // Filter for succeeded payments (these are your donations)
-    const donations = paymentIntents.data.filter(pi => 
-      pi.status === 'succeeded'
-    )
+    while (hasMore) {
+      const params = {
+        limit: 100,
+        expand: ['data.latest_charge'],
+        ...(startingAfter && { starting_after: startingAfter })
+      }
+
+      const paymentIntents = await stripe.paymentIntents.list(params)
+      
+      // Filter for succeeded payments only
+      const succeededPayments = paymentIntents.data.filter(pi => 
+        pi.status === 'succeeded' && pi.amount_received > 0
+      )
+      
+      allPayments = allPayments.concat(succeededPayments)
+      
+      hasMore = paymentIntents.has_more
+      if (hasMore && paymentIntents.data.length > 0) {
+        startingAfter = paymentIntents.data[paymentIntents.data.length - 1].id
+      }
+
+      // Safety break to avoid infinite loops
+      if (allPayments.length > 1000) {
+        console.log('Safety break: retrieved 1000+ payments')
+        break
+      }
+    }
+
+    console.log(`Total successful payments found: ${allPayments.length}`)
 
     // Calculate totals
-    const totalAmount = donations.reduce((sum, donation) => sum + donation.amount, 0)
-    const donationCount = donations.length
+    const totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
+    const donationCount = allPayments.length
 
     // Get recent donations (last 10)
-    const recentDonations = donations
+    const recentDonations = allPayments
       .sort((a, b) => b.created - a.created)
       .slice(0, 10)
       .map(donation => {
@@ -70,17 +89,19 @@ export default async function handler(req, res) {
         let customerName = 'Anonymous'
         if (charge?.billing_details?.name) {
           customerName = charge.billing_details.name
-        } else if (donation.receipt_email) {
-          customerName = donation.receipt_email.split('@')[0]
         } else if (donation.metadata?.donor_name) {
           customerName = donation.metadata.donor_name
+        } else if (donation.metadata?.bidder_name) {
+          customerName = donation.metadata.bidder_name
+        } else if (donation.receipt_email) {
+          customerName = donation.receipt_email.split('@')[0]
         }
         
         return {
           id: donation.id,
           amount: donation.amount,
           name: customerName,
-          email: donation.receipt_email,
+          email: donation.receipt_email || donation.metadata?.donor_email || donation.metadata?.bidder_email,
           created: donation.created * 1000, // Convert to milliseconds
           timeAgo: getTimeAgo(donation.created * 1000)
         }
@@ -91,12 +112,14 @@ export default async function handler(req, res) {
       total: {
         amount: totalAmount,
         count: donationCount,
-        currency: donations[0]?.currency || 'usd'
+        currency: allPayments[0]?.currency || 'usd'
       },
       recent: recentDonations,
       lastUpdated: new Date().toISOString(),
       success: true
     }
+
+    console.log(`Total amount: ${(totalAmount / 100).toFixed(2)}`)
 
     // Update cache
     cache.data = responseData
