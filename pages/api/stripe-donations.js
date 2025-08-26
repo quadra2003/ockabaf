@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 let cache = {
   data: null,
   lastUpdated: null,
-  cacheExpiry: 5 * 60 * 1000 // 5 minutes
+  cacheExpiry: 5 * 1000 // 5 minutes
 }
 
 function getTimeAgo(timestamp) {
