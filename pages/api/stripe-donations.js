@@ -6,8 +6,10 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 // Cache to avoid hitting Stripe API too frequently
 let cache = {
   data: null,
+  allPayments: [], // Store all payments for incremental updates
   lastUpdated: null,
-  cacheExpiry: 5 * 1000 // 5 minutes
+  lastFetched: null, // Track when we last fetched from Stripe
+  cacheExpiry: 5 * 1000 // 5 seconds
 }
 
 function getTimeAgo(timestamp) {
@@ -37,46 +39,88 @@ export default async function handler(req, res) {
       return res.json(cache.data)
     }
 
-    console.log('Fetching fresh donation data from Stripe...')
+    console.log('Fetching donation data from Stripe...')
 
-    // Get ALL successful payment intents (no date limit)
     let allPayments = []
-    let hasMore = true
-    let startingAfter = undefined
+    let totalAmount = 0
+    let donationCount = 0
 
-    while (hasMore) {
-      const params = {
-        limit: 100,
-        expand: ['data.latest_charge'],
-        ...(startingAfter && { starting_after: startingAfter })
+    // If we have cached data, only fetch payments newer than our last update
+    const lastFetchTime = cache.lastFetched || 0
+    const fetchFromTime = Math.floor(lastFetchTime / 1000) // Convert to seconds
+
+    if (cache.data && fetchFromTime > 0) {
+      console.log(`Fetching only new payments since ${new Date(lastFetchTime).toISOString()}`)
+      
+      // Get only new payments
+      let hasMore = true
+      let startingAfter = undefined
+      
+      while (hasMore) {
+        const params = {
+          limit: 100,
+          expand: ['data.latest_charge'],
+          created: { gte: fetchFromTime },
+          ...(startingAfter && { starting_after: startingAfter })
+        }
+
+        const paymentIntents = await stripe.paymentIntents.list(params)
+        const succeededPayments = paymentIntents.data.filter(pi => 
+          pi.status === 'succeeded' && pi.amount_received > 0
+        )
+        
+        allPayments = allPayments.concat(succeededPayments)
+        hasMore = paymentIntents.has_more
+        
+        if (hasMore && paymentIntents.data.length > 0) {
+          startingAfter = paymentIntents.data[paymentIntents.data.length - 1].id
+        }
       }
 
-      const paymentIntents = await stripe.paymentIntents.list(params)
+      // Combine with cached data
+      const newPaymentIds = new Set(allPayments.map(p => p.id))
+      const existingPayments = cache.allPayments.filter(p => !newPaymentIds.has(p.id))
+      allPayments = [...existingPayments, ...allPayments]
       
-      // Filter for succeeded payments only
-      const succeededPayments = paymentIntents.data.filter(pi => 
-        pi.status === 'succeeded' && pi.amount_received > 0
-      )
+      console.log(`Found ${allPayments.length - existingPayments.length} new payments`)
       
-      allPayments = allPayments.concat(succeededPayments)
+    } else {
+      // First time fetch - get all payments
+      console.log('First time fetch - getting all payment history')
       
-      hasMore = paymentIntents.has_more
-      if (hasMore && paymentIntents.data.length > 0) {
-        startingAfter = paymentIntents.data[paymentIntents.data.length - 1].id
-      }
+      let hasMore = true
+      let startingAfter = undefined
 
-      // Safety break to avoid infinite loops
-      if (allPayments.length > 1000) {
-        console.log('Safety break: retrieved 1000+ payments')
-        break
+      while (hasMore) {
+        const params = {
+          limit: 100,
+          expand: ['data.latest_charge'],
+          ...(startingAfter && { starting_after: startingAfter })
+        }
+
+        const paymentIntents = await stripe.paymentIntents.list(params)
+        const succeededPayments = paymentIntents.data.filter(pi => 
+          pi.status === 'succeeded' && pi.amount_received > 0
+        )
+        
+        allPayments = allPayments.concat(succeededPayments)
+        hasMore = paymentIntents.has_more
+        
+        if (hasMore && paymentIntents.data.length > 0) {
+          startingAfter = paymentIntents.data[paymentIntents.data.length - 1].id
+        }
+
+        // Safety break
+        if (allPayments.length > 1000) {
+          console.log('Safety break: retrieved 1000+ payments')
+          break
+        }
       }
     }
 
-    console.log(`Total successful payments found: ${allPayments.length}`)
-
     // Calculate totals
-    const totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
-    const donationCount = allPayments.length
+    totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
+    donationCount = allPayments.length
 
     // Get recent donations (last 10)
     const recentDonations = allPayments
@@ -85,7 +129,6 @@ export default async function handler(req, res) {
       .map(donation => {
         const charge = donation.latest_charge
         
-        // Try to get name from different places
         let customerName = 'Anonymous'
         if (charge?.billing_details?.name) {
           customerName = charge.billing_details.name
@@ -102,12 +145,11 @@ export default async function handler(req, res) {
           amount: donation.amount,
           name: customerName,
           email: donation.receipt_email || donation.metadata?.donor_email || donation.metadata?.bidder_email,
-          created: donation.created * 1000, // Convert to milliseconds
+          created: donation.created * 1000,
           timeAgo: getTimeAgo(donation.created * 1000)
         }
       })
 
-    // Prepare response data
     const responseData = {
       total: {
         amount: totalAmount,
@@ -119,13 +161,14 @@ export default async function handler(req, res) {
       success: true
     }
 
-    console.log(`Total amount: ${(totalAmount / 100).toFixed(2)}`)
+    console.log(`Total amount: ${(totalAmount / 100).toFixed(2)} from ${donationCount} donations`)
 
-    // Update cache
+    // Update cache with all payment data
     cache.data = responseData
+    cache.allPayments = allPayments // Store all payments for next incremental update
     cache.lastUpdated = now
+    cache.lastFetched = now
 
-    // Add CORS headers for your frontend
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', 'GET')
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
@@ -135,7 +178,6 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error fetching donation data:', error)
     
-    // Return cached data if available, otherwise error
     if (cache.data) {
       console.log('Returning cached data due to error')
       return res.json({
