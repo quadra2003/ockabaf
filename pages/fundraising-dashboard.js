@@ -12,7 +12,7 @@ export default function DonationTracker() {
 
   // Configuration - Update these values
   const CONFIG = {
-    goal: 60000, // Your fundraising goal in dollars
+    goal: 65000, // Your fundraising goal in dollars
     auctria: {
       apiUrl: 'https://api.auctria.com/public/44c3e31f-2507-4828-804b-044dff36655b/state/b726a3d7-af3e-4495-ad6e-1631d73cb0c5/3522841447524ee19f2911037e9f4118'
     },
