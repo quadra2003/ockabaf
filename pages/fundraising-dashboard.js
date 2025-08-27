@@ -218,37 +218,39 @@ export default function DonationTracker() {
               </div>
             </div>
 
-          {/* Recent Activity - Ultra Compact */}
+{/* Recent Activity - 3 Columns */}
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 📈 Recent Activity
               </h3>
               
               {allRecent.length === 0 ? (
-                <div className="text-center py-4 text-gray-500 text-sm">
+                <div className="text-center py-6 text-gray-500">
                   No recent donations yet
                 </div>
               ) : (
-                <div className="bg-gray-50 rounded-lg p-3 max-h-32 overflow-y-auto">
-                  <div className="space-y-1">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                     {allRecent.map((donation, index) => (
                       <div 
                         key={index}
-                        className="flex items-center justify-between py-1 px-2 bg-white rounded text-xs hover:bg-gray-50 transition-colors"
+                        className="flex items-center justify-between py-2 px-3 bg-white rounded-lg border hover:shadow-sm transition-all"
                       >
                         <div className="flex items-center gap-2 flex-1 min-w-0">
                           <span className={`w-2 h-2 rounded-full flex-shrink-0 ${
                             donation.source === 'Auction' ? 'bg-red-400' : 'bg-blue-400'
                           }`}></span>
-                          <div className="font-medium text-gray-900 truncate">
-                            {donation.name}
-                          </div>
-                          <div className="text-gray-500 text-xs">
-                            {donation.timeAgo}
+                          <div className="min-w-0">
+                            <div className="font-medium text-gray-900 text-sm truncate">
+                              {donation.name}
+                            </div>
+                            <div className="text-gray-500 text-xs">
+                              {donation.timeAgo}
+                            </div>
                           </div>
                         </div>
                         <div className="flex-shrink-0 ml-2">
-                          <div className="font-semibold text-green-600">
+                          <div className="font-semibold text-green-600 text-sm">
                             {formatCurrency(donation.amount)}
                           </div>
                         </div>
@@ -257,9 +259,9 @@ export default function DonationTracker() {
                   </div>
                   
                   {allRecent.length === 20 && (
-                    <div className="text-center mt-2 pt-1 border-t border-gray-200">
-                      <span className="text-xs text-gray-400">
-                        Last 20 activities
+                    <div className="text-center mt-3 pt-3 border-t border-gray-200">
+                      <span className="text-sm text-gray-500">
+                        Showing last 20 activities
                       </span>
                     </div>
                   )}
