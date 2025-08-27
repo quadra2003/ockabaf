@@ -191,25 +191,7 @@ export default function DonationTracker() {
                   {donationData.website.count} donations
                 </div>
 
-                {/* Recent Donations */}
-                <div className="mt-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-3">Recent Donations</h4>
-                  {donationData.website.recent.length === 0 ? (
-                    <div className="text-sm text-gray-500 italic">No recent donations</div>
-                  ) : (
-                    <div className="space-y-2 max-h-48 overflow-y-auto">
-                      {donationData.website.recent.slice(0, 8).map((donation, index) => (
-                        <div key={index} className="flex items-center justify-between py-2 px-3 bg-white rounded border">
-                          <div className="flex-1 min-w-0">
-                            <div className="font-medium text-gray-900 text-sm truncate">
-                              {donation.name}
-                            </div>
-                            <div className="text-xs text-gray-500">
-                              {donation.timeAgo}
-                            </div>
-                          </div>
-                          <div className="ml-2 font-semibold text-green-600 text-sm">
-                            {formatCurrency(donation.amount)}
+)}
                           </div>
                         </div>
                       ))}
@@ -238,8 +220,8 @@ export default function DonationTracker() {
                   {donationData.auctria.recent.length === 0 ? (
                     <div className="text-sm text-gray-500 italic">No bids yet</div>
                   ) : (
-                    <div className="space-y-2 max-h-48 overflow-y-auto">
-                      {donationData.auctria.recent.slice(0, 8).map((bid, index) => (
+                    <div className="space-y-1.5">
+                      {donationData.auctria.recent.slice(0, 7).map((bid, index) => (
                         <div key={index} className="flex items-center justify-between py-2 px-3 bg-white rounded border">
                           <div className="flex-1 min-w-0">
                             <div className="font-medium text-gray-900 text-sm truncate">
