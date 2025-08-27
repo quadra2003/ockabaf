@@ -96,7 +96,7 @@ export default function DonationTracker() {
       return {
         total: Math.round(total),
         count,
-        recent: recent.slice(-5) // Last 5 items
+        recent: recent.slice(-15) // Last 15 items
       }
     } catch (error) {
       console.error('Error fetching Auctria data:', error)
