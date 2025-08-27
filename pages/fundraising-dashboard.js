@@ -191,7 +191,7 @@ export default function DonationTracker() {
               <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-blue-500">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-gray-900">
-                    💝 Website Donations
+                    💝 Sponsorships & Donations
                   </h3>
                 </div>
                 <div className="text-3xl font-bold text-blue-600 mb-2">
@@ -206,7 +206,7 @@ export default function DonationTracker() {
               <div className="bg-gray-50 rounded-lg p-6 border-l-4 border-red-500">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-gray-900">
-                    🏆 Auction Bids
+                    🏆 Silent Auction Bids
                   </h3>
                 </div>
                 <div className="text-3xl font-bold text-red-600 mb-2">
