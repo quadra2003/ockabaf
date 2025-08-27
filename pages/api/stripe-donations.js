@@ -79,39 +79,63 @@ export default async function handler(req, res) {
       }
     }
 
-    console.log(`Total successful payments found in 2025: ${allPayments.length}`)
+console.log(`Total successful payments found in 2025: ${allPayments.length}`)
 
-    // Calculate totals
-    const totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
-    const donationCount = allPayments.length
+// Add hardcoded $25,000 committed donation
+const hardcodedDonation = {
+  id: 'committed_25k_donation',
+  amount: 2500000, // $25,000 in cents
+  created: Math.floor(Date.now() / 1000), // Current timestamp
+  status: 'succeeded',
+  currency: 'usd',
+  metadata: {
+    donor_name: 'Committed Donation',
+    source: 'committed'
+  },
+  receipt_email: null,
+  latest_charge: {
+    billing_details: {
+      name: 'Committed Donation'
+    }
+  }
+}
 
-    // Get recent donations (last 10)
-    const recentDonations = allPayments
-      .sort((a, b) => b.created - a.created)
-      .slice(0, 10)
-      .map(donation => {
-        const charge = donation.latest_charge
-        
-        let customerName = 'Anonymous'
-        if (charge?.billing_details?.name) {
-          customerName = charge.billing_details.name
-        } else if (donation.metadata?.donor_name) {
-          customerName = donation.metadata.donor_name
-        } else if (donation.metadata?.bidder_name) {
-          customerName = donation.metadata.bidder_name
-        } else if (donation.receipt_email) {
-          customerName = donation.receipt_email.split('@')[0]
-        }
-        
-        return {
-          id: donation.id,
-          amount: donation.amount,
-          name: customerName,
-          email: donation.receipt_email || donation.metadata?.donor_email || donation.metadata?.bidder_email,
-          created: donation.created * 1000,
-          timeAgo: getTimeAgo(donation.created * 1000)
-        }
-      })
+// Add the hardcoded donation to the array
+allPayments.push(hardcodedDonation)
+
+// Calculate totals (now includes the $25k)
+const totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
+const donationCount = allPayments.length
+
+// Get recent donations (last 10) - the committed donation will appear at the top
+const recentDonations = allPayments
+  .sort((a, b) => b.created - a.created)
+  .slice(0, 10)
+  .map(donation => {
+    const charge = donation.latest_charge
+    
+    let customerName = 'Anonymous'
+    if (donation.id === 'committed_25k_donation') {
+      customerName = 'Committed Donation'
+    } else if (charge?.billing_details?.name) {
+      customerName = charge.billing_details.name
+    } else if (donation.metadata?.donor_name) {
+      customerName = donation.metadata.donor_name
+    } else if (donation.metadata?.bidder_name) {
+      customerName = donation.metadata.bidder_name
+    } else if (donation.receipt_email) {
+      customerName = donation.receipt_email.split('@')[0]
+    }
+    
+    return {
+      id: donation.id,
+      amount: donation.amount,
+      name: customerName,
+      email: donation.receipt_email || donation.metadata?.donor_email || donation.metadata?.bidder_email,
+      created: donation.created * 1000,
+      timeAgo: donation.id === 'committed_25k_donation' ? 'Committed' : getTimeAgo(donation.created * 1000)
+    }
+  })
 
     const responseData = {
       total: {
