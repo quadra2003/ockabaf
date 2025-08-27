@@ -111,7 +111,7 @@ const donationCount = allPayments.length
 const recentDonations = allPayments
   .filter(donation => donation.id !== 'committed_25k_donation') // Hide from recent activity
   .sort((a, b) => b.created - a.created)
-  .slice(0, 20)
+  .slice(0, 15)
   .map(donation => {
     const charge = donation.latest_charge
     
