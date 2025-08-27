@@ -107,8 +107,9 @@ allPayments.push(hardcodedDonation)
 const totalAmount = allPayments.reduce((sum, donation) => sum + donation.amount, 0)
 const donationCount = allPayments.length
 
-// Get recent donations (last 10) - the committed donation will appear at the top
+// Get recent donations (last 20) - exclude the committed donation from recent display
 const recentDonations = allPayments
+  .filter(donation => donation.id !== 'committed_25k_donation') // Hide from recent activity
   .sort((a, b) => b.created - a.created)
   .slice(0, 20)
   .map(donation => {
