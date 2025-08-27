@@ -156,7 +156,7 @@ export default function DonationTracker() {
             🎯 Fundraising Progress
           </h1>
           <p className="text-lg text-gray-600">
-            Supporting Korean American legal professionals together
+            Supporting our pro bono initiatives and scholarships together
           </p>
         </div>
 
