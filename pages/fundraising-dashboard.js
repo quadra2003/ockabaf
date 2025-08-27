@@ -12,7 +12,7 @@ export default function DonationTracker() {
 
   // Configuration - Update these values
   const CONFIG = {
-    goal: 65000, // Your fundraising goal in dollars
+    goal: 60000, // Your fundraising goal in dollars
     auctria: {
       apiUrl: 'https://api.auctria.com/public/44c3e31f-2507-4828-804b-044dff36655b/state/b726a3d7-af3e-4495-ad6e-1631d73cb0c5/3522841447524ee19f2911037e9f4118'
     },
@@ -191,7 +191,25 @@ export default function DonationTracker() {
                   {donationData.website.count} donations
                 </div>
 
-)}
+                {/* Recent Donations */}
+                <div className="mt-4">
+                  <h4 className="text-sm font-semibold text-gray-700 mb-3">Recent Donations</h4>
+                  {donationData.website.recent.length === 0 ? (
+                    <div className="text-sm text-gray-500 italic">No recent donations</div>
+                  ) : (
+                    <div className="space-y-1.5">
+                      {donationData.website.recent.slice(0, 7).map((donation, index) => (
+                        <div key={index} className="flex items-center justify-between py-2 px-3 bg-white rounded border">
+                          <div className="flex-1 min-w-0">
+                            <div className="font-medium text-gray-900 text-sm truncate">
+                              {donation.name}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {donation.timeAgo}
+                            </div>
+                          </div>
+                          <div className="ml-2 font-semibold text-green-600 text-sm">
+                            {formatCurrency(donation.amount)}
                           </div>
                         </div>
                       ))}
