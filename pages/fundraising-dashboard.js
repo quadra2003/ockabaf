@@ -139,13 +139,13 @@ export default function DonationTracker() {
   const total = donationData.auctria.total + donationData.website.total
   const percentage = Math.min((total / (CONFIG.goal * 100)) * 100, 100)
 
-  // Combine and sort recent donations
+  // Combine and sort recent donations (change from 5 to 20)
   const allRecent = [
     ...donationData.auctria.recent.map(d => ({...d, source: 'Auction'})),
     ...donationData.website.recent.map(d => ({...d, source: 'Website'}))
   ]
   .sort((a, b) => new Date(b.created || 0) - new Date(a.created || 0))
-  .slice(0, 5)
+  .slice(0, 20) // Changed from 5 to 20
 
   return (
     <Layout title="Fundraising Progress - OCKABA Foundation">
