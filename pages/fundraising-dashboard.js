@@ -145,7 +145,7 @@ export default function DonationTracker() {
     ...donationData.website.recent.map(d => ({...d, source: 'Website'}))
   ]
   .sort((a, b) => new Date(b.created || 0) - new Date(a.created || 0))
-  .slice(0, 20) // Changed from 5 to 20
+  .slice(0, 15) // Changed from 5 to 15
 
   return (
     <Layout title="Fundraising Progress - OCKABA Foundation">
@@ -258,10 +258,10 @@ export default function DonationTracker() {
                     ))}
                   </div>
                   
-                  {allRecent.length === 20 && (
+                  {allRecent.length === 15 && (
                     <div className="text-center mt-3 pt-3 border-t border-gray-200">
                       <span className="text-sm text-gray-500">
-                        Showing last 20 activities
+                        Showing last 15 activities
                       </span>
                     </div>
                   )}
