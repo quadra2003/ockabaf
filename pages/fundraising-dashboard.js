@@ -218,36 +218,51 @@ export default function DonationTracker() {
               </div>
             </div>
 
-            {/* Recent Activity */}
+          {/* Recent Activity - Ultra Compact */}
             <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 mb-3">
                 📈 Recent Activity
               </h3>
               
               {allRecent.length === 0 ? (
-                <div className="text-center py-8 text-gray-500">
+                <div className="text-center py-4 text-gray-500 text-sm">
                   No recent donations yet
                 </div>
               ) : (
-                <div className="space-y-3">
-                  {allRecent.map((donation, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center justify-between p-4 bg-gray-50 rounded-lg border"
-                    >
-                      <div>
-                        <div className="font-medium text-gray-900">
-                          {donation.name}
+                <div className="bg-gray-50 rounded-lg p-3 max-h-32 overflow-y-auto">
+                  <div className="space-y-1">
+                    {allRecent.map((donation, index) => (
+                      <div 
+                        key={index}
+                        className="flex items-center justify-between py-1 px-2 bg-white rounded text-xs hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="flex items-center gap-2 flex-1 min-w-0">
+                          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${
+                            donation.source === 'Auction' ? 'bg-red-400' : 'bg-blue-400'
+                          }`}></span>
+                          <div className="font-medium text-gray-900 truncate">
+                            {donation.name}
+                          </div>
+                          <div className="text-gray-500 text-xs">
+                            {donation.timeAgo}
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-500">
-                          {donation.source} • {donation.timeAgo}
+                        <div className="flex-shrink-0 ml-2">
+                          <div className="font-semibold text-green-600">
+                            {formatCurrency(donation.amount)}
+                          </div>
                         </div>
                       </div>
-                      <div className="text-lg font-semibold text-green-600">
-                        {formatCurrency(donation.amount)}
-                      </div>
+                    ))}
+                  </div>
+                  
+                  {allRecent.length === 20 && (
+                    <div className="text-center mt-2 pt-1 border-t border-gray-200">
+                      <span className="text-xs text-gray-400">
+                        Last 20 activities
+                      </span>
                     </div>
-                  ))}
+                  )}
                 </div>
               )}
             </div>
