@@ -110,7 +110,7 @@ const donationCount = allPayments.length
 // Get recent donations (last 10) - the committed donation will appear at the top
 const recentDonations = allPayments
   .sort((a, b) => b.created - a.created)
-  .slice(0, 10)
+  .slice(0, 20)
   .map(donation => {
     const charge = donation.latest_charge
     
