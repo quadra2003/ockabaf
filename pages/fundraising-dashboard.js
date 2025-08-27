@@ -66,6 +66,9 @@ export default function DonationTracker() {
 
       if (Array.isArray(data) && data.length > 0) {
         data.forEach(item => {
+        console.log('Auctria item:', item)
+
+          
           // The exact field names will depend on your auction setup
           // Common fields: Amount, Bid, Total, Value, etc.
           let amount = 0
