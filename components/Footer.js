@@ -12,7 +12,7 @@ export default function Footer() {
               A 501(c)(3) nonprofit providing free legal services to those in need, scholarships to exceptional law students, and fellowship opportunities for pre-law individuals.
             </p>
             <div className="flex space-x-4">
-              <a
+              
                 href="mailto:info@ockabaf.org"
                 className="text-gray-300 hover:text-white transition-colors"
                 title="Email"
@@ -22,7 +22,7 @@ export default function Footer() {
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
               </a>
-              <a
+              
                 href="https://www.linkedin.com/company/ockabaf/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -71,8 +71,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/taste2025" className="text-gray-300 hover:text-white transition-colors">
-                  Taste of Korea
+                <Link href="/taste2025thankyou" className="text-gray-300 hover:text-white transition-colors">
+                  2025 Taste of Korea
                 </Link>
               </li>
               <li>
@@ -103,12 +103,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/taste2025" className="text-gray-300 hover:text-white transition-colors">
-                  Taste of Korea Event
+                <Link href="/taste2025thankyou" className="text-gray-300 hover:text-white transition-colors">
+                  2025 Taste of Korea
                 </Link>
               </li>
               <li>
-                <a
+                
                   href="mailto:info@ockabaf.org?subject=Legal Assistance Request"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
@@ -116,7 +116,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
+                
                   href="mailto:info@ockabaf.org?subject=Scholarship Application"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
@@ -124,8 +124,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/taste2025" className="text-gray-300 hover:text-white transition-colors">
-                  Taste of Korea Sponsorship
+                <Link href="/taste2025thankyou" className="text-gray-300 hover:text-white transition-colors">
+                  Taste of Korea Event
                 </Link>
               </li>
             </ul>
@@ -149,19 +149,19 @@ export default function Footer() {
               </p>
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a
+              
                 href="mailto:info@ockabaf.org?subject=Privacy Policy"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Privacy Policy
               </a>
-              <a
+              
                 href="mailto:info@ockabaf.org?subject=Terms of Service"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Terms of Service
               </a>
-              <a
+              
                 href="mailto:info@ockabaf.org?subject=Contact"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
