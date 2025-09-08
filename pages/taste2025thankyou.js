@@ -77,7 +77,7 @@ export default function TasteOfKoreaThankYou() {
               </div>
             </div>
             <div className="text-center">
-              
+              <a
                 href="https://www.flickr.com/photos/165825565@N05/albums/72177720328655570"
                 target="_blank"
                 rel="noopener noreferrer"
