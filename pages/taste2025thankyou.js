@@ -8,13 +8,13 @@ export default function TasteOfKoreaThankYou() {
         <div className="max-w-4xl mx-auto">
           
           {/* Thank You Message */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h1 className="text-3xl font-bold text-gray-900 mb-4">
               Thank You for Making Taste of Korea 2025 a Success!
             </h1>
-            <div className="bg-primary-50 border border-primary-200 rounded-lg p-8 mb-8">
-              <p className="text-lg text-gray-700">
-                We are deeply grateful to everyone who joined us on Wednesday, August 27, 2025, for an unforgettable evening celebrating Korean culture and community. Through your generous support as sponsors, donors, and attendees, we strengthened our mission of supporting the Korean-American legal community.
+            <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6">
+              <p className="text-base text-gray-700">
+                We are deeply grateful to everyone who joined us on August 27, 2025. Through your generous support, we strengthened our mission of supporting the Korean-American legal community.
               </p>
             </div>
           </div>
@@ -30,49 +30,49 @@ export default function TasteOfKoreaThankYou() {
               <img
                 src="/images/taste2025-photo1.jpg"
                 alt="Taste of Korea 2025 - Event Photo 1"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo2.jpg"
                 alt="Taste of Korea 2025 - Event Photo 2"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo3.jpg"
                 alt="Taste of Korea 2025 - Event Photo 3"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo4.jpg"
                 alt="Taste of Korea 2025 - Event Photo 4"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo5.jpg"
                 alt="Taste of Korea 2025 - Event Photo 5"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo6.jpg"
                 alt="Taste of Korea 2025 - Event Photo 6"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo7.jpg"
                 alt="Taste of Korea 2025 - Event Photo 7"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo8.jpg"
                 alt="Taste of Korea 2025 - Event Photo 8"
-                className="w-full h-32 md:h-40 object-cover rounded-lg hover:scale-105 transition-transform cursor-pointer"
+                className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
                 onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
               />
             </div>
