@@ -27,49 +27,49 @@ export default function TasteOfKoreaThankYou() {
                 src="/images/taste2025-photo1.jpg"
                 alt="Taste of Korea 2025 - Event Photo 1"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750912821/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo2.jpg"
                 alt="Taste of Korea 2025 - Event Photo 2"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750803072/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo3.jpg"
                 alt="Taste of Korea 2025 - Event Photo 3"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750922706/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo4.jpg"
                 alt="Taste of Korea 2025 - Event Photo 4"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750922701/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo5.jpg"
                 alt="Taste of Korea 2025 - Event Photo 5"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54751143229/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo6.jpg"
                 alt="Taste of Korea 2025 - Event Photo 6"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750081472/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo7.jpg"
                 alt="Taste of Korea 2025 - Event Photo 7"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750076327/in/album-72177720328655570', '_blank')}
               />
               <img
                 src="/images/taste2025-photo8.jpg"
                 alt="Taste of Korea 2025 - Event Photo 8"
                 className="w-full h-48 object-contain rounded-lg hover:scale-105 transition-transform cursor-pointer bg-gray-50"
-                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/albums/72177720328655570', '_blank')}
+                onClick={() => window.open('https://www.flickr.com/photos/165825565@N05/54750066347/in/album-72177720328655570', '_blank')}
               />
             </div>
 
