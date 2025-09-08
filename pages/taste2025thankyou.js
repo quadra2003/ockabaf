@@ -20,13 +20,9 @@ export default function TasteOfKoreaThankYou() {
           </div>
 
           {/* Photo Collage */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-              Highlights from Taste of Korea 2025
-            </h2>
-            
+          <div className="mb-12">
             {/* Photo Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
               <img
                 src="/images/taste2025-photo1.jpg"
                 alt="Taste of Korea 2025 - Event Photo 1"
