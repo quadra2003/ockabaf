@@ -96,7 +96,7 @@ export default function TasteOfKoreaThankYou() {
             
             <div className="text-center">
               <img
-                src="/taste2025thankyou.png"
+                src="public/taste2025thankyou.png"
                 alt="Taste of Korea 2025 Sponsors and Donors"
                 className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
                 style={{ aspectRatio: 'auto', objectFit: 'contain' }}
