@@ -94,132 +94,13 @@ export default function TasteOfKoreaThankYou() {
               Thank You to Our Sponsors & Donors
             </h2>
             
-            <div className="space-y-8">
-              
-              {/* Title Sponsor */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6 text-center">
-                <h3 className="text-2xl font-bold mb-4">TITLE SPONSOR</h3>
-                <div className="bg-white rounded-lg p-4 inline-block">
-                  <div className="text-2xl font-bold text-blue-600">ICHTHUS</div>
-                  <div className="text-xl text-blue-600">INJURY NETWORK</div>
-                </div>
-              </div>
-
-              {/* Joseon Sponsor */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">JOSEON (조선) SPONSOR</h3>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-900">MINYARD | MORRIS</div>
-                </div>
-              </div>
-
-              {/* Goryeo Sponsor */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">GORYEO (고려) SPONSOR</h3>
-                <div className="text-center">
-                  <div className="bg-red-500 text-white rounded-lg p-3 inline-block">
-                    <div className="text-sm">WAGE</div>
-                    <div className="text-sm">RECOVERY</div>
-                    <div className="text-sm">QUEEN</div>
-                    <div className="text-xs">.COM</div>
-                    <div className="text-xs">BRIANA KIM, P.C.</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Silla Sponsors */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">SILLA (신라) SPONSORS</h3>
-                <div className="flex flex-wrap justify-center items-center gap-6">
-                  <div className="text-red-600 font-bold">OCKABA</div>
-                  <div className="text-blue-600 font-bold">Knobbe Martens</div>
-                  <div className="text-gray-800 font-bold">Crowell</div>
-                </div>
-              </div>
-
-              {/* Baekje Sponsors */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">BAEKJE (백제) SPONSORS</h3>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center">
-                  <div className="text-gray-700 font-semibold">JOHN CHA</div>
-                  <div className="text-gray-700 font-semibold">KAHANA FELD</div>
-                  <div className="text-gray-700 font-semibold">KIM LAW</div>
-                  <div className="text-orange-600 font-bold">WOMBLE BOND DICKINSON</div>
-                  <div className="text-gray-700 font-semibold">SL LAW</div>
-                  <div className="text-orange-600 font-bold">OCAABA</div>
-                </div>
-              </div>
-
-              {/* Goguryeo Sponsors */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">GOGURYEO (고구려) SPONSORS</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
-                  <div className="text-gray-700">LAW OFFICE OF APRIL GILBERT</div>
-                  <div className="text-blue-600 font-bold">KABA</div>
-                  <div className="text-yellow-600 font-bold">avodah LAW GROUP</div>
-                  <div className="text-blue-600 font-bold">GS Medical</div>
-                  <div className="text-gray-700">UMBERG ZIPSER LLP</div>
-                  <div className="text-orange-600 font-bold">SUSAN KANG GROUP</div>
-                  <div className="text-blue-600 font-bold">FLOC</div>
-                  <div className="text-gray-700">STENO</div>
-                  <div className="text-blue-600 font-bold">CHIN LAW GROUP</div>
-                  <div className="text-gray-700">[in-sit] coffee</div>
-                  <div className="text-red-600 font-bold">NATIONWIDE LEGAL</div>
-                  <div className="text-blue-600 font-bold">CAPTO</div>
-                  <div className="text-gray-700">ZC SETTLEMENT ADVISORS</div>
-                  <div className="text-blue-600 font-bold">UCI Law Korea Law Center</div>
-                  <div className="text-red-600 font-bold">RO & YOU</div>
-                  <div className="text-red-600 font-bold">SGT PEPPERONI'S GROSSOLOGY</div>
-                  <div className="text-red-600 font-bold">ginsa</div>
-                  <div className="text-gray-700">JUDICATE WEST</div>
-                  <div className="text-gray-700">SIGNATURE RESOLUTION</div>
-                  <div className="text-gray-700">MAKKU</div>
-                  <div className="text-gray-700">INNOVATUS</div>
-                  <div className="text-teal-600 font-bold">The Plug</div>
-                  <div className="text-gray-700">VERITEXT</div>
-                  <div className="text-blue-600 font-bold">HITEJIHO AMERICA</div>
-                  <div className="text-gray-700">ENG LAW</div>
-                </div>
-              </div>
-
-              {/* Gojoseon Sponsors */}
-              <div className="bg-gray-100 rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4 text-gray-800">GOJOSEON (고조선) SPONSORS</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                  <div className="text-gray-700 font-semibold">KAIROS ACADEMICS</div>
-                  <div className="text-gray-700 font-semibold">JOSEPH CHAIREZ</div>
-                  <div className="text-gray-700 font-semibold">HON. JOSEPH KANG</div>
-                  <div className="text-gray-700 font-semibold">MARY KIM</div>
-                </div>
-              </div>
-
-              {/* Donors */}
-              <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-lg p-6">
-                <h3 className="text-xl font-bold text-center mb-4">DONORS</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center text-sm">
-                  <div>CHRISTINA AHN</div>
-                  <div>MONICA GLICKEN</div>
-                  <div>CHANG LIM</div>
-                  <div>ELLEN KIM</div>
-                  <div>STEVE SONG</div>
-                  <div>ERIC LIM</div>
-                  <div>JA H. SUH</div>
-                  <div>JANET PARK DENNERLINE</div>
-                  <div>JOSHUA LEE</div>
-                  <div>MIMI AHN</div>
-                  <div>ROBERT KOLLAR</div>
-                  <div>SAM YU</div>
-                  <div>SUSAN KANG</div>
-                  <div>TEDDY NGUYEN</div>
-                  <div>YOUNG HAM</div>
-                  <div>SUZY LEE</div>
-                </div>
-              </div>
-
-              {/* Final Thank You */}
-              <div className="bg-gradient-to-r from-pink-400 to-red-400 text-white rounded-lg p-8 text-center">
-                <h3 className="text-2xl font-bold">THANK YOU TO ALL OUR SPONSORS & DONORS!</h3>
-              </div>
+            <div className="text-center">
+              <img
+                src="/taste2025thankyou.png"
+                alt="Taste of Korea 2025 Sponsors and Donors"
+                className="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+                style={{ aspectRatio: 'auto', objectFit: 'contain' }}
+              />
             </div>
           </div>
 
