@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 export default function Board() {
   const officers = [
     { name: "Chang Lim", title: "President", subtitle: "Fundraising Committee Chair", affiliation: "Knobbe Martens", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
-    { name: "Christopher Kim", title: "President-Elect", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" },
+    { name: "Christopher Kim", title: "President-Elect", subtitle: "Pro Bono Committee Chair", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" },
     { name: "Jung Ah Kim", title: "Treasurer", affiliation: "Verve Law Group", photo: "JungAh.jpg", website: "", linkedin: "https://www.linkedin.com/in/jung-ah-kim-03044b218/" },
     { name: "Ellen Kim", title: "Secretary", affiliation: "Umberg Zipser", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" }
   ]
