@@ -3,9 +3,9 @@ import Layout from '../components/Layout'
 export default function Board() {
   const officers = [
     { name: "Chang Lim", title: "President", subtitle: "Fundraising Committee Chair", affiliation: "Knobbe Martens", photo: "Chang.jpg", website: "https://www.knobbe.com/professionals/chang-lim/", linkedin: "https://www.linkedin.com/in/changsiklim/" },
-    { name: "Eric Lim", title: "President-Elect", subtitle: "Pro Bono Committee Chair", affiliation: "American Healthcare REIT", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
+    { name: "Christopher Kim", title: "President-Elect", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" },
     { name: "Jung Ah Kim", title: "Treasurer", affiliation: "Verve Law Group", photo: "JungAh.jpg", website: "", linkedin: "https://www.linkedin.com/in/jung-ah-kim-03044b218/" },
-    { name: "Christopher Kim", title: "Secretary", affiliation: "Kim Law", photo: "Chris.jpg", website: "https://www.kimlawapc.com/about-christopher-kim/", linkedin: "https://www.linkedin.com/in/christopher-t-kim/" }
+    { name: "Ellen Kim", title: "Secretary", affiliation: "Umberg Zipser", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" }
   ]
 
   const directors = [
@@ -16,9 +16,9 @@ export default function Board() {
     { name: "Young Ham", affiliation: "Qcells USA", photo: "Young2.jpg", website: "", linkedin: "https://www.linkedin.com/in/jdyoungham/" },
     { name: "Cecilia Hong", affiliation: "Gordon Rees", photo: "Cecilia.jpg", website: "", linkedin: "https://www.linkedin.com/in/cecilia-hong-bb614830/" },
     { name: "Susan Kang", affiliation: "Susan Kang Group", photo: "Susan.jpg", website: "https://susankanggroup.com/", linkedin: "https://www.linkedin.com/in/susan-heesoo-%ED%9D%AC%EC%88%98-kang-%EA%B0%95-89829950/" },
-    { name: "Ellen Kim", affiliation: "Umberg Zipser", photo: "Ellen.jpg", website: "https://www.umbergzipser.com/profiles/ellen-kim/", linkedin: "https://www.linkedin.com/in/ellen-kim-1ab58859/" },
     { name: "Joshua Lee", affiliation: "Law Office of Joshua Y. Lee", photo: "Joshua.jpg", website: "https://lawandevidence.com/", linkedin: "https://www.linkedin.com/in/joshuaylee/" },
     { name: "Suoo Lee", affiliation: "SL Law", photo: "Suoo.jpg", website: "https://sllawpc.com/suoo-lee/", linkedin: "https://www.linkedin.com/in/suoo-lee-9a1636139/" },
+    { name: "Eric Lim", affiliation: "American Healthcare REIT", photo: "Eric.jpg", website: "", linkedin: "https://www.linkedin.com/in/eric-lim-01/" },
     { name: "Evelyn Moon", affiliation: "Evelyn Moon Law", photo: "Evelyn.jpg", website: "https://evelynmoon.com/about/", linkedin: "https://www.linkedin.com/in/attorneyevelyn/" },
     { name: "Ho-El Park", affiliation: "Law Office of Ho-El Park", photo: "HoEl.jpg", website: "https://www.hparklaw.com/attorney-profile", linkedin: "https://www.linkedin.com/in/ho-el-park-a038b13/" },
     { name: "Alexander Payne", affiliation: "Minyard Morris", photo: "Alex.jpg", website: "https://www.minyardmorris.com/attorney/alexander-payne/", linkedin: "https://www.linkedin.com/in/alexander-payne-cfls-26b76050/" },
